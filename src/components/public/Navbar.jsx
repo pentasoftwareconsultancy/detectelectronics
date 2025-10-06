@@ -47,13 +47,13 @@ const Navbar = () => {
         { name: "Board of Directors", link: "/board-of-directors" },
       ],
     },
-     { name: "CAREER", link: "/career" },
-     { name: "GALLERY", link: "/gallery" },
-     { name: "CONTACT US", link: "/contact" }, // <-- Added Gallery
-];
+    { name: "CAREER", link: "/career" },
+    { name: "GALLERY", link: "/gallery" },
+    { name: "CONTACT US", link: "/contact" }, // <-- Added Gallery
+  ];
 
-  
-  
+
+
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -70,11 +70,10 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed w-full z-50 transition-all duration-500 ${
-        isScrolled
-          ? "bg-white/95 backdrop-blur-xl shadow-2xl shadow-blue-200/50 py-2"
-          : "bg-gradient-to-r from-blue-50 to-cyan-50/80 backdrop-blur-lg py-4"
-      }`}
+      className={`fixed w-full z-50 transition-all duration-500 backdrop-filter backdrop-blur-lg ${isScrolled
+          ? "bg-white/90 shadow-md py-2"      // solid on scroll
+          : "bg-white/20 py-4"               // transparent overlay at top
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         {/* Logo */}
