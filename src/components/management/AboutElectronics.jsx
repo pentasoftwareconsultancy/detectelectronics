@@ -1,9 +1,97 @@
-import React from 'react'
+import React, { useRef, useEffect } from "react";
+import AboutElectro from "../../assets/AboutElectro.jpg";
+import SplitText from "../animationComponents/SplitText";
+import { gsap } from "gsap";
+import SplitType from "split-type";
 
 const AboutElectronics = () => {
-  return (
-    <div className="text-3xl font-bold text-blue-500 text-center mt-10">AboutElectronics</div>
-  )
-}
+  const contentRef = useRef([]);
+  const splitRef = useRef([]);
 
-export default AboutElectronics
+  useEffect(() => {
+  const splitRefs = [...splitRef.current]; // copy current refs
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = contentRef.current.indexOf(entry.target);
+
+          if (splitRefs[index]) {
+            gsap.fromTo(
+              splitRefs[index].lines,
+              { y: 50, opacity: 0 },
+              {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                ease: "power3.out",
+                stagger: 0.25,
+              }
+            );
+            observer.unobserve(entry.target);
+          }
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  contentRef.current.forEach((el, idx) => {
+    if (!el) return;
+    splitRefs[idx] = new SplitType(el, { type: "lines" });
+    observer.observe(el);
+  });
+
+  return () => {
+    observer.disconnect();
+    splitRefs.forEach((s) => s.revert());
+  };
+}, []);
+
+  return (
+    <section className="flex flex-col items-center mt-16 mb-16">
+      {/* Header Section */}
+      <div
+        className="w-full bg-cover bg-center relative py-20 text-center text-white"
+        style={{ backgroundImage: `url(${AboutElectro})` }}
+      >
+        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="relative z-10">
+          <SplitText
+            text="ABOUT DETECT ELECTRONICS"
+            className="text-4xl md:text-5xl font-semibold tracking-wide inline-block"
+            delay={100}
+            duration={0.6}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-100px"
+          >
+            <span className="block w-16 h-[2px] bg-yellow-500 mx-auto mt-3"></span>
+          </SplitText>
+        </div>
+      </div>
+
+      {/* Content Section */}
+      <div className="w-full bg-white shadow-md rounded-3xl mt-10 p-8 md:p-12 text-gray-800 leading-relaxed">
+        {[
+          `Detect Electronics Systems (I) Private Limited, a sister company of Detect Electronics System with 23 years of experience, marks its presence in the market by providing customer-satisfactory service. DESIPL consists of well-trained and skilled manpower in OFC, Civil Engineering, Telecommunications, Electrical, and Contract Management fields.`,
+          `It has attained laurels in timely completion of projects and quality management. This success has been possible because of its dynamic and diligent team working towards developing the best solutions in telecom system implementation, integration, maintenance, electrical and civil construction, and quality management.`,
+          `It has proved itself as a pioneer in Quality Controlled Turnkey works across diversified sectors. Our strong reputation has earned us mega projects in Telecommunication, Public Works, Cooperative, and Industrial sectors. Still aiming high, we look forward to extending our services to many more customers who want to see their projects see the light of the day.`,
+        ].map((text, index) => (
+          <p
+            key={index}
+            ref={(el) => (contentRef.current[index] = el)}
+            className="mb-6 cursor-pointer text-lg"
+          >
+            {text}
+          </p>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+export default AboutElectronics;

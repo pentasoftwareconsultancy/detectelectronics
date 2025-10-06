@@ -5,6 +5,7 @@ import './App.css'
 // Common components
 import Navbar from './components/public/Navbar'
 import Footer from './components/public/Footer'
+import HomeHero from './components/public/HomeHero'
 
 // Pages
 import HomePage from './pages/HomePage'
@@ -27,7 +28,7 @@ function App() {
   return (
     <Router>
       <Navbar /> {/* Common on all pages */}
-
+      <HomeHero />
       <Routes>
         {/* Home */}
         <Route path="/" element={<HomePage />} />
