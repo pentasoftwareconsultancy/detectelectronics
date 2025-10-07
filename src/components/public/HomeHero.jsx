@@ -9,7 +9,7 @@ import img3 from "../../assets/Hero3.jpg";
 
 const images = [img1, img2, img3];
 
-const HomeHero = () => {
+const HomeHero = ({ showLearnMore }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -56,12 +56,12 @@ const HomeHero = () => {
             animate={{
               opacity: 1,
               scale: 1,
-              transition: { duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94] }
+              transition: { duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94] },
             }}
             exit={{
               opacity: 0,
               scale: 1.05,
-              transition: { duration: 1, ease: "easeInOut" }
+              transition: { duration: 1, ease: "easeInOut" },
             }}
             className="absolute w-full h-full"
           >
@@ -97,17 +97,17 @@ const HomeHero = () => {
             events: {
               onHover: { enable: true, mode: "trail" },
               onClick: { enable: true, mode: "push" },
-              resize: true
+              resize: true,
             },
             modes: {
               trail: { delay: 0.1, quantity: 3 },
               push: { quantity: 4 },
-              bubble: { distance: 200, size: 10, duration: 2 }
-            }
+              bubble: { distance: 200, size: 10, duration: 2 },
+            },
           },
           particles: {
             color: {
-              value: ["#4285F4", "#34A853", "#FBBC05", "#EA4335"] // Google colors
+              value: ["#4285F4", "#34A853", "#FBBC05", "#EA4335"], // Google colors
             },
             links: {
               enable: true,
@@ -116,7 +116,7 @@ const HomeHero = () => {
               opacity: 0.2,
               width: 1,
               blink: true,
-              consent: true
+              consent: true,
             },
             move: {
               enable: true,
@@ -126,26 +126,26 @@ const HomeHero = () => {
               trail: {
                 enable: true,
                 length: 10,
-                fillColor: "#ffffff"
-              }
+                fillColor: "#ffffff",
+              },
             },
             number: {
               value: 80,
-              density: { enable: true, area: 800 }
+              density: { enable: true, area: 800 },
             },
             opacity: {
               value: { min: 0.1, max: 0.8 },
               animation: {
                 enable: true,
                 speed: 1,
-                sync: false
-              }
+                sync: false,
+              },
             },
             shape: {
               type: ["circle", "polygon"],
               options: {
-                polygon: { sides: 6 }
-              }
+                polygon: { sides: 6 },
+              },
             },
             size: {
               value: { min: 1, max: 5 },
@@ -153,19 +153,19 @@ const HomeHero = () => {
                 enable: true,
                 speed: 3,
                 minimumValue: 0.1,
-                sync: false
-              }
+                sync: false,
+              },
             },
             wobble: {
               enable: true,
               distance: 10,
-              speed: 10
-            }
+              speed: 10,
+            },
           },
           detectRetina: true,
           motion: {
-            reduce: { factor: 4, value: true }
-          }
+            reduce: { factor: 4, value: true },
+          },
         }}
         className="absolute inset-0"
       />
@@ -180,21 +180,26 @@ const HomeHero = () => {
             scale: [1, 1.2, 1],
             x: [0, element.x, 0],
             y: [0, element.y, 0],
-            rotate: [0, 180, 360]
+            rotate: [0, 180, 360],
           }}
           transition={{
             duration: element.duration,
             delay: element.delay,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
-          className={`absolute w-4 h-4 rounded-full ${index % 4 === 0 ? "bg-blue-400" :
-            index % 4 === 1 ? "bg-green-400" :
-              index % 4 === 2 ? "bg-yellow-400" : "bg-red-400"
-            } opacity-30`}
+          className={`absolute w-4 h-4 rounded-full ${
+            index % 4 === 0
+              ? "bg-blue-400"
+              : index % 4 === 1
+              ? "bg-green-400"
+              : index % 4 === 2
+              ? "bg-yellow-400"
+              : "bg-red-400"
+          } opacity-30`}
           style={{
-            left: `${20 + (index * 20) % 60}%`,
-            top: `${30 + (index * 15) % 40}%`
+            left: `${20 + ((index * 20) % 60)}%`,
+            top: `${30 + ((index * 15) % 40)}%`,
           }}
         />
       ))}
@@ -219,7 +224,6 @@ const HomeHero = () => {
 
       {/* Slide Indicators */}
 
-
       {/* Enhanced Hero Content */}
       <div className="relative z-10 text-center text-white px-4 max-w-6xl mx-auto">
         {/* Animated Headline */}
@@ -230,25 +234,25 @@ const HomeHero = () => {
           className="mb-8"
         >
           <motion.h1
-  className="text-6xl sm:text-5xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tighter"
-  style={{
-    background: "linear-gradient(45deg, #4285F4, #34A853, #FBBC05, #EA4335)",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-    backgroundSize: "300% 300%"
-  }}
-  animate={{
-    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
-  }}
-  transition={{
-    duration: 8,
-    repeat: Infinity,
-    ease: "linear"
-  }}
->
-  Infrastructure Connectivity
-</motion.h1>
-
+            className="text-6xl sm:text-5xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tighter"
+            style={{
+              background:
+                "linear-gradient(45deg, #4285F4, #34A853, #FBBC05, #EA4335)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundSize: "300% 300%",
+            }}
+            animate={{
+              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          >
+            Infrastructure Connectivity
+          </motion.h1>
         </motion.div>
 
         {/* Enhanced Subtext */}
@@ -271,8 +275,8 @@ const HomeHero = () => {
                 textShadow: [
                   "0 0 20px rgba(66, 133, 244, 0.5)",
                   "0 0 30px rgba(66, 133, 244, 0.8)",
-                  "0 0 20px rgba(66, 133, 244, 0.5)"
-                ]
+                  "0 0 20px rgba(66, 133, 244, 0.5)",
+                ],
               }}
               transition={{ duration: 2, repeat: Infinity }}
             >
@@ -291,7 +295,7 @@ const HomeHero = () => {
             {[
               { number: "99.9%", label: "Uptime" },
               { number: "1GB/s", label: "Speed" },
-              { number: "24/7", label: "Support" }
+              { number: "24/7", label: "Support" },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -304,39 +308,39 @@ const HomeHero = () => {
                 <div className="text-2xl md:text-4xl font-bold text-cyan-400 drop-shadow-lg">
                   {stat.number}
                 </div>
-                <div className="text-sm md:text-lg text-gray-300">{stat.label}</div>
+                <div className="text-sm md:text-lg text-gray-300">
+                  {stat.label}
+                </div>
               </motion.div>
             ))}
           </motion.div>
         </motion.div>
 
-        {/* Enhanced CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1.2, ease: "easeOut" }}
-          className="flex justify-center items-center"
-        >
-          <motion.button
-            onClick={() => {
-              const section = document.getElementById("home-about"); // 👈 Scroll target
-              if (section) {
-                section.scrollIntoView({ behavior: "smooth" });
-              }
-            }}
-            whileHover={{
-              scale: 1.05,
-              backgroundColor: "rgba(255,255,255,0.1)",
-              y: -2,
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="px-12 py-4 text-white font-semibold rounded-full backdrop-blur-sm border border-white/30 hover:border-white/50 transition-all duration-300"
+        {/* Learn More button */}
+        {showLearnMore && (
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1.2, ease: "easeOut" }}
+            className="flex justify-center items-center"
           >
-            Learn More
-          </motion.button>
-        </motion.div>
-
-
+            <motion.button
+              onClick={() => {
+                const section = document.getElementById("home-about");
+                if (section) section.scrollIntoView({ behavior: "smooth" });
+              }}
+              whileHover={{
+                scale: 1.05,
+                backgroundColor: "rgba(255,255,255,0.1)",
+                y: -2,
+              }}
+              whileTap={{ scale: 0.95 }}
+              className="px-12 py-4 text-white font-semibold rounded-full backdrop-blur-sm border border-white/30 hover:border-white/50 transition-all duration-300"
+            >
+              Learn More
+            </motion.button>
+          </motion.div>
+        )}
       </div>
 
       {/* Enhanced Scroll Hint */}
@@ -347,7 +351,7 @@ const HomeHero = () => {
           duration: 3,
           repeat: Infinity,
           ease: "easeInOut",
-          delay: 2
+          delay: 2,
         }}
         className="absolute bottom-8 right-8 z-20"
       >
@@ -361,7 +365,9 @@ const HomeHero = () => {
             transition={{ duration: 2, repeat: Infinity }}
             className="text-white text-xs text-center"
           >
-            Scroll<br />Down
+            Scroll
+            <br />
+            Down
           </motion.div>
         </motion.div>
       </motion.div>
@@ -370,12 +376,12 @@ const HomeHero = () => {
       <motion.div
         animate={{
           scale: [1, 2, 2.5, 1],
-          opacity: [0.5, 0.3, 0, 0]
+          opacity: [0.5, 0.3, 0, 0],
         }}
         transition={{
           duration: 4,
           repeat: Infinity,
-          ease: "easeOut"
+          ease: "easeOut",
         }}
         className="absolute inset-0 border-2 border-cyan-400/30 rounded-full m-auto w-32 h-32"
       />

@@ -29,7 +29,7 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <HomeHero />
+      <HomeHero showLearnMore={location.pathname === '/'} />
 
       {/* Suspense fallback — shows loader while pages are loading */}
       <Suspense
