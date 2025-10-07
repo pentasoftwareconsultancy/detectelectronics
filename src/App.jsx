@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Lenis from "@studio-freight/lenis";
 import './App.css'
 
 // Common components (kept outside lazy since they are always shown)
