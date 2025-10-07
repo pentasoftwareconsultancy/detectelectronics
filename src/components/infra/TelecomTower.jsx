@@ -154,7 +154,7 @@ const TelecomTower = () => {
               ref={imgRef}
               src="http://www.detectelectronics.com/images/infrastructure/telecom-tower-infrastructure.jpg"
               alt="Telecom Tower"
-              className="w-full md:w-[450px] rounded-lg shadow-lg object-cover"
+              className="w-full md:w-[550px] rounded-lg shadow-lg object-cover"
             />
           </div>
         </div>
