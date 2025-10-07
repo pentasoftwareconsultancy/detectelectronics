@@ -48,7 +48,7 @@ const HomeAbout = () => {
   ];
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <div id='home-about' className="relative min-h-screen bg-gradient-to-br py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
       
       {/* Floating Shapes */}
       {floatingShapes.map((shape, i) => (

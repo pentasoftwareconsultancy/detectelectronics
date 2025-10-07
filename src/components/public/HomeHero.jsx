@@ -44,7 +44,7 @@ const HomeHero = () => {
   return (
     <div className="relative w-full h-screen overflow-hidden flex items-center justify-center bg-gradient-to-br from-purple-900 via-blue-900 to-gray-900">
       {/* Enhanced Background Slideshow */}
-      <div 
+      <div
         className="absolute inset-0"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -53,13 +53,13 @@ const HomeHero = () => {
           <motion.div
             key={currentIndex}
             initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ 
-              opacity: 1, 
+            animate={{
+              opacity: 1,
               scale: 1,
               transition: { duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94] }
             }}
-            exit={{ 
-              opacity: 0, 
+            exit={{
+              opacity: 0,
               scale: 1.05,
               transition: { duration: 1, ease: "easeInOut" }
             }}
@@ -106,7 +106,7 @@ const HomeHero = () => {
             }
           },
           particles: {
-            color: { 
+            color: {
               value: ["#4285F4", "#34A853", "#FBBC05", "#EA4335"] // Google colors
             },
             links: {
@@ -129,11 +129,11 @@ const HomeHero = () => {
                 fillColor: "#ffffff"
               }
             },
-            number: { 
+            number: {
               value: 80,
               density: { enable: true, area: 800 }
             },
-            opacity: { 
+            opacity: {
               value: { min: 0.1, max: 0.8 },
               animation: {
                 enable: true,
@@ -188,11 +188,10 @@ const HomeHero = () => {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className={`absolute w-4 h-4 rounded-full ${
-            index % 4 === 0 ? "bg-blue-400" :
+          className={`absolute w-4 h-4 rounded-full ${index % 4 === 0 ? "bg-blue-400" :
             index % 4 === 1 ? "bg-green-400" :
-            index % 4 === 2 ? "bg-yellow-400" : "bg-red-400"
-          } opacity-30`}
+              index % 4 === 2 ? "bg-yellow-400" : "bg-red-400"
+            } opacity-30`}
           style={{
             left: `${20 + (index * 20) % 60}%`,
             top: `${30 + (index * 15) % 40}%`
@@ -219,7 +218,7 @@ const HomeHero = () => {
       </motion.button>
 
       {/* Slide Indicators */}
-      
+
 
       {/* Enhanced Hero Content */}
       <div className="relative z-10 text-center text-white px-4 max-w-6xl mx-auto">
@@ -231,24 +230,25 @@ const HomeHero = () => {
           className="mb-8"
         >
           <motion.h1
-            className="text-6 md:text-5xl lg:text-6xl font-black mb-6 tracking-tighter"
-            style={{
-              background: "linear-gradient(45deg, #4285F4, #34A853, #FBBC05, #EA4335)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundSize: "300% 300%"
-            }}
-            animate={{
-              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-          >
-            Infrastrucutre Connectivity
-          </motion.h1>
+  className="text-6xl sm:text-5xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tighter"
+  style={{
+    background: "linear-gradient(45deg, #4285F4, #34A853, #FBBC05, #EA4335)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    backgroundSize: "300% 300%"
+  }}
+  animate={{
+    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
+  }}
+  transition={{
+    duration: 8,
+    repeat: Infinity,
+    ease: "linear"
+  }}
+>
+  Infrastructure Connectivity
+</motion.h1>
+
         </motion.div>
 
         {/* Enhanced Subtext */}
@@ -267,7 +267,7 @@ const HomeHero = () => {
             Seamless internet, instant connectivity, and{" "}
             <motion.span
               className="font-semibold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent"
-              animate={{ 
+              animate={{
                 textShadow: [
                   "0 0 20px rgba(66, 133, 244, 0.5)",
                   "0 0 30px rgba(66, 133, 244, 0.8)",
@@ -315,46 +315,19 @@ const HomeHero = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.2, ease: "easeOut" }}
-          className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+          className="flex justify-center items-center"
         >
           <motion.button
-            whileHover={{ 
-              scale: 1.05,
-              boxShadow: "0 0 30px rgba(66, 133, 244, 0.6)",
-              y: -2
+            onClick={() => {
+              const section = document.getElementById("home-about"); // 👈 Scroll target
+              if (section) {
+                section.scrollIntoView({ behavior: "smooth" });
+              }
             }}
-            whileTap={{ scale: 0.95 }}
-            animate={{
-              background: [
-                "linear-gradient(45deg, #4285F4, #34A853)",
-                "linear-gradient(45deg, #34A853, #FBBC05)",
-                "linear-gradient(45deg, #FBBC05, #EA4335)",
-                "linear-gradient(45deg, #EA4335, #4285F4)",
-                "linear-gradient(45deg, #4285F4, #34A853)"
-              ]
-            }}
-            transition={{
-              background: {
-                duration: 8,
-                repeat: Infinity,
-                ease: "linear"
-              },
-              scale: { type: "spring", stiffness: 400, damping: 17 }
-            }}
-            className="px-12 py-4 text-white font-bold rounded-full shadow-2xl backdrop-blur-sm border border-white/20 relative overflow-hidden group"
-          >
-            <span className="relative z-10">Get Started Free</span>
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-blue-500 to-green-500 opacity-0 group-hover:opacity-100"
-              transition={{ duration: 0.3 }}
-            />
-          </motion.button>
-
-          <motion.button
-            whileHover={{ 
+            whileHover={{
               scale: 1.05,
               backgroundColor: "rgba(255,255,255,0.1)",
-              y: -2
+              y: -2,
             }}
             whileTap={{ scale: 0.95 }}
             className="px-12 py-4 text-white font-semibold rounded-full backdrop-blur-sm border border-white/30 hover:border-white/50 transition-all duration-300"
@@ -362,15 +335,17 @@ const HomeHero = () => {
             Learn More
           </motion.button>
         </motion.div>
+
+
       </div>
 
       {/* Enhanced Scroll Hint */}
       <motion.div
         initial={{ y: 0, opacity: 0 }}
         animate={{ y: [0, -20, 0], opacity: [0, 1, 0] }}
-        transition={{ 
-          duration: 3, 
-          repeat: Infinity, 
+        transition={{
+          duration: 3,
+          repeat: Infinity,
           ease: "easeInOut",
           delay: 2
         }}
@@ -393,12 +368,12 @@ const HomeHero = () => {
 
       {/* Pulse Rings */}
       <motion.div
-        animate={{ 
+        animate={{
           scale: [1, 2, 2.5, 1],
           opacity: [0.5, 0.3, 0, 0]
         }}
-        transition={{ 
-          duration: 4, 
+        transition={{
+          duration: 4,
           repeat: Infinity,
           ease: "easeOut"
         }}

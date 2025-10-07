@@ -101,10 +101,10 @@ const Navbar = () => {
                     href={item.link}
                     // ✅ Updated: Active dropdown parent always blue, inactive white at top
                     className={`flex items-center px-3 py-2 font-semibold transition-colors duration-300 ${item.dropdown.some((sub) => location.pathname === sub.link)
-                        ? "text-blue-600"                    // ✅ Active parent blue
-                        : isScrolled
-                          ? "text-gray-800 hover:text-blue-600"
-                          : "text-white hover:text-blue-300"
+                      ? "text-blue-600"                    // ✅ Active parent blue
+                      : isScrolled
+                        ? "text-gray-800 hover:text-blue-600"
+                        : "text-white hover:text-blue-300"
                       }`}
                   >
                     {item.name}
@@ -121,18 +121,17 @@ const Navbar = () => {
                       >
                         {item.dropdown.map((sub) => (
                           <motion.a
-    key={sub.name}
-    href={sub.link}
-    className={`block px-6 py-3 font-medium border-b border-blue-50 last:border-b-0 transition-all duration-300 ${
-      location.pathname === sub.link
-        ? "text-blue-600 bg-blue-50"                 // ✅ Active dropdown link blue
-        : isScrolled
-          ? "text-gray-700 hover:text-blue-600 hover:bg-blue-50" // ✅ Scrolled: gray
-          : "text-black hover:text-blue-300 hover:bg-white/10"   // ✅ Top: white
-    }`}
-  >
-    {sub.name}
-  </motion.a>
+                            key={sub.name}
+                            href={sub.link}
+                            className={`block px-6 py-3 font-medium border-b border-blue-50 last:border-b-0 transition-all duration-300 ${location.pathname === sub.link
+                                ? "text-blue-600 bg-blue-50"                 // ✅ Active dropdown link blue
+                                : isScrolled
+                                  ? "text-gray-700 hover:text-blue-600 hover:bg-blue-50" // ✅ Scrolled: gray
+                                  : "text-black hover:text-blue-300 hover:bg-white/10"   // ✅ Top: white
+                              }`}
+                          >
+                            {sub.name}
+                          </motion.a>
                         ))}
                       </motion.div>
                     )}
@@ -143,10 +142,10 @@ const Navbar = () => {
                   href={item.link}
                   // ✅ Updated: Active link blue, inactive white at top
                   className={`px-3 py-2 font-semibold transition-colors duration-300 ${location.pathname === item.link
-                      ? "text-blue-600"
-                      : isScrolled
-                        ? "text-gray-800 hover:text-blue-600"
-                        : "text-white hover:text-blue-300"
+                    ? "text-blue-600"
+                    : isScrolled
+                      ? "text-gray-800 hover:text-blue-600"
+                      : "text-white hover:text-blue-300"
                     }`}
                 >
                   {item.name}
@@ -183,10 +182,10 @@ const Navbar = () => {
                         onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
                         // ✅ Updated: Active parent blue, inactive white at top
                         className={`flex items-center justify-between w-full px-4 py-4 font-semibold text-left transition-colors duration-300 ${item.dropdown.some((sub) => location.pathname === sub.link)
-                            ? "text-blue-600"
-                            : isScrolled
-                              ? "text-gray-800 hover:text-blue-600"
-                              : "text-white hover:text-blue-300"
+                          ? "text-blue-600"
+                          : isScrolled
+                            ? "text-gray-800 hover:text-blue-600"
+                            : "text-white hover:text-blue-300"
                           }`}
                       >
                         {item.name}
@@ -207,10 +206,10 @@ const Navbar = () => {
                                 href={sub.link}
                                 // ✅ Updated: Active dropdown link blue, inactive white at top
                                 className={`block px-4 py-3 font-medium border-b last:border-b-0 transition-all duration-300 ${location.pathname === sub.link
-                                    ? "text-blue-600 bg-blue-100"
-                                    : isScrolled
-                                      ? "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
-                                      : "text-black hover:text-blue-300 hover:bg-white/10"
+                                  ? "text-blue-600 bg-blue-100"
+                                  : isScrolled
+                                    ? "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+                                    : "text-black hover:text-blue-300 hover:bg-white/10"
                                   }`}
                                 onClick={() => setIsOpen(false)}
                               >
@@ -226,10 +225,10 @@ const Navbar = () => {
                       href={item.link}
                       // ✅ Updated: Active link blue, inactive white at top
                       className={`block px-4 py-4 font-semibold border-b last:border-b-0 transition-colors duration-300 ${location.pathname === item.link
-                          ? "text-blue-600"
-                          : isScrolled
-                            ? "text-gray-800 hover:text-blue-600"
-                            : "text-white hover:text-blue-300"
+                        ? "text-blue-600"
+                        : isScrolled
+                          ? "text-gray-800 hover:text-blue-600"
+                          : "text-white hover:text-blue-300"
                         }`}
                       onClick={() => setIsOpen(false)}
                     >
