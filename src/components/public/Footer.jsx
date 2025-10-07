@@ -209,7 +209,7 @@ export default function Footer() {
   {/* Left Side - Company Maintainer */}
   <div className="text-sm text-white">
     Maintain By:{" "}
-    <span className="font-semibold text-green-600">Devcons Software</span>
+    <span className="font-semibold text-green-600">Devcons Software Solutions Pvt. Ltd.</span>
   </div>
 
   {/* Right Side - Copyright */}
