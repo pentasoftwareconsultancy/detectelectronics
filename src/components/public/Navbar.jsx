@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaTimes, FaChevronDown } from "react-icons/fa";
+import { useLocation } from "react-router-dom"; // ✅ Added to get current path
 import Logo from "../../assets/logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+
+  const location = useLocation(); // ✅ Added
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -49,11 +52,8 @@ const Navbar = () => {
     },
     { name: "CAREER", link: "/career" },
     { name: "GALLERY", link: "/gallery" },
-    { name: "CONTACT US", link: "/contact" }, // <-- Added Gallery
+    { name: "CONTACT US", link: "/contact" },
   ];
-
-
-
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -71,8 +71,8 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed w-full z-50 transition-all duration-500 backdrop-filter backdrop-blur-lg ${isScrolled
-          ? "bg-white/90 shadow-md py-2"      // solid on scroll
-          : "bg-white/20 py-4"               // transparent overlay at top
+        ? "bg-white/90 shadow-md py-2"
+        : "bg-white/20 py-4"
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
@@ -99,7 +99,14 @@ const Navbar = () => {
                 <>
                   <motion.a
                     href={item.link}
-                    className="flex items-center px-3 py-2 text-gray-800 hover:text-blue-600 font-semibold transition-colors duration-300"
+                    // ✅ Updated: Active dropdown parent always blue, inactive white at top
+                    className={`flex items-center px-3 py-2 font-semibold transition-colors duration-300 ${
+                      item.dropdown.some((sub) => location.pathname === sub.link)
+                        ? "text-blue-600"                    // ✅ Active parent blue
+                        : isScrolled
+                          ? "text-gray-800 hover:text-blue-600"
+                          : "text-white hover:text-blue-300"
+                    }`}
                   >
                     {item.name}
                     <FaChevronDown className="ml-1 w-3 h-3" />
@@ -117,7 +124,14 @@ const Navbar = () => {
                           <motion.a
                             key={sub.name}
                             href={sub.link}
-                            className="block px-6 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium transition-all duration-300 border-b border-blue-50 last:border-b-0"
+                            // ✅ Updated: Active dropdown link always blue, inactive white at top
+                            className={`block px-6 py-3 font-medium border-b border-blue-50 last:border-b-0 transition-all duration-300 ${
+                              location.pathname === sub.link
+                                ? "text-blue-600 bg-blue-50"
+                                : isScrolled
+                                  ? "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+                                  : "text-white hover:text-blue-300 hover:bg-white/10"
+                            }`}
                           >
                             {sub.name}
                           </motion.a>
@@ -129,7 +143,14 @@ const Navbar = () => {
               ) : (
                 <motion.a
                   href={item.link}
-                  className="px-3 py-2 text-gray-800 hover:text-blue-600 font-semibold transition-colors duration-300"
+                  // ✅ Updated: Active link blue, inactive white at top
+                  className={`px-3 py-2 font-semibold transition-colors duration-300 ${
+                    location.pathname === item.link
+                      ? "text-blue-600"
+                      : isScrolled
+                        ? "text-gray-800 hover:text-blue-600"
+                        : "text-white hover:text-blue-300"
+                  }`}
                 >
                   {item.name}
                 </motion.a>
@@ -163,7 +184,14 @@ const Navbar = () => {
                     <div className="border-b border-blue-50 last:border-b-0">
                       <button
                         onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
-                        className="flex items-center justify-between w-full px-4 py-4 text-gray-800 hover:text-blue-600 font-semibold text-left"
+                        // ✅ Updated: Active parent blue, inactive white at top
+                        className={`flex items-center justify-between w-full px-4 py-4 font-semibold text-left transition-colors duration-300 ${
+                          item.dropdown.some((sub) => location.pathname === sub.link)
+                            ? "text-blue-600"
+                            : isScrolled
+                              ? "text-gray-800 hover:text-blue-600"
+                              : "text-white hover:text-blue-300"
+                        }`}
                       >
                         {item.name}
                         <FaChevronDown className="w-3 h-3" />
@@ -181,7 +209,14 @@ const Navbar = () => {
                               <motion.a
                                 key={sub.name}
                                 href={sub.link}
-                                className="block px-4 py-3 text-gray-700 hover:text-blue-600 font-medium border-b border-blue-100 last:border-b-0"
+                                // ✅ Updated: Active dropdown link blue, inactive white at top
+                                className={`block px-4 py-3 font-medium border-b last:border-b-0 transition-all duration-300 ${
+                                  location.pathname === sub.link
+                                    ? "text-blue-600 bg-blue-100"
+                                    : isScrolled
+                                      ? "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+                                      : "text-white hover:text-blue-300 hover:bg-white/10"
+                                }`}
                                 onClick={() => setIsOpen(false)}
                               >
                                 {sub.name}
@@ -194,7 +229,14 @@ const Navbar = () => {
                   ) : (
                     <a
                       href={item.link}
-                      className="block px-4 py-4 text-gray-800 hover:text-blue-600 font-semibold border-b border-blue-50 last:border-b-0"
+                      // ✅ Updated: Active link blue, inactive white at top
+                      className={`block px-4 py-4 font-semibold border-b last:border-b-0 transition-colors duration-300 ${
+                        location.pathname === item.link
+                          ? "text-blue-600"
+                          : isScrolled
+                            ? "text-gray-800 hover:text-blue-600"
+                            : "text-white hover:text-blue-300"
+                      }`}
                       onClick={() => setIsOpen(false)}
                     >
                       {item.name}
