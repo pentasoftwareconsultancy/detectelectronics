@@ -1,12 +1,32 @@
 import React from "react";
 import img from "../../assets/CivilConstruction.jpg";
-import SplitText from "../animationComponents/SplitText"
+import SplitText from "../animationComponents/SplitText";
+import { motion } from "framer-motion";
 
 const CivilConstruction = () => {
+  // Motion variants for left list items
+  const listContainer = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.1, // each item appears 0.1s after previous
+      },
+    },
+  };
+
+  const listItem = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  };
+
+  // Motion variant for right image
+  const imageVariant = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  };
+
   return (
     <section className="my-16">
-      {" "}
-
       {/* Header Section */}
       <div
         className="w-full bg-cover bg-center relative py-20 text-center text-white mb-16"
@@ -33,17 +53,19 @@ const CivilConstruction = () => {
 
       {/* Content Section */}
       <div className="bg-white mx-auto px-6 md:px-10 py-16 rounded-3xl">
-        {" "}
-        {/* more vertical padding */}
         <p className="text-gray-700 text-base md:text-lg mb-10">
           Detect electronics system private limited involved in Civil
           construction of GBT, RTT & BTS foundation for mobile towers.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-          {" "}
-          {/* added more gap */}
           {/* Left Content */}
-          <ul className="space-y-5 text-gray-800 text-[15px] border-l border-gray-200 pl-4">
+          <motion.ul
+            className="space-y-5 text-gray-800 text-[15px] border-l border-gray-200 pl-4"
+            variants={listContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
             {[
               "Tower Foundation RTT (9, 12,15,18,21,24,30Mtrs)",
               "Tower Foundation GBT – 4 Leg & Itrans (40 Mtrs, 60Mtrs, 80 Mtrs)",
@@ -54,23 +76,31 @@ const CivilConstruction = () => {
               "Tower painting",
               "Tower Strengthening",
             ].map((item, index) => (
-              <li
+              <motion.li
                 key={index}
                 className="flex items-start gap-2 border-b border-gray-200 pb-2"
+                variants={listItem}
               >
                 <span className="text-sky-500 font-bold">›</span>
                 <span>{item}</span>
-              </li>
+              </motion.li>
             ))}
-          </ul>
+          </motion.ul>
+
           {/* Right Image */}
-          <div className="flex justify-center">
+          <motion.div
+            className="flex justify-center"
+            variants={imageVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
             <img
               src={img}
               alt="Civil Construction"
               className="rounded-3xl shadow-2xl w-full max-w-lg object-cover"
             />
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -248,7 +248,7 @@ export default function FooterClients() {
           <div className="text-sm text-gray-600">
             Maintain By:{" "}
             <span className="font-semibold text-green-600">
-              Devcons Software
+              Devcons Software Solutions Pvt. Ltd.
             </span>
           </div>
 
