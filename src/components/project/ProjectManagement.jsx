@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import img from "../../assets/ProjectManagementimg.jpeg";
+// import img from "../../assets/ProjectManagementimg.jpeg";
 import bg from "../../assets/ProjectManagementBG.jpeg";
 
 export default function ProjectManagement() {
@@ -49,9 +49,9 @@ export default function ProjectManagement() {
           className="flex-1 rounded-2xl p-6 justify-center flex items-center"
         >
           <img
-            src={img}
+            src={"https://i.pinimg.com/1200x/21/2d/bd/212dbd9bd43198422c0f0e01ca3d1ade.jpg"}
             alt="Project Management"
-            className="w-[500px] h-[500px] object-contain will-change-transform rounded-full"
+            className="w-[700px] h-[600px] object-contain will-change-transform rounded-full"
             loading="lazy"
           />
         </div>
