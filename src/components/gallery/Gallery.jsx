@@ -2,6 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MagnifyingGlassIcon, XMarkIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 
+import img1 from '../../assets/img1.jpg';
+import img2 from '../../assets/img2.jpg';
+import img3 from '../../assets/img3.jpg';
+import img4 from '../../assets/img4.jpg';
+import img5 from '../../assets/img5.jpg';
+import img6 from '../../assets/img6.jpg';
+import img7 from '../../assets/img7.jpg';
+import img8 from '../../assets/img8.jpg';
+import img9 from '../../assets/img9.jpg';
+import img10 from '../../assets/img10.jpg';
+import img11 from '../../assets/img11.jpg';
+import img12 from '../../assets/img12.jpg';
+import img13 from '../../assets/img13.jpg';
+import img14 from '../../assets/img14.jpg';
 
 
 const GALLERY_TABS = [
@@ -10,6 +24,23 @@ const GALLERY_TABS = [
   { label: 'RTT Construction', value: 'RTT' },
   { label: 'Civil Work', value: 'Civil' },
   { label: 'Electrification', value: 'Electrification' },
+];
+
+const GALLERY_IMAGES = [
+  { src: img1, category: 'GBT', alt: 'GBT Construction Project A' },
+  { src: img2, category: 'GBT', alt: 'GBT Construction Project B' },
+  { src: img3, category: 'GBT', alt: 'GBT Construction Project C' },
+  { src: img4, category: 'GBT', alt: 'GBT Construction Project D' },
+  { src: img5, category: 'RTT', alt: 'RTT Construction Site A' },
+  { src: img6, category: 'RTT', alt: 'RTT Construction Site B' },
+  { src: img7, category: 'RTT', alt: 'RTT Construction Site C' },
+  { src: img8, category: 'RTT', alt: 'RTT Construction Site D' },
+  { src: img9, category: 'Civil', alt: 'Civil Work Foundation' },
+  { src: img10, category: 'Civil', alt: 'Civil Work Structure' },
+  { src: img11, category: 'Civil', alt: 'Civil Work Completion' },
+  { src: img12, category: 'Civil', alt: 'Civil Work Infrastructure' },
+  { src: img13, category: 'Electrification', alt: 'Electrification Setup' },
+  { src: img14, category: 'Electrification', alt: 'Electrification System' },
 ];
 
 
@@ -26,8 +57,8 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { 
-    opacity: 0, 
+  hidden: {
+    opacity: 0,
     y: 20,
     scale: 0.95
   },
@@ -52,11 +83,11 @@ const itemVariants = {
 };
 
 const modalVariants = {
-  hidden: { 
+  hidden: {
     opacity: 0,
     scale: 0.8,
   },
-  visible: { 
+  visible: {
     opacity: 1,
     scale: 1,
     transition: {
@@ -66,7 +97,7 @@ const modalVariants = {
       duration: 0.4
     }
   },
-  exit: { 
+  exit: {
     opacity: 0,
     scale: 0.8,
     transition: {
@@ -91,10 +122,10 @@ const Gallery = () => {
   const [activeTab, setActiveTab] = useState('all');
   const [selectedImage, setSelectedImage] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  
+
   // Filter images based on active tab
-  const filteredImages = activeTab === 'all' 
-    ? GALLERY_IMAGES 
+  const filteredImages = activeTab === 'all'
+    ? GALLERY_IMAGES
     : GALLERY_IMAGES.filter(img => img.category === activeTab);
 
   // Handle image selection
@@ -121,7 +152,7 @@ const Gallery = () => {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (!selectedImage) return;
-      
+
       if (e.key === 'Escape') {
         setSelectedImage(null);
       } else if (e.key === 'ArrowRight') {
@@ -152,23 +183,23 @@ const Gallery = () => {
     <section className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Header */}
-        <motion.div 
+        <motion.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-5xl font-bold text-gray-900 mb-4 tracking-tight">
-            Our <span className="text-yellow-500">Gallery</span>
+          <h2 className="text-5xl font-bold text-gray-900 mb-4">
+            Our <span className="text-blue-600">Gallery</span>
           </h2>
-          <div className="w-32 h-1.5 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto mb-6 rounded-full" />
+          <div className="w-32 h-1.5 bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 mx-auto mb-6 rounded-full" />
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Explore our construction projects and see the quality work we deliver across all sectors
           </p>
         </motion.div>
 
         {/* Tabs */}
-        <motion.div 
+        <motion.div
           className="flex flex-wrap justify-center gap-3 mb-12"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -179,24 +210,15 @@ const Gallery = () => {
               key={tab.value}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className={`
-                relative px-6 py-3 rounded-full font-semibold text-lg transition-all duration-300
+              className={`relative px-6 py-3 rounded-full font-semibold text-lg transition-all duration-300
                 shadow-lg border-2 backdrop-blur-sm
                 ${activeTab === tab.value
-                  ? 'bg-yellow-500 text-white border-yellow-500 shadow-yellow-200'
-                  : 'bg-white/80 text-gray-700 border-gray-200 hover:border-yellow-300 hover:bg-yellow-50'}
-                outline-none focus:ring-4 focus:ring-yellow-200
-              `}
+                  ? 'bg-gradient-to-br from-blue-700/80 via-indigo-600/70 to-cyan-400/80 text-white border-transparent shadow-[0_0_40px_rgba(56,189,248,0.6)]'
+                  : 'bg-gradient-to-br from-[#1e3a8a]/80 via-[#1e40af]/70 to-[#3b82f6]/60 text-white border-transparent hover:shadow-[0_0_30px_rgba(59,130,246,0.4)]'
+                } outline-none focus:ring-4 focus:ring-blue-200`}
               onClick={() => setActiveTab(tab.value)}
             >
               {tab.label}
-              {activeTab === tab.value && (
-                <motion.div
-                  layoutId="activeTab"
-                  className="absolute inset-0 rounded-full bg-yellow-500 -z-10"
-                  transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                />
-              )}
             </motion.button>
           ))}
         </motion.div>
@@ -207,58 +229,44 @@ const Gallery = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 w-full"
         >
           <AnimatePresence mode="wait">
-            {filteredImages.map((img, index) => (
+            {filteredImages.map((img) => (
               <motion.div
                 key={`${img.src}-${activeTab}`}
                 variants={itemVariants}
                 layout
-                className="group relative bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 border border-gray-100 cursor-pointer"
-                whileHover={{ 
-                  y: -8,
-                  transition: { type: "spring", stiffness: 400, damping: 25 }
-                }}
+                className="group relative bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl 
+                transition-all duration-500 border border-gray-100 cursor-pointer w-full"
                 onClick={() => handleImageClick(img)}
               >
-                {/* Image Container */}
-                <div className="relative overflow-hidden">
+                <div className="relative overflow-hidden w-full">
                   <motion.img
                     src={img.src}
                     alt={img.alt}
-                    className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-110"
                     draggable={false}
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.4 }}
                   />
-                  
-                  {/* Overlay */}
-                  <motion.div 
+                  <motion.div
                     className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center"
-                    initial={false}
                   >
                     <motion.div
-                      className="opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all duration-300 bg-white/20 backdrop-blur-sm rounded-full p-4"
-                      whileHover={{ scale: 1.1 }}
+                      className="opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 
+                      transition-all duration-300 bg-white/70 backdrop-blur-sm rounded-full p-4"
                     >
                       <MagnifyingGlassIcon className="h-8 w-8 text-white" />
                     </motion.div>
                   </motion.div>
-                  
-                  {/* Category Badge */}
                   <div className="absolute top-3 left-3">
-                    <span className="px-3 py-1.5 bg-yellow-500 text-white text-sm font-medium rounded-full shadow-lg backdrop-blur-sm">
+                    <span className="px-3 py-1.5 bg-gradient-to-r from-blue-700 via-indigo-600 to-cyan-400 text-white text-sm font-medium rounded-full shadow-md">
                       {img.category}
                     </span>
                   </div>
                 </div>
-                
-                {/* Caption */}
+
                 <div className="p-4 bg-gradient-to-b from-white to-gray-50">
-                  <h3 className="font-semibold text-gray-800 text-lg mb-1 line-clamp-1">
-                    {img.alt}
-                  </h3>
+                  <h3 className="font-semibold text-gray-800 text-lg mb-1 line-clamp-1">{img.alt}</h3>
                   <p className="text-gray-500 text-sm">Click to view full screen</p>
                 </div>
               </motion.div>
@@ -268,7 +276,7 @@ const Gallery = () => {
 
         {/* Empty State */}
         {filteredImages.length === 0 && (
-          <motion.div 
+          <motion.div
             className="text-center py-16"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -294,7 +302,7 @@ const Gallery = () => {
               className="fixed inset-0 bg-black/95 backdrop-blur-sm z-50"
               onClick={() => setSelectedImage(null)}
             />
-            
+
             {/* Modal Content - Full Screen */}
             <motion.div
               key="modal"
@@ -305,7 +313,7 @@ const Gallery = () => {
               className="fixed inset-0 z-50 flex items-center justify-center p-4"
             >
               <div className="relative w-full h-full flex items-center justify-center">
-                
+
                 {/* Close Button */}
                 <motion.button
                   className="absolute top-6 right-6 z-20 bg-black/50 hover:bg-black/70 backdrop-blur-sm rounded-full p-3 text-white transition-all duration-200 border border-white/20"
@@ -355,7 +363,7 @@ const Gallery = () => {
                 </div>
 
                 {/* Image Info Bar */}
-                <motion.div 
+                <motion.div
                   className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-8"
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -386,11 +394,10 @@ const Gallery = () => {
                           setSelectedImage(filteredImages[index]);
                           setCurrentImageIndex(index);
                         }}
-                        className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                          index === currentImageIndex 
-                            ? 'bg-yellow-500 scale-125' 
-                            : 'bg-white/50 hover:bg-white/80'
-                        }`}
+                        className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentImageIndex
+                          ? 'bg-yellow-500 scale-125'
+                          : 'bg-white/50 hover:bg-white/80'
+                          }`}
                       />
                     ))}
                   </div>

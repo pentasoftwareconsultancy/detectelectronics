@@ -247,7 +247,7 @@ const HomeHero = () => {
               ease: "linear"
             }}
           >
-            Connectivity
+            Infrastrucutre Connectivity
           </motion.h1>
         </motion.div>
 
