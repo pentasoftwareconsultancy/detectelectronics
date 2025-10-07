@@ -4,7 +4,8 @@ import Cable from "../../assets/Cable.jpg";
 import SplitText from "../animationComponents/SplitText";
 
 const OpticalFiber = () => {
-  const articleContent = `In view of technology development in telecom infrastructure, Optical Fiber Cable (OFC) has become the backbone of modern telecom networks, providing high-speed data transmission and advanced 3G/4G/5G features. DESIPL handles complete OFC work, starting with Route Survey, Route Marking, Trenching, Ducting (with protection like GI, Half/Full round RCC, PCC, DWC), Backfilling, Aerial OFC, DIT, Blowing, Splicing, Chambers for Splicing and Looping, Earthing, Termination & Route Lit Up. DESIPL ensures end-to-end solutions, including trenching, ducting, blowing, splicing, and termination.`;
+  // 🔄 Updated article content
+  const articleContent = `In view of technology development in telecom infrastructure, Optical Fiber Cable (OFC) has become the backbone of modern telecom networks, providing high-speed data transmission and advanced 5G features. DESIPL extend the services for optical fiber network in Maharashtra and Karnataka State for Telecom Operators.`;
 
   return (
     <div className="w-full bg-gradient-to-b from-gray-50 to-gray-100 py-16 antialiased">
@@ -15,7 +16,6 @@ const OpticalFiber = () => {
           className="w-full bg-cover bg-center relative py-24 md:py-32 text-center text-white mb-16 rounded-3xl overflow-hidden shadow-lg"
           style={{ backgroundImage: `url(${Cable})` }}
         >
-          {/* Overlay for readability */}
           <div className="absolute inset-0 bg-black/60"></div>
 
           <div className="relative z-10">
@@ -44,19 +44,21 @@ const OpticalFiber = () => {
             <article className="lg:w-3/5 text-gray-700 text-base md:text-lg leading-relaxed">
               <p className="text-justify">{articleContent}</p>
 
+              {/* 🔄 Updated bullet points */}
               <ul className="mt-6 list-none space-y-3">
                 {[
-                  "Route Survey & Marking",
-                  "Trenching & Ducting (GI, RCC, PCC, DWC)",
-                  "Backfilling & Site Restoration",
-                  "Aerial OFC Installation",
-                  "DIT & Blowing Techniques",
-                  "Splicing & Termination",
-                  "Chambers for Splicing and Looping",
-                  "Earthing & Route Lit Up",
+                  "Right of Way",
+                  "Route Feasibility Survey",
+                  "OFC Routes Execution",
+                  "Route Acceptance and Handover",
+                  "FTTx Rollout",
+                  "Aerial Fiber",
                   "Complete End-to-End OFC Solutions",
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start text-gray-700 leading-relaxed">
+                  <li
+                    key={i}
+                    className="flex items-start text-gray-700 leading-relaxed"
+                  >
                     <span className="text-blue-600 mr-2 mt-1 text-lg">➤</span>
                     <span>{item}</span>
                   </li>

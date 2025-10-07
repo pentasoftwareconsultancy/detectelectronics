@@ -80,7 +80,7 @@ export default function CompletedProject() {
       title: "Critical Tower Strengthening",
       description: "Strengthening of critical telecom towers.",
       domain: "telecom",
-      details: "Strengthening of Critical Towers – 20",
+      details: "Strengthening of Critical Towers – 100",
       features: ["Structural reinforcement", "Safety ensured"],
       tech: ["critical"],
       status: "Completed",

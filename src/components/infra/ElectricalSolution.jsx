@@ -34,13 +34,13 @@ const ElectricalSolution = () => {
         {/* Header Section */}
         <div
           className="w-full bg-cover bg-center relative py-24 md:py-32 text-center text-white mb-16 rounded-3xl overflow-hidden shadow-lg"
-          style={{ backgroundImage: `url(${Electrical})` }}
+          style={{ backgroundImage: `url(${"https://s3-ap-south-1.amazonaws.com/ricedigitals3bucket/AUPortalContent/2022/12/19124848/Why-Electrical-Engineering-.png"})` }}
         >
           <div className="absolute inset-0 bg-black/60"></div>
 
           <div className="relative z-10">
             <SplitText
-              text="ELECTRICAL CONSTRUCTION"
+              text="ELECTRICAL WORK"
               className="text-4xl md:text-5xl font-semibold tracking-wide inline-block"
               delay={100}
               duration={0.6}
@@ -74,14 +74,12 @@ const ElectricalSolution = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
               >
-                Detect Electronics System Private Limited is actively involved in
-                Electrical Construction works for Telecom, Industrial, and
-                Infrastructure sectors, providing complete electrical installation and
-                commissioning services.
+                Detect Electronics System Private Limited is actively involved in Electrical Work works for Telecom, Industrial, and Infrastructure sectors, providing complete electrical installation and commissioning services
               </motion.p>
 
               <ul className="mt-4 list-none space-y-3">
                 {[
+                  "State Electricity Board Liaisoning",
                   "Electrical Panel Installation and Commissioning",
                   "Cable Laying (HT/LT Power Cables, Control Cables)",
                   "Earthing System Installation",
@@ -107,7 +105,7 @@ const ElectricalSolution = () => {
             {/* Image Section */}
             <div className="lg:w-2/5 w-full flex justify-center">
               <motion.img
-                src={Electrical}
+                src={"https://img.freepik.com/premium-photo/asian-electrical-engineer-checking-position-using-notebook-computer-power-station-planning-work-production-highvoltage-electric-poles-vertical-image_61243-1905.jpg"}
                 alt="Electrical Construction"
                 className="w-full md:w-[400px] lg:w-full h-[450px] object-right rounded-xl shadow-xl border-4 border-gray-200 transition-transform duration-300 hover:scale-105 hover:shadow-2xl object-cover"
                 initial={{ opacity: 0, scale: 0.95 }}

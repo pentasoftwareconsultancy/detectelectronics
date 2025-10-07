@@ -60,30 +60,65 @@ const CivilConstruction = () => {
 
             {/* Text Section */}
             <article className="lg:w-3/5 text-gray-700 text-base md:text-lg leading-relaxed">
+
+              {/* 🔄 Updated paragraph */}
               <motion.p
                 className="text-justify mb-6"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
               >
-                Detect Electronics System Private Limited is involved in Civil
-                construction of GBT, RTT & BTS foundation for mobile towers.
+                Detect Electronics System Private Limited is actively involved in
+                <strong> Civil Construction</strong> for Telecom Towers and MSC/BSC
+                locations, as well as <strong>Industrial construction</strong> covering
+                both structural and super-structural works.
               </motion.p>
 
-              <ul className="mt-4 list-none space-y-3">
+              {/* 🔄 Updated Telecom Section */}
+              <motion.h3
+                className="text-xl font-semibold text-gray-900 mt-8 mb-3"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                Telecom
+              </motion.h3>
+              <ul className="mt-2 list-none space-y-3">
                 {[
-                  "Tower Foundation RTT (9, 12,15,18,21,24,30Mtrs)",
-                  "Tower Foundation GBT – 4 Leg & Itrans (40 Mtrs, 60Mtrs, 80 Mtrs)",
-                  "Tower Foundation Monopole – 20 mtr,40mtr",
-                  "Tower Erection RTT (9, 12,15,18,21,24,30Mtrs)",
-                  "Tower Erection GBT (40 Mtrs, 60Mtrs, 80 Mtrs)",
-                  "BTS Foundation",
-                  "Tower painting",
-                  "Tower Strengthening",
+                  "Construction of Ground Based & Roof Top Tower Foundations as per design and drawings.",
+                  "Installation of Tower, GBM, Delta & Pole Structures.",
+                  "Strengthening of existing tower structures.",
+                  "Construction work for MSC & BSC locations.",
                 ].map((item, i) => (
                   <motion.li
                     key={i}
-                    className="flex items-start text-gray-700 leading-relaxed gap-2 border-b border-gray-200 pb-2"
+                    className="flex items-start text-gray-700 leading-relaxed gap-2 border-b border-gray-100 pb-2"
+                    custom={i}
+                    variants={listItemVariants}
+                  >
+                    <span className="text-sky-500 mr-2 mt-1 text-lg">➤</span>
+                    <span>{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
+
+              {/* 🔄 Updated Industrial Construction Section */}
+              <motion.h3
+                className="text-xl font-semibold text-gray-900 mt-8 mb-3"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                Industrial Construction
+              </motion.h3>
+              <ul className="mt-2 list-none space-y-3">
+                {[
+                  "Construction of factory sheds and administrative buildings.",
+                  "Execution of structural and super-structural civil works as per industrial standards.",
+                ].map((item, i) => (
+                  <motion.li
+                    key={i}
+                    className="flex items-start text-gray-700 leading-relaxed gap-2 border-b border-gray-100 pb-2"
                     custom={i}
                     variants={listItemVariants}
                   >
