@@ -2,14 +2,13 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
-import sem1Logo from "../../assets/bsnl.png";
-import sem2Logo from "../../assets/idea.png";
-import sem3Logo from "../../assets/indus.png";
-import sem4Logo from "../../assets/nokia.png";
-import sem5Logo from "../../assets/viom.png";
-import sem6Logo from "../../assets/bsnl.png";
-import sem7Logo from "../../assets/idea.png";
-import sem8Logo from "../../assets/indus.png";
+import sem1Logo from "../../assets/sem11.png";
+import sem2Logo from "../../assets/sem12.png";
+import sem3Logo from "../../assets/sem13.png";
+import sem4Logo from "../../assets/sem14.png";
+import sem5Logo from "../../assets/sem15.png";
+import sem6Logo from "../../assets/sem16.png";
+import sem7Logo from "../../assets/sem17.jpg";
 
 const clients = [
   sem1Logo,
@@ -19,7 +18,6 @@ const clients = [
   sem5Logo,
   sem6Logo,
   sem7Logo,
-  sem8Logo,
 ];
 
 // Animation variants
@@ -55,7 +53,7 @@ const logoVariants = {
   },
 };
 
-export default function Footer() {
+export default function FooterClients() {
   const navigate = useNavigate();
   const loopLogos = [...clients, ...clients];
 
@@ -63,11 +61,10 @@ export default function Footer() {
     navigate("/contact", {
       state: { inquiryType: type, timestamp: new Date().toISOString() },
     });
-    console.log(`Navigating to contact for: ${type}`);
   };
 
   return (
-    <footer className="bg-gradient-to-b  from-slate-900 via-blue-900 to-indigo-900 py-20 px-8 overflow-hidden relative">
+    <footer className="bg-gradient-to-b bg-white py-20 px-8 overflow-hidden relative">
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-20 -right-20 w-64 h-64 bg-green-100 rounded-full opacity-20 blur-3xl"></div>
@@ -170,53 +167,61 @@ export default function Footer() {
               </svg>
             </motion.div>
             <div>
-              <h2 className="text-5xl font-bold bg-gradient-to-r text-white bg-clip-text mb-3">
+              <h2 className="text-5xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mb-3">
                 OUR CLIENTS
               </h2>
-              <p className="text-xl text-white">Precious & Happy clients who trust us</p>
+              <p className="text-xl text-gray-600">Precious & Happy clients who trust us</p>
             </div>
           </div>
 
           {/* Sliding Logos */}
-          <div className="relative w-full overflow-hidden py-8">
-            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
-            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
+         <motion.div
+  className="flex gap-20 items-center"
+  animate={{
+    x: ["0%", "-50%"],
+    y: [0, -10, 0, 10, 0], // 👈 adds wave-like vertical motion
+  }}
+  transition={{
+    repeat: Infinity,
+    repeatType: "loop",
+    duration: 25,
+    ease: "linear",
+  }}
+>
+  {loopLogos.map((logo, index) => (
+    <motion.div
+      key={index}
+      className="flex-shrink-0"
+      variants={logoVariants}
+      whileHover="hover"
+    >
+      <img
+        src={logo}
+        alt={`Client ${index % clients.length + 1}`}
+        className="h-20 w-auto object-contain filter drop-shadow-lg transition-all duration-300"
+      />
+    </motion.div>
+  ))}
+</motion.div>
 
-            <motion.div
-              className="flex gap-20 items-center"
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
-            >
-              {loopLogos.map((logo, index) => (
-                <motion.div key={index} className="flex-shrink-0" variants={logoVariants} whileHover="hover">
-                  <img
-                    src={logo}
-                    alt={`Client ${index % clients.length + 1}`}
-                    className="h-20 w-auto object-contain filter drop-shadow-lg transition-all duration-300"
-                  />
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
         </motion.div>
 
         {/* Copyright Section */}
-      {/* Copyright Section */}
-<motion.div
-  variants={itemVariants}
-  className="max-w-7xl mx-auto mt-24 pt-12 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between text-center md:text-left gap-4"
->
-  {/* Left Side - Company Maintainer */}
-  <div className="text-sm text-white">
-    Maintain By:{" "}
-    <span className="font-semibold text-green-600">Devcons Software Solutions Pvt. Ltd.</span>
-  </div>
+        <motion.div
+          variants={itemVariants}
+          className="max-w-7xl mx-auto mt-24 pt-12 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between text-center md:text-left gap-4"
+        >
+          {/* Left Side - Company Maintainer */}
+          <div className="text-sm text-gray-600">
+            Maintain By:{" "}
+            <span className="font-semibold text-green-600">Devcons Software</span>
+          </div>
 
-  {/* Right Side - Copyright */}
-  <p className="text-sm text-white">
-    © {new Date().getFullYear()} DESIPL. All rights reserved.
-  </p>
-</motion.div>
+          {/* Right Side - Copyright */}
+          <p className="text-sm text-gray-600">
+            © {new Date().getFullYear()} DESIPL. All rights reserved.
+          </p>
+        </motion.div>
 
       </motion.div>
     </footer>

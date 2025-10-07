@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import bg from "../../assets/TelecomTower.png"
+import SplitText from "../animationComponents/SplitText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -75,7 +76,7 @@ const TelecomTower = () => {
     <div className="font-sans py-16">
       {/* Header with Background Image */}
       <div
-        className="relative w-full h-64 flex flex-col items-center justify-center bg-cover bg-center"
+        className="relative w-full h-64 flex flex-col items-center justify-center bg-cover text-white bg-center"
         style={{
           backgroundImage:
             `url(${bg})`,
@@ -85,12 +86,22 @@ const TelecomTower = () => {
         <div className="absolute inset-0 bg-opacity-50"></div>
 
         {/* Header text */}
-        <div className="relative z-10 text-center">
-          <h1 className="text-white text-3xl font-semibold tracking-wide drop-shadow-lg">
-            TELECOM TOWER
-          </h1>
-          <div className="w-20 h-1 bg-yellow-500 mt-3 mx-auto rounded"></div>
-        </div>
+        <div className="relative z-10">
+            <SplitText
+              text="TELECOM TOWER"
+              className="text-4xl md:text-5xl font-semibold tracking-wide inline-block"
+              delay={100}
+              duration={0.6}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.1}
+              rootMargin="-100px"
+            >
+              <span className="block w-16 h-[2px] bg-yellow-500 mx-auto mt-3"></span>
+            </SplitText>
+          </div>
       </div>
 
       {/* Content Section */}
