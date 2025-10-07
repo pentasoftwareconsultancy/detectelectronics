@@ -44,7 +44,7 @@ const Career = () => {
         className="w-full lg:w-1/2 mb-10 lg:mb-0"
       >
         <h1 className="text-3xl lg:text-4xl font-semibold text-[#0d2c3c] mb-8">
-          Career Application Form
+        Join Our Team
         </h1>
 
         <form
