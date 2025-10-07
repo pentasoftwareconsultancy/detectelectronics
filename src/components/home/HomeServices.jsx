@@ -7,10 +7,12 @@ import {
   FaChevronRight,
   FaBroadcastTower,
 } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const HomeServices = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
   const [activeService, setActiveService] = useState(null);
+  const navigate = useNavigate();
 
   const services = [
     {
@@ -203,9 +205,10 @@ const HomeServices = () => {
                           boxShadow: "0 10px 30px rgba(56, 189, 248, 0.4)",
                         }}
                         whileTap={{ scale: 0.95 }}
+                        onClick={() => navigate("contact")}
                         className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold py-3 sm:py-4 px-6 rounded-2xl text-sm sm:text-lg"
                       >
-                        Get This Service
+                        Contact Us
                       </motion.button>
                     </>
                   );

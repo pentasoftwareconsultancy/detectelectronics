@@ -13,6 +13,13 @@ const HomeHero = ({ showLearnMore }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
+  const scrollToAbout = () => {
+    const section = document.getElementById("home-about");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (!isHovered) {
@@ -325,10 +332,7 @@ const HomeHero = ({ showLearnMore }) => {
             className="flex justify-center items-center"
           >
             <motion.button
-              onClick={() => {
-                const section = document.getElementById("home-about");
-                if (section) section.scrollIntoView({ behavior: "smooth" });
-              }}
+              onClick={scrollToAbout}
               whileHover={{
                 scale: 1.05,
                 backgroundColor: "rgba(255,255,255,0.1)",

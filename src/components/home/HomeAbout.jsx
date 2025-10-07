@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { FaDownload, FaAward, FaUsers, FaRocket, FaShieldAlt } from 'react-icons/fa';
-import CountUp from 'react-countup';
+import React, { useState, useEffect, useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { FaDownload, FaAward, FaUsers, FaRocket, FaShieldAlt } from "react-icons/fa";
+import CountUp from "react-countup";
 
 const HomeAbout = () => {
   const ref = useRef(null);
@@ -12,20 +12,20 @@ const HomeAbout = () => {
     if (isInView) setVisible(true);
   }, [isInView]);
 
-  // ✅ Actual Download Functionality
+  // ✅ File Download Handler
   const handleDownload = (type) => {
-    let fileUrl = '';
-    let fileName = '';
+    let fileUrl = "";
+    let fileName = "";
 
-    if (type === 'presentation') {
-      fileUrl = '/assets/presentation.pdf';
-      fileName = 'Detect_Electronics_Presentation.pdf';
-    } else if (type === 'eprofile') {
-      fileUrl = '/assets/eprofile.pptx';
-      fileName = 'Detect_Electronics_E-Profile.pptx';
+    if (type === "presentation") {
+      fileUrl = "/assets/presentation.pdf";
+      fileName = "Detect_Electronics_Presentation.pdf";
+    } else if (type === "eprofile") {
+      fileUrl = "/assets/eprofile.pptx";
+      fileName = "Detect_Electronics_E-Profile.pptx";
     }
 
-    const link = document.createElement('a');
+    const link = document.createElement("a");
     link.href = fileUrl;
     link.download = fileName;
     document.body.appendChild(link);
@@ -34,172 +34,152 @@ const HomeAbout = () => {
   };
 
   const stats = [
-    { icon: FaAward, number: 23, text: 'Years Experience', suffix: '+', duration: 2.5 },
-    { icon: FaUsers, number: 50, text: 'Expert Team', suffix: '+', duration: 2 },
-    { icon: FaRocket, number: 100, text: 'Projects Completed', suffix: '+', duration: 3 },
-    { icon: FaShieldAlt, number: 99, text: 'Quality Score', suffix: '%', duration: 2 },
+    { icon: FaAward, number: 23, text: "Years Experience", suffix: "+", duration: 2.5 },
+    { icon: FaUsers, number: 50, text: "Expert Team", suffix: "+", duration: 2 },
+    { icon: FaRocket, number: 100, text: "Projects Completed", suffix: "+", duration: 3 },
+    { icon: FaShieldAlt, number: 99, text: "Quality Score", suffix: "%", duration: 2 },
   ];
 
-  const floatingShapes = [
-    { top: '15%', left: '5%', delay: 0, color: 'bg-blue-400/30' },
-    { top: '20%', right: '10%', delay: 1, color: 'bg-cyan-300/30' },
-    { top: '70%', left: '8%', delay: 2, color: 'bg-blue-200/40' },
-    { top: '65%', right: '12%', delay: 1.5, color: 'bg-cyan-400/30' },
+  const hosting = [
+    {
+      title: "Type of Hosting",
+      points: [
+        "Shared Hosting: Affordable and easy-to-use option for small websites.",
+        "VPS Hosting: More control and resources for growing websites.",
+        "Dedicated Hosting: Full server control for maximum power and customization.",
+        "Cloud Hosting: Scalable and reliable option for dynamic needs.",
+      ],
+    },
+    {
+      title: "Hosting Plans & Pricing",
+      points: [
+        "Plan Options: Choose from basic to premium hosting plans.",
+        "Features: Comprehensive features from basic to advanced.",
+        "Billing Cycle: Monthly, yearly, or custom plans to fit your needs.",
+      ],
+    },
+    {
+      title: "Performance",
+      points: [
+        "Uptime Guarantee: Guaranteed uptime for reliability.",
+        "Server Speed: Fast server response times.",
+        "Scalability: Easily scale your hosting as your site grows.",
+        "Monitoring & Optimization: Continuous optimization for performance.",
+      ],
+    },
   ];
 
   return (
-    <div id='home-about' className="relative min-h-screen bg-gradient-to-br py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      
-      {/* Floating Shapes */}
-      {floatingShapes.map((shape, i) => (
-        <motion.div
-          key={i}
-          className={`absolute w-10 h-10 rounded-full ${shape.color} hidden lg:block`}
-          style={{ top: shape.top, left: shape.left, right: shape.right }}
-          animate={{
-            y: [0, -25, 0],
-            rotate: [0, 180, 360],
-            scale: [1, 1.15, 1],
-          }}
-          transition={{ duration: 8, delay: shape.delay, repeat: Infinity, ease: 'easeInOut' }}
-        />
-      ))}
+    <div id="home-about" className="relative min-h-screen bg-gradient-to-b from-[#E8F2FF] via-[#F4F9FF] to-white py-20 px-6 md:px-12 overflow-hidden">
+      {/* 🏆 Header */}
+      <motion.div
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="text-center mb-20"
+      >
+        <h1 className="text-5xl md:text-6xl font-extrabold text-[#1a3b7c] mb-4">
+          About Us
+        </h1>
+        <div className="w-36 h-1.5 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full mb-6" />
+        <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
+          Discover who we are, what we’ve achieved, and how our expertise drives excellence in every project we deliver.
+        </p>
+      </motion.div>
 
-      <div className="max-w-7xl mx-auto">
-
-        {/* Header Section */}
-        <motion.div
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="text-center mb-20"
-        >
-          <motion.h1
-            className="text-5xl md:text-6xl lg:text-5xl font-extrabold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-4"
-            whileHover={{ scale: 1.03 }}
-          >
-            ABOUT US
-          </motion.h1>
+      {/* 📊 Simple Increment Count Section */}
+      <motion.div
+        ref={ref}
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-24 text-center"
+      >
+        {stats.map((stat, index) => (
           <motion.div
-            className="w-36 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 mx-auto rounded-full mb-6"
-            initial={{ width: 0 }}
-            animate={{ width: 144 }}
-            transition={{ duration: 1 }}
-          />
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 1 }}
-            className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto"
-          >
-            Leading the way in <span className="font-semibold text-blue-500">telecommunications</span> and{' '}
-            <span className="font-semibold text-cyan-500">infrastructure</span> with decades of excellence.
-          </motion.p>
-        </motion.div>
-
-        {/* Stats Section */}
-        <motion.div ref={ref} className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-24">
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              className="bg-white/90 backdrop-blur-md rounded-3xl p-6 text-center shadow-lg border border-blue-200 hover:shadow-xl hover:border-cyan-400 transition-all duration-500"
-              initial={{ opacity: 0, y: 40 }}
-              animate={visible ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.2 * index, type: 'spring', stiffness: 120 }}
-            >
-              <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r from-blue-400 to-cyan-400 flex items-center justify-center shadow-lg">
-                <stat.icon className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-3xl font-bold text-gray-800 mb-2">
-                {visible ? <CountUp end={stat.number} suffix={stat.suffix} duration={stat.duration} /> : `0${stat.suffix}`}
-              </h3>
-              <p className="text-gray-700 font-medium">{stat.text}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Company Sections */}
-        <motion.div className="space-y-12">
-          
-          {/* Who We Are */}
-          <motion.div
-            className="bg-white/80 backdrop-blur-lg rounded-3xl p-10 md:p-14 shadow-xl border border-blue-200 hover:shadow-2xl transition-all"
-            initial={{ opacity: 0, y: 40 }}
+            key={index}
+            initial={{ opacity: 0, y: 50 }}
             animate={visible ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.5 }}
+            transition={{ delay: 0.2 * index, duration: 0.8, type: "spring" }}
+            className="flex flex-col items-center justify-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent mb-4">
-              Who We Are
-            </h2>
-            <p className="text-gray-700 text-lg md:text-xl leading-relaxed">
-              <span className="font-semibold text-blue-500">Detect Electronics Systems (I) Private Limited</span>, with{' '}
-              <span className="font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">23+ years of experience</span>, providing exceptional services in <span className="font-semibold text-cyan-500">OFC, Civil, Telecom, Electrical, and Contract Management</span>.
-            </p>
-          </motion.div>
-
-          {/* Achievements */}
-          <motion.div
-            className="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-300 rounded-3xl p-10 md:p-14 shadow-xl text-white hover:shadow-2xl transition-all"
-            initial={{ opacity: 0, y: 40 }}
-            animate={visible ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.7 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Achievements</h2>
-            <p className="text-white text-lg md:text-xl leading-relaxed">
-              Timely project completions, quality management, and innovative telecom solutions by our dynamic and skilled team.
-            </p>
-          </motion.div>
-
-          {/* Expertise */}
-          <motion.div
-            className="bg-white/80 backdrop-blur-lg rounded-3xl p-10 md:p-14 shadow-xl border border-cyan-200 hover:shadow-2xl transition-all"
-            initial={{ opacity: 0, y: 40 }}
-            animate={visible ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.9 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-4">
-              Our Expertise
-            </h2>
-            <p className="text-gray-700 text-lg md:text-xl leading-relaxed">
-              Pioneers in Quality Controlled Turnkey works in Telecom, Civil, Industrial, and Public sectors with professionalism and excellence.
-            </p>
-          </motion.div>
-
-          {/* Download Section */}
-          <motion.div
-            className="text-center mt-16"
-            initial={{ opacity: 0, y: 40 }}
-            animate={visible ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 1 }}
-          >
-            <h3 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent mb-6">
-              Download Resources
+            <stat.icon className="text-5xl text-blue-500 mb-4" />
+            <h3 className="text-5xl font-extrabold text-[#1a3b7c]">
+              {visible ? (
+                <CountUp end={stat.number} suffix={stat.suffix} duration={stat.duration} />
+              ) : (
+                `0${stat.suffix}`
+              )}
             </h3>
-            <p className="text-gray-700 text-lg md:text-xl mb-10">
-              Explore our presentations and company profile for more details.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-6">
-              <motion.button
-                onClick={() => handleDownload('presentation')}
-                whileHover={{ scale: 1.05 }}
-                className="bg-blue-400 hover:bg-cyan-400 text-white font-bold py-4 px-8 rounded-2xl shadow-lg transition-all"
-              >
-                <FaDownload className="inline-block mr-2" />
-                Download Presentation
-              </motion.button>
-              <motion.button
-                onClick={() => handleDownload('eprofile')}
-                whileHover={{ scale: 1.05 }}
-                className="bg-white text-cyan-500 font-bold py-4 px-8 rounded-2xl border-2 border-cyan-400 shadow transition-all"
-              >
-                <FaDownload className="inline-block mr-2" />
-                Download E-Profile
-              </motion.button>
-            </div>
+            <p className="mt-2 text-lg font-medium text-gray-700">{stat.text}</p>
           </motion.div>
+        ))}
+      </motion.div>
 
-        </motion.div>
+      {/* ☁ Hosting Section */}
+      <div className="grid md:grid-cols-3 gap-10 mb-24">
+        {hosting.map((card, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 50 }}
+            animate={visible ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.2 * i }}
+            whileHover={{ scale: 1.03 }}
+            className="relative overflow-hidden rounded-2xl p-10 md:p-12 transition-all duration-500 bg-gradient-to-br from-[#eaf1ff] via-[#d4e4fb] to-[#b7d2f8] shadow-lg hover:shadow-2xl"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1a3b7c] mb-6">
+              {card.title}
+            </h2>
+            <ul className="space-y-4 text-gray-800 text-lg leading-relaxed">
+              {card.points.map((point, idx) => (
+                <li key={idx} className="flex items-start">
+                  <span className="w-2 h-2 bg-[#1a3b7c] rounded-full mt-2 mr-3"></span>
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        ))}
       </div>
+
+      {/* 📥 Download Section */}
+     <motion.div
+  className="text-center mt-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
+  initial={{ opacity: 0, y: 40 }}
+  animate={visible ? { opacity: 1, y: 0 } : {}}
+  transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
+>
+  <h3 className="text-4xl md:text-5xl font-extrabold text-[#1a3b7c] mb-6 tracking-tight">
+    Download Resources
+  </h3>
+  <p className="text-gray-700 text-lg md:text-xl mb-10 leading-relaxed">
+    Explore our presentations and company profile for more details.
+  </p>
+
+  <div className="flex flex-col sm:flex-row justify-center gap-6">
+    <motion.button
+      onClick={() => handleDownload("presentation")}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className="bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold py-4 px-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2"
+    >
+      <FaDownload className="inline-block mr-2 text-lg" />
+      Download Presentation
+    </motion.button>
+
+    <motion.button
+      onClick={() => handleDownload("eprofile")}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className="bg-white text-cyan-600 font-semibold py-4 px-10 rounded-3xl border-2 border-cyan-400 shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
+    >
+      <FaDownload className="inline-block mr-2 text-lg" />
+      Download E-Profile
+    </motion.button>
+  </div>
+
+  <p className="mt-6 text-gray-400 text-sm">
+  </p>
+</motion.div>
+
+
     </div>
   );
 };

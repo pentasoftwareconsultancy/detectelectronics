@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
@@ -56,12 +56,21 @@ const logoVariants = {
 export default function FooterClients() {
   const navigate = useNavigate();
   const loopLogos = [...clients, ...clients];
+  const [logoSpeed, setLogoSpeed] = useState(10); // default duration for desktop
 
-  const handleContactNavigate = (type) => {
-    navigate("/contact", {
-      state: { inquiryType: type, timestamp: new Date().toISOString() },
-    });
-  };
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setLogoSpeed(1); // faster on mobile
+      } else {
+        setLogoSpeed(10); // slower on desktop
+      }
+    };
+
+    handleResize(); // set initial speed
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <footer className="bg-gradient-to-b bg-white py-20 px-8 overflow-hidden relative">
@@ -119,7 +128,7 @@ export default function FooterClients() {
                 initial="initial"
                 whileHover="hover"
                 whileTap="tap"
-                onClick={() => handleContactNavigate("career")}
+                onClick={() => navigate("/career")}
                 className="text-green-600 font-semibold text-lg py-3 px-8 border-2 border-green-500 rounded-xl hover:shadow-lg transition-all duration-300 flex items-center gap-2"
               >
                 Register here →
@@ -166,10 +175,10 @@ export default function FooterClients() {
                 initial="initial"
                 whileHover="hover"
                 whileTap="tap"
-                onClick={() => handleContactNavigate("vendorship")}
+                onClick={() => navigate("/contact")}
                 className="text-green-600 font-semibold text-lg py-3 px-8 border-2 border-green-500 rounded-xl hover:shadow-lg transition-all duration-300 flex items-center gap-2"
               >
-                Register here →
+                Contact Us →
               </motion.button>
             </div>
           </motion.div>
@@ -213,12 +222,12 @@ export default function FooterClients() {
             className="flex gap-20 items-center"
             animate={{
               x: ["0%", "-50%"],
-              y: [0, -10, 0, 10, 0], // 👈 adds wave-like vertical motion
+              y: [0, -10, 0, 10, 0], // wave-like vertical motion
             }}
             transition={{
               repeat: Infinity,
               repeatType: "loop",
-              duration: 10,
+              duration: logoSpeed, // responsive speed
               ease: "linear",
             }}
           >
