@@ -1,6 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import img from "../../assets/TelecomTower.png"; // replace with your actual image path
+import SplitText from "../animationComponents/SplitText";
+import Electrical from "../../assets/Electrical.jpg";
 
 const ElectricalSolution = () => {
   // Animation variants
@@ -29,22 +31,28 @@ const ElectricalSolution = () => {
   return (
     <section className="overflow-hidden py-16">
       {/* ===== Header Section ===== */}
-      <motion.div
-        className="bg-[#0d2c3c] text-center py-16"
-        initial={{ opacity: 0, y: -40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+      <div
+        className="w-full bg-cover bg-center relative py-20 text-center text-white mb-16"
+        style={{ backgroundImage: `url(${Electrical})` }}
       >
-        <h1 className="text-white text-3xl md:text-4xl font-semibold tracking-wide">
-          ELECTRICAL CONSTRUCTION
-        </h1>
-        <motion.div
-          className="mt-3 w-24 h-[2px] bg-yellow-500 mx-auto"
-          initial={{ width: 0 }}
-          animate={{ width: 96 }}
-          transition={{ duration: 0.8, ease: "easeInOut", delay: 0.5 }}
-        ></motion.div>
-      </motion.div>
+        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="relative z-10">
+          <SplitText
+            text="ELECTRICAL CONSTRUCTION"
+            className="text-4xl md:text-5xl font-semibold tracking-wide inline-block"
+            delay={100}
+            duration={0.6}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-100px"
+          >
+            <span className="block w-16 h-[2px] bg-yellow-500 mx-auto mt-3"></span>
+          </SplitText>
+        </div>
+      </div>
 
       {/* ===== Content Section ===== */}
       <motion.div

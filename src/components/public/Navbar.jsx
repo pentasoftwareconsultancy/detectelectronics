@@ -123,12 +123,13 @@ const Navbar = () => {
                           <motion.a
                             key={sub.name}
                             href={sub.link}
-                            className={`block px-6 py-3 font-medium border-b border-blue-50 last:border-b-0 transition-all duration-300 ${location.pathname === sub.link
+                            className={`block px-6 py-3 font-medium border-b border-blue-50 last:border-b-0 transition-all duration-300 ${
+                              location.pathname === sub.link
                                 ? "text-blue-600 bg-blue-50"                 // ✅ Active dropdown link blue
                                 : isScrolled
                                   ? "text-gray-700 hover:text-blue-600 hover:bg-blue-50" // ✅ Scrolled: gray
                                   : "text-black hover:text-blue-300 hover:bg-white/10"   // ✅ Top: white
-                              }`}
+                            }`}
                           >
                             {sub.name}
                           </motion.a>
@@ -164,83 +165,84 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="lg:hidden bg-white/95 backdrop-blur-xl shadow-2xl border-t border-blue-100"
-          >
-            <motion.div variants={containerVariants} initial="hidden" animate="visible" className="px-4 pt-2 pb-6 space-y-1">
-              {navItems.map((item) => (
-                <motion.div key={item.name} variants={itemVariants}>
-                  {item.dropdown ? (
-                    <div className="border-b border-blue-50 last:border-b-0">
-                      <button
-                        onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
-                        // ✅ Updated: Active parent blue, inactive white at top
-                        className={`flex items-center justify-between w-full px-4 py-4 font-semibold text-left transition-colors duration-300 ${item.dropdown.some((sub) => location.pathname === sub.link)
-                          ? "text-blue-600"
-                          : isScrolled
-                            ? "text-gray-800 hover:text-blue-600"
-                            : "text-white hover:text-blue-300"
-                          }`}
-                      >
-                        {item.name}
-                        <FaChevronDown className="w-3 h-3" />
-                      </button>
-                      <AnimatePresence>
-                        {activeDropdown === item.name && (
-                          <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: "auto" }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.2 }}
-                            className="pl-6 bg-blue-50/50 rounded-lg mx-4 mb-2 overflow-hidden"
-                          >
-                            {item.dropdown.map((sub) => (
-                              <motion.a
-                                key={sub.name}
-                                href={sub.link}
-                                // ✅ Updated: Active dropdown link blue, inactive white at top
-                                className={`block px-4 py-3 font-medium border-b last:border-b-0 transition-all duration-300 ${location.pathname === sub.link
-                                  ? "text-blue-600 bg-blue-100"
-                                  : isScrolled
-                                    ? "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
-                                    : "text-black hover:text-blue-300 hover:bg-white/10"
-                                  }`}
-                                onClick={() => setIsOpen(false)}
-                              >
-                                {sub.name}
-                              </motion.a>
-                            ))}
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
-                  ) : (
-                    <a
-                      href={item.link}
-                      // ✅ Updated: Active link blue, inactive white at top
-                      className={`block px-4 py-4 font-semibold border-b last:border-b-0 transition-colors duration-300 ${location.pathname === item.link
-                        ? "text-blue-600"
-                        : isScrolled
-                          ? "text-gray-800 hover:text-blue-600"
-                          : "text-white hover:text-blue-300"
-                        }`}
-                      onClick={() => setIsOpen(false)}
+      {/* Mobile Menu */}
+<AnimatePresence>
+  {isOpen && (
+    <motion.div
+      initial={{ opacity: 0, height: 0 }}
+      animate={{ opacity: 1, height: "auto" }}
+      exit={{ opacity: 0, height: 0 }}
+      transition={{ duration: 0.3 }}
+      className="lg:hidden bg-white/95 backdrop-blur-xl shadow-2xl border-t border-blue-100"
+    >
+      <motion.div variants={containerVariants} initial="hidden" animate="visible" className="px-4 pt-2 pb-6 space-y-1">
+        {navItems.map((item) => (
+          <motion.div key={item.name} variants={itemVariants}>
+            {item.dropdown ? (
+              <div className="border-b border-blue-50 last:border-b-0">
+                <button
+                  onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
+                  className={`flex items-center justify-between w-full px-4 py-4 font-semibold text-left transition-colors duration-300 ${
+                    item.dropdown.some((sub) => location.pathname === sub.link)
+                      ? "text-blue-600"
+                      : isScrolled
+                        ? "text-gray-800 hover:text-blue-600"
+                        : "text-gray-800 hover:text-blue-600" // ✅ Changed from white to gray for mobile
+                  }`}
+                >
+                  {item.name}
+                  <FaChevronDown className="w-3 h-3" />
+                </button>
+                <AnimatePresence>
+                  {activeDropdown === item.name && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="pl-6 bg-blue-50/50 rounded-lg mx-4 mb-2 overflow-hidden"
                     >
-                      {item.name}
-                    </a>
+                      {item.dropdown.map((sub) => (
+                        <motion.a
+                          key={sub.name}
+                          href={sub.link}
+                          className={`block px-4 py-3 font-medium border-b last:border-b-0 transition-all duration-300 ${
+                            location.pathname === sub.link
+                              ? "text-blue-600 bg-blue-100"
+                              : isScrolled
+                                ? "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+                                : "text-gray-800 hover:text-blue-600 hover:bg-white/10" // ✅ Changed from black to gray for mobile
+                          }`}
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {sub.name}
+                        </motion.a>
+                      ))}
+                    </motion.div>
                   )}
-                </motion.div>
-              ))}
-            </motion.div>
+                </AnimatePresence>
+              </div>
+            ) : (
+              <a
+                href={item.link}
+                className={`block px-4 py-4 font-semibold border-b last:border-b-0 transition-colors duration-300 ${
+                  location.pathname === item.link
+                    ? "text-blue-600"
+                    : isScrolled
+                      ? "text-gray-800 hover:text-blue-600"
+                      : "text-gray-800 hover:text-blue-600" // ✅ Changed from white to gray for mobile
+                }`}
+                onClick={() => setIsOpen(false)}
+              >
+                {item.name}
+              </a>
+            )}
           </motion.div>
-        )}
-      </AnimatePresence>
+        ))}
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
     </motion.nav>
   );
 };
