@@ -85,7 +85,12 @@ export default function FooterClients() {
             <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 border border-gray-100 group-hover:border-green-200">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-14 h-14 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg
+                    className="w-7 h-7 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -95,13 +100,19 @@ export default function FooterClients() {
                   </svg>
                 </div>
                 <div>
-                  <h1 className="text-4xl font-bold text-gray-800 mb-2">Join Us</h1>
-                  <h2 className="text-xl font-semibold text-gray-700">Career Opportunity</h2>
+                  <h1 className="text-4xl font-bold text-gray-800 mb-2">
+                    Join Us
+                  </h1>
+                  <h2 className="text-xl font-semibold text-gray-700">
+                    Career Opportunity
+                  </h2>
                 </div>
               </div>
               <p className="text-gray-600 mb-8 leading-relaxed text-lg">
-                DESIPL is an exciting place to work. We hire exceptional people, empowered to think independently and gain valuable
-                career experience in a dynamic environment that fosters innovation and professional growth.
+                DESIPL is an exciting place to work. We hire exceptional people,
+                empowered to think independently and gain valuable career
+                experience in a dynamic environment that fosters innovation and
+                professional growth.
               </p>
               <motion.button
                 variants={buttonVariants}
@@ -121,7 +132,12 @@ export default function FooterClients() {
             <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 border border-gray-100 group-hover:border-yellow-200">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-14 h-14 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-2xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg
+                    className="w-7 h-7 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -131,13 +147,19 @@ export default function FooterClients() {
                   </svg>
                 </div>
                 <div>
-                  <h2 className="text-4xl font-bold text-gray-800 mb-2">Partner With Us</h2>
-                  <h3 className="text-xl font-semibold text-gray-700">Vendorship Opportunity</h3>
+                  <h2 className="text-4xl font-bold text-gray-800 mb-2">
+                    Partner With Us
+                  </h2>
+                  <h3 className="text-xl font-semibold text-gray-700">
+                    Vendorship Opportunity
+                  </h3>
                 </div>
               </div>
               <p className="text-gray-600 mb-8 leading-relaxed text-lg">
-                Know more about how to become a supplier for DESIPL, get opportunities to participate in our sourcing selection
-                processes. All vendors may register online to work on exciting projects and grow with us.
+                Know more about how to become a supplier for DESIPL, get
+                opportunities to participate in our sourcing selection
+                processes. All vendors may register online to work on exciting
+                projects and grow with us.
               </p>
               <motion.button
                 variants={buttonVariants}
@@ -158,9 +180,19 @@ export default function FooterClients() {
           <div className="flex items-center gap-8 mb-16">
             <motion.div
               className="bg-gradient-to-br from-yellow-400 to-yellow-600 w-24 h-24 flex items-center justify-center rounded-2xl shadow-lg"
-              whileHover={{ scale: 1.05, rotate: [0, -5, 5, 0], transition: { duration: 0.5 } }}
+              whileHover={{
+                scale: 1.05,
+                rotate: [0, -5, 5, 0],
+                transition: { duration: 0.5 },
+              }}
             >
-              <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+              <svg
+                className="w-12 h-12 text-white"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                viewBox="0 0 24 24"
+              >
                 <path d="M12 2L2 7l10 15 10-15z" />
                 <path d="M2 7l10 15 10-15" />
                 <path d="M12 2v20" />
@@ -170,40 +202,41 @@ export default function FooterClients() {
               <h2 className="text-5xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mb-3">
                 OUR CLIENTS
               </h2>
-              <p className="text-xl text-gray-600">Precious & Happy clients who trust us</p>
+              <p className="text-xl text-gray-600">
+                Precious & Happy clients who trust us
+              </p>
             </div>
           </div>
 
           {/* Sliding Logos */}
-         <motion.div
-  className="flex gap-20 items-center"
-  animate={{
-    x: ["0%", "-50%"],
-    y: [0, -10, 0, 10, 0], // 👈 adds wave-like vertical motion
-  }}
-  transition={{
-    repeat: Infinity,
-    repeatType: "loop",
-    duration: 25,
-    ease: "linear",
-  }}
->
-  {loopLogos.map((logo, index) => (
-    <motion.div
-      key={index}
-      className="flex-shrink-0"
-      variants={logoVariants}
-      whileHover="hover"
-    >
-      <img
-        src={logo}
-        alt={`Client ${index % clients.length + 1}`}
-        className="h-20 w-auto object-contain filter drop-shadow-lg transition-all duration-300"
-      />
-    </motion.div>
-  ))}
-</motion.div>
-
+          <motion.div
+            className="flex gap-20 items-center"
+            animate={{
+              x: ["0%", "-50%"],
+              y: [0, -10, 0, 10, 0], // 👈 adds wave-like vertical motion
+            }}
+            transition={{
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 10,
+              ease: "linear",
+            }}
+          >
+            {loopLogos.map((logo, index) => (
+              <motion.div
+                key={index}
+                className="flex-shrink-0"
+                variants={logoVariants}
+                whileHover="hover"
+              >
+                <img
+                  src={logo}
+                  alt={`Client ${(index % clients.length) + 1}`}
+                  className="h-20 w-auto object-contain filter transition-all duration-300"
+                />
+              </motion.div>
+            ))}
+          </motion.div>
         </motion.div>
 
         {/* Copyright Section */}
@@ -214,7 +247,9 @@ export default function FooterClients() {
           {/* Left Side - Company Maintainer */}
           <div className="text-sm text-gray-600">
             Maintain By:{" "}
-            <span className="font-semibold text-green-600">Devcons Software</span>
+            <span className="font-semibold text-green-600">
+              Devcons Software
+            </span>
           </div>
 
           {/* Right Side - Copyright */}
@@ -222,7 +257,6 @@ export default function FooterClients() {
             © {new Date().getFullYear()} DESIPL. All rights reserved.
           </p>
         </motion.div>
-
       </motion.div>
     </footer>
   );
