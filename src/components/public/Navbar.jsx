@@ -27,9 +27,9 @@ const Navbar = () => {
       link: "#",
       dropdown: [
         { name: "Telecom Tower", link: "/infra/telecom-tower" },
-        { name: "Optical Fibre Cable", link: "/infra/optical-fiber" },
-        { name: "Civil Construction", link: "/infra/civil-construction" },
-        { name: "Electrical Solution", link: "/infra/electrical-solution" },
+        { name: "Optical Fibre Cable", link: "/infra/optical-fibre" },
+        { name: "Civil Construction", link: "/infra/civil" },
+        { name: "Electrical Solution", link: "/infra/electrical" },
       ],
     },
     {
@@ -45,8 +45,8 @@ const Navbar = () => {
       name: "MANAGEMENT",
       link: "#",
       dropdown: [
-        { name: "About Detect Electronics", link: "/management/about-electronics" },
-        { name: "Mission & Vision", link: "/management/mission-vision" },
+        { name: "About Detect Electronics", link: "/management/about" },
+        { name: "Mission & Vision", link: "/management/mission" },
         { name: "Certifications", link: "/management/certifications" },
         { name: "Board of Directors", link: "/management/board" },
       ],
@@ -64,6 +64,8 @@ const Navbar = () => {
     hidden: { y: -20, opacity: 0 },
     visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 300, damping: 24 } },
   };
+
+  const isActive = (link) => activePage === link;
 
   return (
     <motion.nav
