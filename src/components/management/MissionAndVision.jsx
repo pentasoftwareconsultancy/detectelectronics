@@ -1,8 +1,6 @@
 import React from "react";
 import MAV from "../../assets/mission-and-vision.png";
 import SplitText from "../animationComponents/SplitText";
-import VisionImg from "../../assets/vision-side.jpg";
-import ValuesImg from "../../assets/vision-side.jpg";
 
 const MissionAndVision = () => {
   return (
@@ -28,13 +26,13 @@ const MissionAndVision = () => {
               threshold={0.1}
               rootMargin="-100px"
             >
-              <span className="block w-16 h-[2px] bg-yellow-500 mx-auto mt-3 rounded"></span>
+              <span className="block w-16 h-[2px] bg-gray-400 mx-auto mt-3 rounded"></span>
             </SplitText>
           </div>
         </div>
 
         {/* Mission Section */}
-        <div className="bg-white p-6 sm:p-10 rounded-3xl shadow-lg flex flex-col md:flex-row items-center gap-8 mb-12">
+        <div className="bg-white p-6 sm:p-10 rounded-3xl flex flex-col md:flex-row items-center gap-8 mb-12 transform transition duration-300 hover:scale-105 hover:opacity-90">
           <div className="md:w-1/2 text-gray-800 space-y-4">
             <h2 className="text-2xl font-semibold text-[#0d2c3c]">Our Mission</h2>
             <p className="leading-relaxed">
@@ -57,7 +55,7 @@ const MissionAndVision = () => {
         </div>
 
         {/* Vision Section */}
-        <div className="bg-white p-6 sm:p-10 rounded-3xl shadow-lg flex flex-col md:flex-row items-center gap-8 mb-12">
+        <div className="bg-gray-100 p-6 sm:p-10 rounded-3xl flex flex-col md:flex-row items-center gap-8 mb-12 transform transition duration-300 hover:scale-105 hover:opacity-90">
           <div className="md:w-1/2 flex justify-center">
             <img
               src={"https://i.pinimg.com/1200x/13/80/ea/1380eaa785e6d085dbde02329f0d17b7.jpg"}
@@ -79,9 +77,8 @@ const MissionAndVision = () => {
           </div>
         </div>
 
-        {/* Values Section: Content Left, Image Right */}
-        <div className="bg-white p-6 sm:p-10 rounded-3xl shadow-lg flex flex-col md:flex-row items-center gap-8">
-          {/* Left Content */}
+        {/* Values Section */}
+        <div className="bg-white p-6 sm:p-10 rounded-3xl flex flex-col md:flex-row items-center gap-8 transform transition duration-300 hover:scale-105 hover:opacity-90">
           <div className="md:w-1/2 text-gray-800 space-y-4">
             <h2 className="text-2xl font-semibold text-[#0d2c3c]">Our Values</h2>
             <ul className="mt-4 list-disc list-inside space-y-2">
@@ -92,8 +89,6 @@ const MissionAndVision = () => {
               <li><strong>Client Trust:</strong> Building lasting relationships through reliability and professionalism.</li>
             </ul>
           </div>
-
-          {/* Right Image */}
           <div className="md:w-1/2 flex justify-center">
             <img
               src={"https://i.pinimg.com/736x/ee/42/d1/ee42d1d427ef8a881368508a5ff92ce9.jpg"}
