@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
 
 import sem1Logo from "../../assets/sem11.png";
 import sem2Logo from "../../assets/sem12.png";
@@ -10,6 +9,10 @@ import sem5Logo from "../../assets/sem15.png";
 import sem6Logo from "../../assets/sem16.png";
 import sem7Logo from "../../assets/sem17.jpg";
 import sem8Logo from "../../assets/sem18.png";
+import sem9Logo from "../../assets/sem19.jpg";
+import sem10Logo from "../../assets/sem20.png";
+import sem11Logo from "../../assets/sem21.jpg";
+import sem12Logo from "../../assets/sem22.jpg";
 
 const clients = [
   sem1Logo,
@@ -20,6 +23,10 @@ const clients = [
   sem6Logo,
   sem7Logo,
   sem8Logo,
+  sem9Logo,
+  sem10Logo,
+  sem11Logo,
+  sem12Logo,
 ];
 
 // Animation variants
@@ -36,17 +43,6 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-const buttonVariants = {
-  initial: { scale: 1 },
-  hover: {
-    scale: 1.05,
-    backgroundColor: "#10B981",
-    color: "white",
-    transition: { duration: 0.3, ease: "easeInOut" },
-  },
-  tap: { scale: 0.95 },
-};
-
 const logoVariants = {
   hover: {
     scale: 1.1,
@@ -56,32 +52,23 @@ const logoVariants = {
 };
 
 export default function FooterClients() {
-  const navigate = useNavigate();
+  const [scrollDuration, setScrollDuration] = useState(20); // default duration for desktop
   const loopLogos = [...clients, ...clients];
-  const [logoSpeed, setLogoSpeed] = useState(10); // default duration for desktop
 
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setLogoSpeed(1); // faster on mobile
-      } else {
-        setLogoSpeed(10); // slower on desktop
-      }
+    const updateSpeed = () => {
+      const width = window.innerWidth;
+      if (width <= 480) setScrollDuration(10);
+      else if (width <= 768) setScrollDuration(15);
+      else setScrollDuration(20);
     };
-
-    handleResize(); // set initial speed
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    updateSpeed();
+    window.addEventListener("resize", updateSpeed);
+    return () => window.removeEventListener("resize", updateSpeed);
   }, []);
 
   return (
     <footer className="bg-gradient-to-b bg-white py-20 px-8 overflow-hidden relative">
-      {/* Background decorations */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 -right-20 w-64 h-64 bg-green-100 rounded-full opacity-20 blur-3xl"></div>
-        <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-yellow-100 rounded-full opacity-20 blur-3xl"></div>
-      </div>
-
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -89,103 +76,6 @@ export default function FooterClients() {
         viewport={{ once: true, margin: "-100px" }}
         className="max-w-7xl mx-auto relative z-10"
       >
-        {/* Join Us & Vendorship */}
-        <div className="grid lg:grid-cols-2 gap-16 mb-24">
-          {/* Career Opportunity */}
-          <motion.div variants={itemVariants} className="group">
-            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 border border-gray-100 group-hover:border-green-200">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
-                  <svg
-                    className="w-7 h-7 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h1 className="text-4xl font-bold text-gray-800 mb-2">
-                    Join Us
-                  </h1>
-                  <h2 className="text-xl font-semibold text-gray-700">
-                    Career Opportunity
-                  </h2>
-                </div>
-              </div>
-              <p className="text-gray-600 mb-8 leading-relaxed text-lg">
-                DESIPL is an exciting place to work. We hire exceptional people,
-                empowered to think independently and gain valuable career
-                experience in a dynamic environment that fosters innovation and
-                professional growth.
-              </p>
-              <motion.button
-                variants={buttonVariants}
-                initial="initial"
-                whileHover="hover"
-                whileTap="tap"
-                onClick={() => navigate("/career")}
-                className="text-green-600 font-semibold text-lg py-3 px-8 border-2 border-green-500 rounded-xl hover:shadow-lg transition-all duration-300 flex items-center gap-2"
-              >
-                Register here →
-              </motion.button>
-            </div>
-          </motion.div>
-
-          {/* Vendorship Opportunity */}
-          <motion.div variants={itemVariants} className="group">
-            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 border border-gray-100 group-hover:border-yellow-200">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-2xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
-                  <svg
-                    className="w-7 h-7 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h2 className="text-4xl font-bold text-gray-800 mb-2">
-                    Partner With Us
-                  </h2>
-                  <h3 className="text-xl font-semibold text-gray-700">
-                    Vendorship Opportunity
-                  </h3>
-                </div>
-              </div>
-              <p className="text-gray-600 mb-8 leading-relaxed text-lg">
-                Know more about how to become a supplier for DESIPL, get
-                opportunities to participate in our sourcing selection
-                processes. All vendors may register online to work on exciting
-                projects and grow with us.
-              </p>
-              <motion.button
-                variants={buttonVariants}
-                initial="initial"
-                whileHover="hover"
-                whileTap="tap"
-                onClick={() => navigate("/contact")}
-                className="text-green-600 font-semibold text-lg py-3 px-8 border-2 border-green-500 rounded-xl hover:shadow-lg transition-all duration-300 flex items-center gap-2"
-              >
-                Contact Us →
-              </motion.button>
-            </div>
-          </motion.div>
-        </div>
-
         {/* Clients Section */}
         <motion.div variants={itemVariants}>
           <div className="flex items-center gap-8 mb-16">
@@ -220,34 +110,32 @@ export default function FooterClients() {
           </div>
 
           {/* Sliding Logos */}
-          <motion.div
-            className="flex gap-20 items-center"
-            animate={{
-              x: ["0%", "-50%"],
-              y: [0, -10, 0, 10, 0], // wave-like vertical motion
-            }}
-            transition={{
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: logoSpeed, // responsive speed
-              ease: "linear",
-            }}
-          >
-            {loopLogos.map((logo, index) => (
-              <motion.div
-                key={index}
-                className="flex-shrink-0"
-                variants={logoVariants}
-                whileHover="hover"
-              >
-                <img
-                  src={logo}
-                  alt={`Client ${(index % clients.length) + 1}`}
-                  className="h-20 w-auto object-contain filter transition-all duration-300"
-                />
-              </motion.div>
-            ))}
-          </motion.div>
+          <div className="overflow-hidden relative">
+            <motion.div
+              className="flex gap-10 w-max"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: scrollDuration,
+                ease: "linear",
+              }}
+            >
+              {loopLogos.map((logo, index) => (
+                <motion.div
+                  key={index}
+                  className="flex-shrink-0"
+                  whileHover="hover"
+                >
+                  <img
+                    src={logo}
+                    alt={`Client ${index + 1}`}
+                    className="h-16 md:h-20 w-auto object-contain"
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </motion.div>
 
         {/* Copyright Section */}
