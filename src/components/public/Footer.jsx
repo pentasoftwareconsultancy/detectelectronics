@@ -9,6 +9,7 @@ import sem4Logo from "../../assets/sem14.png";
 import sem5Logo from "../../assets/sem15.png";
 import sem6Logo from "../../assets/sem16.png";
 import sem7Logo from "../../assets/sem17.jpg";
+import sem8Logo from "../../assets/sem18.png";
 
 const clients = [
   sem1Logo,
@@ -18,6 +19,7 @@ const clients = [
   sem5Logo,
   sem6Logo,
   sem7Logo,
+  sem8Logo,
 ];
 
 // Animation variants
@@ -256,7 +258,7 @@ export default function FooterClients() {
           {/* Left Side - Company Maintainer */}
           <div className="text-sm text-gray-600">
             Maintain By:{" "}
-            <span className="font-semibold text-green-600">
+            <span className="font-semibold text-blue-600">
               Devcons Software Solutions Pvt. Ltd.
             </span>
           </div>
