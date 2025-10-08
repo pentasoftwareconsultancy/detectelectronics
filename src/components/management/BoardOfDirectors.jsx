@@ -97,7 +97,7 @@ const BoardOfDirectors = () => {
               <strong>MR. Satish Ajabe (M.D)</strong>
             </h3>
             <p>
-              Satish has started his career at a young age of 21 after completing
+              MR. Satish has started his career at a young age of 21 after completing
               Bachelor of Engineering from Pune University and founded Detect
               Electronics System (I) Private Limited (DESIPL) with a modest
               capital, in the year 1998. Today, he heads a successful enterprise
