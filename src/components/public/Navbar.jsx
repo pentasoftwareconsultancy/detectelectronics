@@ -7,6 +7,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [activePage, setActivePage] = useState(window.location.pathname);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -23,9 +24,9 @@ const Navbar = () => {
       link: "#",
       dropdown: [
         { name: "Telecom Tower", link: "/infra/telecom-tower" },
-        { name: "Optical Fibre Cable", link: "/infra/optical-fiber" },
-        { name: "Civil Construction", link: "/infra/civil-construction" },
-        { name: "Electrical Solution", link: "/infra/electrical-solution" },
+        { name: "Optical Fibre Cable", link: "/infra/optical-fibre" },
+        { name: "Civil Construction", link: "/infra/civil" },
+        { name: "Electrical Solution", link: "/infra/electrical" },
       ],
     },
     {
@@ -41,13 +42,13 @@ const Navbar = () => {
       name: "MANAGEMENT",
       link: "#",
       dropdown: [
-        { name: "About Detect Electronics", link: "/management/about-electronics" },
-        { name: "Mission & Vision", link: "/management/mission-vision" },
+        { name: "About Detect Electronics", link: "/management/about" },
+        { name: "Mission & Vision", link: "/management/mission" },
         { name: "Certifications", link: "/management/certifications" },
         { name: "Board of Directors", link: "/management/board" },
       ],
     },
-   {
+    {
       name: "STRENGTH",
       link: "#",
       dropdown: [
@@ -56,11 +57,8 @@ const Navbar = () => {
         { name: "Working Standards", link: "/strength/certifications" },
       ],
     },
-     { name: "GALLERY", link: "/gallery" }, // <-- Added Gallery
-];
-
-  
-  
+    { name: "GALLERY", link: "/gallery" },
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -71,6 +69,8 @@ const Navbar = () => {
     hidden: { y: -20, opacity: 0 },
     visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 300, damping: 24 } },
   };
+
+  const isActive = (link) => activePage === link;
 
   return (
     <motion.nav
@@ -107,7 +107,9 @@ const Navbar = () => {
                 <>
                   <motion.a
                     href={item.link}
-                    className="flex items-center px-3 py-2 text-gray-800 hover:text-blue-600 font-semibold transition-colors duration-300"
+                    className={`flex items-center px-3 py-2 font-semibold transition-colors duration-300 ${
+                      isActive(item.link) ? "text-blue-600" : "text-gray-800 hover:text-blue-600"
+                    }`}
                   >
                     {item.name}
                     <FaChevronDown className="ml-1 w-3 h-3" />
@@ -125,7 +127,10 @@ const Navbar = () => {
                           <motion.a
                             key={sub.name}
                             href={sub.link}
-                            className="block px-6 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium transition-all duration-300 border-b border-blue-50 last:border-b-0"
+                            className={`block px-6 py-3 font-medium transition-all duration-300 border-b border-blue-50 last:border-b-0 ${
+                              isActive(sub.link) ? "text-blue-600" : "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+                            }`}
+                            onClick={() => setActivePage(sub.link)}
                           >
                             {sub.name}
                           </motion.a>
@@ -137,7 +142,10 @@ const Navbar = () => {
               ) : (
                 <motion.a
                   href={item.link}
-                  className="px-3 py-2 text-gray-800 hover:text-blue-600 font-semibold transition-colors duration-300"
+                  className={`px-3 py-2 font-semibold transition-colors duration-300 ${
+                    isActive(item.link) ? "text-blue-600" : "text-gray-800 hover:text-blue-600"
+                  }`}
+                  onClick={() => setActivePage(item.link)}
                 >
                   {item.name}
                 </motion.a>
@@ -189,8 +197,13 @@ const Navbar = () => {
                               <motion.a
                                 key={sub.name}
                                 href={sub.link}
-                                className="block px-4 py-3 text-gray-700 hover:text-blue-600 font-medium border-b border-blue-100 last:border-b-0"
-                                onClick={() => setIsOpen(false)}
+                                className={`block px-4 py-3 font-medium border-b border-blue-100 last:border-b-0 transition-all duration-300 ${
+                                  isActive(sub.link) ? "text-blue-600" : "text-gray-700 hover:text-blue-600"
+                                }`}
+                                onClick={() => {
+                                  setIsOpen(false);
+                                  setActivePage(sub.link);
+                                }}
                               >
                                 {sub.name}
                               </motion.a>
@@ -202,8 +215,13 @@ const Navbar = () => {
                   ) : (
                     <a
                       href={item.link}
-                      className="block px-4 py-4 text-gray-800 hover:text-blue-600 font-semibold border-b border-blue-50 last:border-b-0"
-                      onClick={() => setIsOpen(false)}
+                      className={`block px-4 py-4 font-semibold border-b border-blue-50 last:border-b-0 transition-all duration-300 ${
+                        isActive(item.link) ? "text-blue-600" : "text-gray-800 hover:text-blue-600"
+                      }`}
+                      onClick={() => {
+                        setIsOpen(false);
+                        setActivePage(item.link);
+                      }}
                     >
                       {item.name}
                     </a>
