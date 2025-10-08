@@ -47,16 +47,8 @@ const Navbar = () => {
         { name: "Board of Directors", link: "/management/board" },
       ],
     },
-   {
-      name: "STRENGTH",
-      link: "#",
-      dropdown: [
-        { name: "Machinary & Equipement ", link: "/strength/about" },
-        { name: "Man Power", link: "/strength/mission" },
-        { name: "Working Standards", link: "/strength/certifications" },
-      ],
-    },
-     { name: "GALLERY", link: "/gallery" }, // <-- Added Gallery
+     { name: "GALLERY", link: "/gallery" },
+     { name: "CONTACT US", link: "/contact" },
 ];
 
   
@@ -94,7 +86,7 @@ const Navbar = () => {
         </motion.div>
 
         {/* Desktop Menu */}
-        <motion.div variants={containerVariants} initial="hidden" animate="visible" className="hidden lg:flex items-center space-x-6">
+        <motion.div variants={containerVariants} initial="hidden" animate="visible" className="hidden lg:flex items-center space-x-4">
           {navItems.map((item) => (
             <motion.div
               key={item.name}

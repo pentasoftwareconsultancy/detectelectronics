@@ -35,37 +35,37 @@ const HomeAbout = () => {
   };
 
   const stats = [
-    { icon: FaAward, number: 23, text: "Years Experience", suffix: "+", duration: 2.5 },
+    { icon: FaAward, number: 25, text: "Years Experience", suffix: "+", duration: 2.5 },
     { icon: FaUsers, number: 50, text: "Expert Team", suffix: "+", duration: 2 },
-    { icon: FaRocket, number: 100, text: "Projects Completed", suffix: "+", duration: 3 },
+    { icon: FaRocket, number: 250, text: "Sits", suffix: "+", duration: 3 },
     { icon: FaShieldAlt, number: 99, text: "Quality Score", suffix: "%", duration: 2 },
   ];
 
   const hosting = [
     {
-      title: "Type of Hosting",
+      title: "IP Infrastructure",
       points: [
-        "Shared Hosting: Affordable and easy-to-use option for small websites.",
-        "VPS Hosting: More control and resources for growing websites.",
-        "Dedicated Hosting: Full server control for maximum power and customization.",
-        "Cloud Hosting: Scalable and reliable option for dynamic needs.",
+        "LAN Setup: Reliable and high-speed local network connectivity for offices.",
+        "WAN Solutions: Secure and efficient wide-area networking across locations.",
+        "Network Cabling: Structured cabling for stable and organized infrastructure.",
+        "IP Surveillance: Intelligent monitoring and security over IP networks.",
       ],
     },
     {
-      title: "Hosting Plans & Pricing",
+      title: "FTTx Rollout",
       points: [
-        "Plan Options: Choose from basic to premium hosting plans.",
-        "Features: Comprehensive features from basic to advanced.",
-        "Billing Cycle: Monthly, yearly, or custom plans to fit your needs.",
+        "Deployment Phases: From initial survey to final activation across networks.",
+        "Service Coverage: Scalable rollout from local zones to city-wide networks.",
+        "Project Timeline: Structured execution with milestone-based progress tracking.",
       ],
     },
     {
-      title: "Performance",
+      title: "End to End OFC Network Rollout",
       points: [
-        "Uptime Guarantee: Guaranteed uptime for reliability.",
-        "Server Speed: Fast server response times.",
-        "Scalability: Easily scale your hosting as your site grows.",
-        "Monitoring & Optimization: Continuous optimization for performance.",
+        "Fiber Quality: High-grade optical fibers ensuring superior transmission.",
+        "Network Speed: Ultra-fast data transfer across long distances.",
+        "Scalability: Seamless expansion for future network demands.",
+        "Monitoring & Maintenance: Continuous tracking for optimal performance.",
       ],
     },
   ];

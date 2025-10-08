@@ -142,11 +142,10 @@ export default function ContactUs() {
               <div className="flex items-center space-x-3 w-full">
                 <MapPin size={20} className="flex-shrink-0" />
                 <div className="leading-snug text-left">
-                  PLOT NO.55 SHREE NAGAR,
+                  Second Floor UdyogShreee Complex <br />
+                  Near Sutgirni Chawk  
                   <br />
-                  NEAR ULKANAGARI,
-                  <br />
-                  AURANGABAD-431005
+                  Chatrapti Sambhjinagar-431005
                 </div>
               </div>
 

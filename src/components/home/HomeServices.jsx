@@ -19,9 +19,9 @@ const HomeServices = () => {
       icon: FaBroadcastTower,
       title: "Telecom Tower",
       description:
-        "We provide expert installation & commissioning of BTS and WLL radio systems for seamless telecom infrastructure.",
+        "We provide expert installation & commissioning of BTS, MW, SMPS and Battery Installation for seamless telecom infrastructure.",
       fullDescription:
-        "We specialize in comprehensive telecom tower solutions including installation, commissioning, and maintenance of BTS and WLL systems. Our expert team ensures seamless connectivity and optimal performance for all your telecommunication needs.",
+        "We specialize in comprehensive telecom tower solutions including installation, commissioning, and maintenance of BTS and MW Installation. Our expert team ensures seamless connectivity and optimal performance for all your telecommunication needs.",
       features: ["Telecom Equipment Installation", "Tower Erection ", "Battery & Powerpoint", "Commissioning"],
     },
     {
@@ -37,14 +37,14 @@ const HomeServices = () => {
       icon: FaNetworkWired,
       title: "Optical Fiber Cable",
       description:
-        "End-to-end OFC services: route survey, trenching, ducting, and fiber laying for ultra-fast data transmission.",
+        "End-to-end OFC services: root fesibility, trenching & ducting, tower connetivity and fiber laying for ultra-fast data transmission.",
       fullDescription:
         "End-to-end optical fiber cable solutions from initial route survey to final implementation. Our services include precise route marking, professional trenching, ducting, and fiber optic cable laying for high-speed data transmission.",
-      features: ["Route Survey", "Trenching", "Ducting", "Fiber Laying"],
+      features: ["Root Fesibility", "Trenching & Ducting", "Tower Connetivity", "Fiber Laying"],
     },
     {
       icon: FaHardHat,
-      title: "Civil Works",
+      title: "Civil Construction",
       description:
         "Robust civil construction services for including insdustrial structure and super structure foundations, ensuring structural strength and compliance.",
       fullDescription:
