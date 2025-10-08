@@ -155,7 +155,7 @@ const TelecomTower = () => {
             </article>
 
             {/* Image Section */}
-            <div className="lg:w-2/5 w-full flex justify-center">
+            <div className="w-full lg:w-2/5 justify-center hidden lg:flex">
               <img
                 ref={imgRef}
                 src="http://www.detectelectronics.com/images/infrastructure/telecom-tower-infrastructure.jpg"

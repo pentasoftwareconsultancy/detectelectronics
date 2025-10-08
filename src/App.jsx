@@ -36,12 +36,17 @@ const ScrollToTop = () => {
   return null
 }
 
+const HomeHeroWrapper = () => {
+  const location = useLocation();
+  return <HomeHero showLearnMore={location.pathname === "/"} />;
+};
+
 function App() {
   return (
     <Router>
       <ScrollToTop /> {/* ← Add this inside Router */}
       <Navbar />
-      <HomeHero showLearnMore={location.pathname === '/'} />
+      <HomeHeroWrapper />
 
       {/* Suspense fallback — shows loader while pages are loading */}
       <Suspense
