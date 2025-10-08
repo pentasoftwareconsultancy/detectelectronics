@@ -111,7 +111,7 @@ const TelecomTower = () => {
                 className="text-justify mb-6"
               >
                 Detect Electronics System Private Limited provides the service at
-                Radio Systems Installation & Commissioning of BTS & WLL SYSTEM,
+                Radio Systems Installation & Commissioning of BTS & MSC Installation,
                 Installation & Commissioning of 8 MB, 34MB & STM OFC System, C-DOT
                 Equipment Installation & Commissioning, i.e. C-DOT 256, SBM Exchanges,
                 MBM Exchanges, Installation & Commissioning of OCB Exchanges (2 K RSU

@@ -301,7 +301,7 @@ const HomeHero = ({ showLearnMore }) => {
           >
             {[
               { number: "99.9%", label: "Uptime" },
-              { number: "1GB/s", label: "Speed" },
+              { number: "5G", label: "Speed" },
               { number: "24/7", label: "Support" },
             ].map((stat, index) => (
               <motion.div

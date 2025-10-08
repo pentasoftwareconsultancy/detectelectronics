@@ -44,21 +44,21 @@ function App() {
           <Route path="/" element={<HomePage />} />
 
           {/* Infra */}
-          <Route path="/telecom-tower" element={<TelecomTowerPage />} />
-          <Route path="/optical-fiber" element={<OpticalFiberPage />} />
-          <Route path="/civil-construction" element={<CivilConstructionPage />} />
-          <Route path="/electrical-solution" element={<ElectricalSolutionPage />} />
+          <Route path="/infra/telecom-tower" element={<TelecomTowerPage />} />
+          <Route path="/infra/optical-fiber" element={<OpticalFiberPage />} />
+          <Route path="/infra/civil-construction" element={<CivilConstructionPage />} />
+          <Route path="/infra/electrical-solution" element={<ElectricalSolutionPage />} />
 
           {/* Projects */}
-          <Route path="/completed-projects" element={<CompletedProjectPage />} />
-          <Route path="/current-projects" element={<CurrentProjectPage />} />
-          <Route path="/project-management" element={<ProjectManagementPage />} />
+          <Route path="/project/completed-projects" element={<CompletedProjectPage />} />
+          <Route path="/project/current-projects" element={<CurrentProjectPage />} />
+          <Route path="/project/project-management" element={<ProjectManagementPage />} />
 
           {/* Management */}
-          <Route path="/about-electronics" element={<AboutElectronicsPage />} />
-          <Route path="/mission-vision" element={<MissionAndVisionPage />} />
-          <Route path="/certifications" element={<CertificationsPage />} />
-          <Route path="/board-of-directors" element={<BoardOfDirectorsPage />} />
+          <Route path="/management/about-electronics" element={<AboutElectronicsPage />} />
+          <Route path="/management/mission-vision" element={<MissionAndVisionPage />} />
+          <Route path="/management/certifications" element={<CertificationsPage />} />
+          <Route path="/management/board-of-directors" element={<BoardOfDirectorsPage />} />
 
           {/* Career, Gallery, Contact */}
           <Route path="/career" element={<CareerPage />} />

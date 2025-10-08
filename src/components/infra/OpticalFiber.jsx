@@ -71,7 +71,7 @@ const OpticalFiber = () => {
               <img
                 src={Fiber}
                 alt="Optical Fiber Cable"
-                className="w-full md:w-[400px] lg:w-full h-full rounded-xl shadow-xl border-4 border-gray-200 transition-transform duration-300 hover:scale-105 hover:shadow-2xl object-cover"
+                className="w-full md:w-[400px] lg:w-full h-[400px] rounded-xl shadow-xl border-4 border-gray-200 transition-transform duration-300 hover:scale-105 hover:shadow-2xl object-cover"
               />
             </div>
 
