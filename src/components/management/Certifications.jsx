@@ -8,7 +8,7 @@ const Certifications = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // List of certification images (automatic numbering)
-  const totalCerts = 3; // 🔹 change this to total number of certifications
+  const totalCerts = 2; // 🔹 change this to total number of certifications
   const certImages = Array.from({ length: totalCerts }, (_, i) => `/assets/Certification${i + 1}.jpg`);
 
   // Auto-slide every 4 seconds
@@ -116,7 +116,7 @@ const Certifications = () => {
           {/* Right – certificate image slider */}
           <div className="md:w-1/2 w-full flex flex-col items-center mt-8 md:mt-0 relative">
             <h3 className="text-xl font-semibold text-gray-700 mb-4">Certificates</h3>
-            <div className="w-full md:w-5/6 h-[400px] relative overflow-hidden rounded-3xl shadow-xl">
+            <div className="w-full md:w-5/6 h-[450px] relative overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={currentIndex}
