@@ -12,7 +12,7 @@ import sem8Logo from "../../assets/sem18.png";
 import sem9Logo from "../../assets/sem19.jpg";
 import sem10Logo from "../../assets/sem20.png";
 import sem11Logo from "../../assets/sem21.jpg";
-// import sem12Logo from "../../assets/sem22.jpg";
+import sem12Logo from "../../assets/sem22.jpg";
 
 const clients = [
   sem1Logo,
@@ -26,7 +26,7 @@ const clients = [
   sem9Logo,
   sem10Logo,
   sem11Logo,
-  // sem12Logo,
+  sem12Logo,
 ];
 
 // Animation variants

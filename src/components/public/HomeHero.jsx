@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
+import { useLocation } from "react-router-dom";
 
 import img1 from "../../assets/Hero1.png";
 import img2 from "../../assets/Hero2.jpg";
@@ -12,6 +13,46 @@ const images = [img1, img2, img3];
 const HomeHero = ({ showLearnMore }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const location = useLocation();
+
+  const getDynamicHeading = () => {
+    switch (location.pathname) {
+      case "/":
+        return "Infrastructure Connectivity";
+      case "/infra/telecom-tower":
+        return "Telecom Tower Solutions";
+      case "/infra/optical-fiber":
+        return "Optical Fiber Networks";
+      case "/infra/civil-construction":
+        return "Civil Construction Services";
+      case "/infra/electrical-solution":
+        return "Electrical Infrastructure";
+      case "/project/completed":
+        return "Completed Projects";
+      case "/project/current":
+        return "Current Projects";
+      case "/project/management":
+        return "Project Management";
+      case "/management/about-electronics":
+        return "About Detect Electronics";
+      case "/management/mission-vision":
+        return "Mission & Vision";
+      case "/management/certifications":
+        return "Certifications & Achievements";
+      case "/management/board":
+        return "Board of Director";
+      case "/career":
+        return "Career Opportunities";
+      case "/gallery":
+        return "Project Gallery";
+      case "/contact":
+        return "Contact Us";
+      default:
+        return "Infrastructure Connectivity";
+    }
+  };
+
+  const headingText = getDynamicHeading(); // ✅ Now this works safely
 
   const scrollToAbout = () => {
     const section = document.getElementById("home-about");
@@ -258,7 +299,7 @@ const HomeHero = ({ showLearnMore }) => {
               ease: "linear",
             }}
           >
-            Infrastructure Connectivity
+            {headingText}
           </motion.h1>
         </motion.div>
 
