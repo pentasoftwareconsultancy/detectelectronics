@@ -49,9 +49,9 @@ const MissionAndVision = () => {
           </div>
           <div className="md:w-1/2 flex justify-center">
             <img
-              src={VisionImg}
+              src={"https://i.pinimg.com/1200x/7c/78/ef/7c78ef01228525663b9bc032553326fc.jpg"}
               alt="Mission"
-              className="rounded-3xl shadow-xl w-full md:w-5/6 object-cover"
+              // className="rounded-3xl shadow-xl w-full md:w-5/6 object-cover"
             />
           </div>
         </div>
@@ -60,7 +60,7 @@ const MissionAndVision = () => {
         <div className="bg-white p-6 sm:p-10 rounded-3xl shadow-lg flex flex-col md:flex-row items-center gap-8 mb-12">
           <div className="md:w-1/2 flex justify-center">
             <img
-              src={VisionImg}
+              src={"https://i.pinimg.com/1200x/13/80/ea/1380eaa785e6d085dbde02329f0d17b7.jpg"}
               alt="Vision"
               className="rounded-3xl shadow-xl w-full md:w-5/6 object-cover"
             />
@@ -96,7 +96,7 @@ const MissionAndVision = () => {
           {/* Right Image */}
           <div className="md:w-1/2 flex justify-center">
             <img
-              src={ValuesImg}
+              src={"https://i.pinimg.com/736x/ee/42/d1/ee42d1d427ef8a881368508a5ff92ce9.jpg"}
               alt="Values"
               className="rounded-3xl shadow-xl w-full md:w-5/6 object-cover"
             />
