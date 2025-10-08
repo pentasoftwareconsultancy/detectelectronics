@@ -12,16 +12,17 @@ const HomeAbout = () => {
     if (isInView) setVisible(true);
   }, [isInView]);
 
-  // ✅ File Download Handler
+  // ✅ FILE DOWNLOAD HANDLER (NO PUBLIC_URL)
   const handleDownload = (type) => {
     let fileUrl = "";
     let fileName = "";
 
+    // ✅ Updated file paths (directly from public/assets)
     if (type === "presentation") {
-      fileUrl = "/assets/presentation.pdf";
+      fileUrl = "/assets/detectelectronics.pdf";
       fileName = "Detect_Electronics_Presentation.pdf";
     } else if (type === "eprofile") {
-      fileUrl = "/assets/eprofile.pptx";
+      fileUrl = "/assets/detectelectronics.pptx";
       fileName = "Detect_Electronics_E-Profile.pptx";
     }
 
@@ -70,7 +71,10 @@ const HomeAbout = () => {
   ];
 
   return (
-    <div id="home-about" className="relative min-h-screen bg-gradient-to-b from-[#E8F2FF] via-[#F4F9FF] to-white py-20 px-6 md:px-12 overflow-hidden">
+    <div
+      id="home-about"
+      className="relative min-h-screen bg-gradient-to-b from-[#E8F2FF] via-[#F4F9FF] to-white py-20 px-6 md:px-12 overflow-hidden"
+    >
       {/* 🏆 Header */}
       <motion.div
         initial={{ opacity: 0, y: -50 }}
@@ -87,7 +91,7 @@ const HomeAbout = () => {
         </p>
       </motion.div>
 
-      {/* 📊 Simple Increment Count Section */}
+      {/* 📊 Stats Section */}
       <motion.div
         ref={ref}
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-24 text-center"
@@ -140,46 +144,41 @@ const HomeAbout = () => {
       </div>
 
       {/* 📥 Download Section */}
-     <motion.div
-  className="text-center mt-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
-  initial={{ opacity: 0, y: 40 }}
-  animate={visible ? { opacity: 1, y: 0 } : {}}
-  transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
->
-  <h3 className="text-4xl md:text-5xl font-extrabold text-[#1a3b7c] mb-6 tracking-tight">
-    Download Resources
-  </h3>
-  <p className="text-gray-700 text-lg md:text-xl mb-10 leading-relaxed">
-    Explore our presentations and company profile for more details.
-  </p>
+      <motion.div
+        className="text-center mt-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
+        initial={{ opacity: 0, y: 40 }}
+        animate={visible ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
+      >
+        <h3 className="text-4xl md:text-5xl font-extrabold text-[#1a3b7c] mb-6 tracking-tight">
+          Download Resources
+        </h3>
+        <p className="text-gray-700 text-lg md:text-xl mb-10 leading-relaxed">
+          Explore our presentations and company profile for more details.
+        </p>
 
-  <div className="flex flex-col sm:flex-row justify-center gap-6">
-    <motion.button
-      onClick={() => handleDownload("presentation")}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      className="bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold py-4 px-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2"
-    >
-      <FaDownload className="inline-block mr-2 text-lg" />
-      Download Presentation
-    </motion.button>
+        <div className="flex flex-col sm:flex-row justify-center gap-6">
+          <motion.button
+            onClick={() => handleDownload("presentation")}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold py-4 px-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2"
+          >
+            <FaDownload className="inline-block mr-2 text-lg" />
+            Download Presentation
+          </motion.button>
 
-    <motion.button
-      onClick={() => handleDownload("eprofile")}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      className="bg-white text-cyan-600 font-semibold py-4 px-10 rounded-3xl border-2 border-cyan-400 shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
-    >
-      <FaDownload className="inline-block mr-2 text-lg" />
-      Download E-Profile
-    </motion.button>
-  </div>
-
-  <p className="mt-6 text-gray-400 text-sm">
-  </p>
-</motion.div>
-
-
+          <motion.button
+            onClick={() => handleDownload("eprofile")}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-white text-cyan-600 font-semibold py-4 px-10 rounded-3xl border-2 border-cyan-400 shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
+          >
+            <FaDownload className="inline-block mr-2 text-lg" />
+            Download E-Profile
+          </motion.button>
+        </div>
+      </motion.div>
     </div>
   );
 };

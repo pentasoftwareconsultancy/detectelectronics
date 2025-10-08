@@ -22,7 +22,7 @@ const HomeServices = () => {
         "We provide expert installation & commissioning of BTS and WLL radio systems for seamless telecom infrastructure.",
       fullDescription:
         "We specialize in comprehensive telecom tower solutions including installation, commissioning, and maintenance of BTS and WLL systems. Our expert team ensures seamless connectivity and optimal performance for all your telecommunication needs.",
-      features: ["BTS Installation", "WLL Systems", "Radio Systems", "Commissioning"],
+      features: ["Telecom Equipment Installation", "Tower Erection ", "Battery & Powerpoint", "Commissioning"],
     },
     {
       icon: FaBolt,
@@ -44,11 +44,11 @@ const HomeServices = () => {
     },
     {
       icon: FaHardHat,
-      title: "Civil Construction",
+      title: "Civil Works",
       description:
-        "Robust civil construction services for GBT, RTT & BTS foundations, ensuring structural strength and compliance.",
+        "Robust civil construction services for including insdustrial structure and super structure foundations, ensuring structural strength and compliance.",
       fullDescription:
-        "Comprehensive civil construction services for various tower types including GBT, RTT, and BTS foundations. We ensure structural integrity and compliance with all construction standards and regulations.",
+        "Comprehensive civil construction services for various tower types including insdustrial structure and super structure foundations. We ensure structural integrity and compliance with all construction standards and regulations.",
       features: ["GBT Construction", "RTT Foundations", "BTS Foundations", "Structural Work"],
     },
   ];

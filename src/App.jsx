@@ -50,15 +50,15 @@ function App() {
           <Route path="/infra/electrical-solution" element={<ElectricalSolutionPage />} />
 
           {/* Projects */}
-          <Route path="/project/completed-projects" element={<CompletedProjectPage />} />
-          <Route path="/project/current-projects" element={<CurrentProjectPage />} />
-          <Route path="/project/project-management" element={<ProjectManagementPage />} />
+          <Route path="/project/completed" element={<CompletedProjectPage />} />
+          <Route path="/project/current" element={<CurrentProjectPage />} />
+          <Route path="/project/management" element={<ProjectManagementPage />} />
 
           {/* Management */}
           <Route path="/management/about-electronics" element={<AboutElectronicsPage />} />
           <Route path="/management/mission-vision" element={<MissionAndVisionPage />} />
           <Route path="/management/certifications" element={<CertificationsPage />} />
-          <Route path="/management/board-of-directors" element={<BoardOfDirectorsPage />} />
+          <Route path="/management/board" element={<BoardOfDirectorsPage />} />
 
           {/* Career, Gallery, Contact */}
           <Route path="/career" element={<CareerPage />} />

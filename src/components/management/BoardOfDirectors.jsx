@@ -84,7 +84,7 @@ const BoardOfDirectors = () => {
             <img
               src={Director}
               alt="DirectorImage"
-              className="rounded-3xl shadow-xl w-full md:w-[350px] object-cover"
+              className="rounded-3xl shadow-xl w-full md:w-[500px] object-cover"
             />
           </div>
 
