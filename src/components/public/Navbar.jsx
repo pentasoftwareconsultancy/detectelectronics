@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaTimes, FaChevronDown } from "react-icons/fa";
-import Logo from "../../assets/logo.png";
+import Frame1 from "../../assets/Frame1.png";
+import Frame2 from "../../assets/Frame2.png";
+import Frame3 from "../../assets/Frame3.png";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
@@ -11,6 +13,16 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const activePath = location.pathname;
+  const frames = [Frame1, Frame2, Frame3]; // Array of frames
+  const [currentFrame, setCurrentFrame] = useState(0);
+
+  // Cycle frames every 500ms (adjust speed if needed)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentFrame((prev) => (prev + 1) % frames.length);
+    }, 500); // 500ms per frame
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -81,9 +93,9 @@ const Navbar = () => {
         {/* Logo */}
         <motion.div whileHover={{ scale: 1.05 }} className="flex-shrink-0 cursor-pointer" onClick={() => navigate("/")}>
           <img
-            src={Logo}
+            src={frames[currentFrame]} // ← use currentFrame
             alt="Detect Electronics"
-            className={`transition-all duration-500 ${isScrolled ? "h-12" : "h-16"}`}
+            className={`transition-all duration-500 ${isScrolled ? "h-20" : "h-24"}`}
           />
         </motion.div>
 
