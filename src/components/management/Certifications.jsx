@@ -1,31 +1,35 @@
-import React, { useRef, useEffect } from 'react';
-import Certificat from "../../assets/Certification.jpg";
+import React, { useRef, useEffect, useState } from 'react';
 import SplitText from '../animationComponents/SplitText';
 import { gsap } from 'gsap';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Certifications = () => {
   const listRef = useRef([]);
-  const imageRef = useRef(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
+  // List of certification images (automatic numbering)
+  const totalCerts = 3; // 🔹 change this to total number of certifications
+  const certImages = Array.from({ length: totalCerts }, (_, i) => `/assets/Certification${i + 1}.jpg`);
+
+  // Auto-slide every 4 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % certImages.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [certImages.length]);
+
+  // Animate list items on scroll
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            if (entry.target === imageRef.current) {
-              // Animate image
-              gsap.fromTo(
-                imageRef.current,
-                { scale: 0.5, opacity: 0 },
-                { scale: 1, opacity: 1, duration: 1, ease: "power3.out" }
-              );
-              observer.unobserve(entry.target);
-            } else if (listRef.current.includes(entry.target)) {
-              // Animate list items one by one
+            if (listRef.current.includes(entry.target)) {
               gsap.fromTo(
                 entry.target,
                 { y: 50, opacity: 0 },
-                { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
+                { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }
               );
               observer.unobserve(entry.target);
             }
@@ -34,10 +38,7 @@ const Certifications = () => {
       },
       { threshold: 0.2 }
     );
-
     listRef.current.forEach((el) => el && observer.observe(el));
-    if (imageRef.current) observer.observe(imageRef.current);
-
     return () => observer.disconnect();
   }, []);
 
@@ -48,12 +49,12 @@ const Certifications = () => {
         {/* Header Section */}
         <div
           className="w-full bg-cover bg-center relative py-24 md:py-32 text-center text-white mb-16 rounded-3xl shadow-lg overflow-hidden"
-          style={{ backgroundImage: `url(${Certificat})` }}
+          style={{ backgroundImage: `url(/assets/Certification.jpg)` }}
         >
           <div className="absolute inset-0 bg-black/50"></div>
           <div className="relative z-10">
             <SplitText
-              text="CERTIFICATION"
+              text="CERTIFICATIONS"
               className="text-4xl md:text-5xl font-semibold tracking-wide inline-block"
               delay={100}
               duration={0.6}
@@ -71,7 +72,7 @@ const Certifications = () => {
 
         {/* Content Section */}
         <div className="bg-white p-6 sm:p-10 rounded-3xl shadow-lg flex flex-col md:flex-row items-start gap-8">
-          
+
           {/* Left – company details list */}
           <div className="md:w-1/2 w-full text-gray-800 space-y-4">
             <ul className="space-y-0">
@@ -112,17 +113,23 @@ const Certifications = () => {
             </ul>
           </div>
 
-          {/* Right – certificate image */}
-          <div className="md:w-1/2 w-full flex flex-col items-center mt-8 md:mt-0">
-            <h3 className="text-xl font-semibold text-gray-700 mb-4">
-              Incorporation Certificate
-            </h3>
-            <img
-              ref={imageRef}
-              src={Certificat}
-              alt="Incorporation Certificate"
-              className="rounded-3xl shadow-xl w-full md:w-5/6 object-contain scale-50 opacity-0"
-            />
+          {/* Right – certificate image slider */}
+          <div className="md:w-1/2 w-full flex flex-col items-center mt-8 md:mt-0 relative">
+            <h3 className="text-xl font-semibold text-gray-700 mb-4">Certificates</h3>
+            <div className="w-full md:w-5/6 h-[400px] relative overflow-hidden rounded-3xl shadow-xl">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={currentIndex}
+                  src={certImages[currentIndex]}
+                  alt={`Certification ${currentIndex + 1}`}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.8 }}
+                  className="w-full h-full object-contain absolute top-0 left-0"
+                />
+              </AnimatePresence>
+            </div>
           </div>
         </div>
       </div>

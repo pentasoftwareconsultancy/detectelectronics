@@ -1,6 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import BOD from "../../assets/BoardOfDirectors.jpg";
-import Director from "../../assets/director.png";
 import SplitText from "../animationComponents/SplitText";
 import { gsap } from "gsap";
 
@@ -52,7 +50,7 @@ const BoardOfDirectors = () => {
         {/* Header Section */}
         <div
           className="w-full bg-cover bg-center relative py-24 md:py-32 text-center text-white mb-16 rounded-3xl shadow-lg overflow-hidden"
-          style={{ backgroundImage: `url(${BOD})` }}
+          style={{ backgroundImage: `url(/assets/BoardOfDirectors.jpg)` }}
         >
           <div className="absolute inset-0 bg-black/50"></div>
           <div className="relative z-10">
@@ -82,7 +80,7 @@ const BoardOfDirectors = () => {
             className="md:w-1/3 w-full flex justify-center mb-6 md:mb-0"
           >
             <img
-              src={Director}
+              src="/assets/director.png"
               alt="DirectorImage"
               className="rounded-3xl shadow-xl w-full md:w-[500px] object-cover"
             />

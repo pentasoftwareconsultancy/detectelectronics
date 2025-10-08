@@ -2,8 +2,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import SplitText from "../animationComponents/SplitText";
-import img from "../../assets/CivilConstruction.jpg";
-import img1 from "../../assets/Transformer.jpg";
 
 const CivilConstruction = () => {
   // Motion variants
@@ -28,7 +26,7 @@ const CivilConstruction = () => {
         {/* Header Section */}
         <div
           className="w-full bg-cover bg-center relative py-24 md:py-32 text-center text-white mb-16 rounded-3xl overflow-hidden shadow-lg object-top"
-          style={{ backgroundImage: `url(${img1})` }}
+          style={{ backgroundImage: `url(/assets/Transformer.jpg)` }}
         >
           <div className="absolute inset-0 bg-black/60"></div>
           <div className="relative z-10">
@@ -133,7 +131,7 @@ const CivilConstruction = () => {
             {/* Image Section */}
             <div className="lg:w-2/5 w-full flex justify-center">
               <motion.img
-                src={img}
+                src="/assets/CivilConstruction.jpg"
                 alt="Civil Construction"
                 className="w-full md:w-[400px] lg:w-full h-[500px] rounded-xl shadow-xl border-4 border-gray-200 transition-transform duration-300 hover:scale-105 hover:shadow-2xl object-cover"
                 initial={{ opacity: 0, scale: 0.95 }}

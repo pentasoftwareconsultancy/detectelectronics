@@ -1,5 +1,4 @@
 import React from "react";
-import MAV from "../../assets/mission-and-vision.png";
 import SplitText from "../animationComponents/SplitText";
 
 const MissionAndVision = () => {
@@ -10,7 +9,7 @@ const MissionAndVision = () => {
         {/* Header Section */}
         <div
           className="w-full bg-cover bg-center relative py-24 md:py-32 text-center text-white mb-16 rounded-3xl shadow-lg overflow-hidden"
-          style={{ backgroundImage: `url(${MAV})` }}
+          style={{ backgroundImage: `url(/assets/mission-and-vision.png)` }}
         >
           <div className="absolute inset-0 bg-black/50"></div>
           <div className="relative z-10">

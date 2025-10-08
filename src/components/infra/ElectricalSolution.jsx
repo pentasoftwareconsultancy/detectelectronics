@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import SplitText from "../animationComponents/SplitText";
-import Electrical from "../../assets/Electrical.jpg";
 
 const ElectricalSolution = () => {
   // Animation variants

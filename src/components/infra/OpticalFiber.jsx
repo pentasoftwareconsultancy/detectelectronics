@@ -1,6 +1,4 @@
 import React from "react";
-import Fiber from "../../assets/OpticFiber.jpg";
-import Cable from "../../assets/Cable.jpg";
 import SplitText from "../animationComponents/SplitText";
 
 const OpticalFiber = () => {
@@ -14,7 +12,7 @@ const OpticalFiber = () => {
         {/* Header Section */}
         <div
           className="w-full bg-cover bg-center relative py-24 md:py-32 text-center text-white mb-16 rounded-3xl overflow-hidden shadow-lg"
-          style={{ backgroundImage: `url(${Cable})` }}
+          style={{ backgroundImage: `url(/assets/Cable.jpg)` }}
         >
           <div className="absolute inset-0 bg-black/60"></div>
 
@@ -69,7 +67,7 @@ const OpticalFiber = () => {
             {/* Image Section */}
             <div className="lg:w-2/5 w-full flex justify-center">
               <img
-                src={Fiber}
+                src="/assets/OpticFiber.jpg"
                 alt="Optical Fiber Cable"
                 className="w-full md:w-[400px] lg:w-full h-[400px] rounded-xl shadow-xl border-4 border-gray-200 transition-transform duration-300 hover:scale-105 hover:shadow-2xl object-cover"
               />

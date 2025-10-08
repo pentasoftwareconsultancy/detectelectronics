@@ -2,21 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/24/solid';
 
-import img1 from '../../assets/img1.jpg';
-import img2 from '../../assets/img2.jpg';
-import img3 from '../../assets/img3.jpg';
-import img4 from '../../assets/img4.jpg';
-import img5 from '../../assets/img5.jpg';
-import img6 from '../../assets/img6.jpg';
-import img7 from '../../assets/img7.jpg';
-import img8 from '../../assets/img8.jpg';
-import img9 from '../../assets/img9.jpg';
-import img10 from '../../assets/img10.jpg';
-import img11 from '../../assets/img11.jpg';
-import img12 from '../../assets/img12.jpg';
-import img13 from '../../assets/img13.jpg';
-import img14 from '../../assets/img14.jpg';
-
 const GALLERY_TABS = [
   { label: 'All', value: 'all' },
   { label: 'GBT Construction', value: 'GBT' },
@@ -26,20 +11,20 @@ const GALLERY_TABS = [
 ];
 
 const GALLERY_IMAGES = [
-  { src: img1, category: 'GBT', alt: 'GBT Construction Project A' },
-  { src: img2, category: 'GBT', alt: 'GBT Construction Project B' },
-  { src: img3, category: 'GBT', alt: 'GBT Construction Project C' },
-  { src: img4, category: 'GBT', alt: 'GBT Construction Project D' },
-  { src: img5, category: 'RTT', alt: 'RTT Construction Site A' },
-  { src: img6, category: 'RTT', alt: 'RTT Construction Site B' },
-  { src: img7, category: 'RTT', alt: 'RTT Construction Site C' },
-  { src: img8, category: 'RTT', alt: 'RTT Construction Site D' },
-  { src: img9, category: 'Civil', alt: 'Civil Work Foundation' },
-  { src: img10, category: 'Civil', alt: 'Civil Work Structure' },
-  { src: img11, category: 'Civil', alt: 'Civil Work Completion' },
-  { src: img12, category: 'Civil', alt: 'Civil Work Infrastructure' },
-  { src: img13, category: 'Electrification', alt: 'Electrification Setup' },
-  { src: img14, category: 'Electrification', alt: 'Electrification System' },
+  { src: '/assets/img1.jpg', category: 'GBT', alt: 'GBT Construction Project A' },
+  { src: '/assets/img2.jpg', category: 'GBT', alt: 'GBT Construction Project B' },
+  { src: '/assets/img3.jpg', category: 'GBT', alt: 'GBT Construction Project C' },
+  { src: '/assets/img4.jpg', category: 'GBT', alt: 'GBT Construction Project D' },
+  { src: '/assets/img5.jpg', category: 'RTT', alt: 'RTT Construction Site A' },
+  { src: '/assets/img6.jpg', category: 'RTT', alt: 'RTT Construction Site B' },
+  { src: '/assets/img7.jpg', category: 'RTT', alt: 'RTT Construction Site C' },
+  { src: '/assets/img8.jpg', category: 'RTT', alt: 'RTT Construction Site D' },
+  { src: '/assets/img9.jpg', category: 'Civil', alt: 'Civil Work Foundation' },
+  { src: '/assets/img10.jpg', category: 'Civil', alt: 'Civil Work Structure' },
+  { src: '/assets/img11.jpg', category: 'Civil', alt: 'Civil Work Completion' },
+  { src: '/assets/img12.jpg', category: 'Civil', alt: 'Civil Work Infrastructure' },
+  { src: '/assets/img13.jpg', category: 'Electrification', alt: 'Electrification Setup' },
+  { src: '/assets/img14.jpg', category: 'Electrification', alt: 'Electrification System' },
 ];
 
 const containerVariants = {

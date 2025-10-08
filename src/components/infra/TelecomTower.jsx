@@ -3,7 +3,6 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitText from "../animationComponents/SplitText";
-import bg from "../../assets/TelecomTower.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -79,7 +78,7 @@ const TelecomTower = () => {
         {/* Header Section */}
         <div
           className="w-full bg-cover bg-center relative py-24 md:py-32 text-center text-white mb-16 rounded-3xl overflow-hidden shadow-lg"
-          style={{ backgroundImage: `url(${bg})` }}
+          style={{ backgroundImage: `url(/assets/TelecomTower.png)` }}
         >
           <div className="absolute inset-0 bg-black/60"></div>
           <div className="relative z-10">

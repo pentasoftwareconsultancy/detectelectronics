@@ -2,7 +2,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import SplitText from "../animationComponents/SplitText";
-import bg from "../../assets/ProjectManagementBG.jpeg";
 
 const ProjectManagement = () => {
   // Motion variants
@@ -28,7 +27,7 @@ const ProjectManagement = () => {
         {/* Header Section */}
         <div
           className="w-full bg-cover bg-center relative py-24 md:py-32 text-center text-white mb-16 rounded-3xl overflow-hidden shadow-lg"
-          style={{ backgroundImage: `url(${bg})` }}
+          style={{ backgroundImage: `url(/assets/ProjectManagementBG.jpeg)` }}
         >
           <div className="absolute inset-0 bg-black/60"></div>
           <div className="relative z-10">

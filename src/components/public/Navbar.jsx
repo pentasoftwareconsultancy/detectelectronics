@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaTimes, FaChevronDown } from "react-icons/fa";
-import Frame1 from "../../assets/Frame1.png";
-import Frame2 from "../../assets/Frame2.png";
-import Frame3 from "../../assets/Frame3.png";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
@@ -13,7 +10,11 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const activePath = location.pathname;
-  const frames = [Frame1, Frame2, Frame3];
+  const frames = [
+  "/assets/Frame1.png",
+  "/assets/Frame2.png",
+  "/assets/Frame3.png",
+];
   const [currentFrame, setCurrentFrame] = useState(0);
 
   // 🔹 Faster logo animation interval adjusted for smoother loop

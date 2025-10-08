@@ -1,32 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-import sem1Logo from "../../assets/sem11.png";
-import sem2Logo from "../../assets/sem12.png";
-import sem3Logo from "../../assets/sem13.png";
-import sem4Logo from "../../assets/sem14.png";
-import sem5Logo from "../../assets/sem15.png";
-import sem6Logo from "../../assets/sem16.png";
-import sem7Logo from "../../assets/sem17.jpg";
-import sem8Logo from "../../assets/sem18.png";
-import sem9Logo from "../../assets/sem19.jpg";
-import sem10Logo from "../../assets/sem20.png";
-import sem11Logo from "../../assets/sem21.jpg";
-import sem12Logo from "../../assets/sem22.jpg";
-
 const clients = [
-  sem1Logo,
-  sem2Logo,
-  sem3Logo,
-  sem4Logo,
-  sem5Logo,
-  sem6Logo,
-  sem7Logo,
-  sem8Logo,
-  sem9Logo,
-  sem10Logo,
-  sem11Logo,
-  sem12Logo,
+  "/assets/sem11.png",
+  "/assets/sem12.png",
+  "/assets/sem13.png",
+  "/assets/sem14.png",
+  "/assets/sem15.png",
+  "/assets/sem16.png",
+  "/assets/sem17.jpg",
+  "/assets/sem18.png",
+  "/assets/sem19.jpg",
+  "/assets/sem20.png",
+  "/assets/sem21.jpg",
+  "/assets/sem22.jpg",
 ];
 
 // Animation variants

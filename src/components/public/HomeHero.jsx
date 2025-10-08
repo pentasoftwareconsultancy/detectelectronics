@@ -4,11 +4,11 @@ import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import { useLocation } from "react-router-dom";
 
-import img1 from "../../assets/Hero1.png";
-import img2 from "../../assets/Hero2.jpg";
-import img3 from "../../assets/Hero3.jpg";
-
-const images = [img1, img2, img3];
+const images = [
+  "/assets/Hero1.png",
+  "/assets/Hero2.jpg",
+  "/assets/Hero3.jpg",
+];
 
 const HomeHero = ({ showLearnMore }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
