@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import BOD from "../../assets/BoardOfDirectors.jpg";
-import visionImage from "../../assets/vision.jpeg";
+import Director from "../../assets/director.png";
 import SplitText from "../animationComponents/SplitText";
 import { gsap } from "gsap";
 
@@ -82,8 +82,8 @@ const BoardOfDirectors = () => {
             className="md:w-1/3 w-full flex justify-center mb-6 md:mb-0"
           >
             <img
-              src={visionImage}
-              alt="Vision"
+              src={Director}
+              alt="DirectorImage"
               className="rounded-3xl shadow-xl w-full md:w-[350px] object-cover"
             />
           </div>
