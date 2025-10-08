@@ -163,9 +163,9 @@ const Career = () => {
         className="w-full lg:w-1/2 flex justify-center"
       >
         <img
-          src="https://i.pinimg.com/1200x/8b/25/c9/8b25c9b0ffd8932a064f65056fb90eeb.jpg" // Replace with your career image URL
+          src="/assets/Career.png" // Replace with your career image URL
           alt="Career"
-          className="w-full max-w-md rounded-lg shadow-xl h-[450px]"
+          className="w-full max-w-md rounded-lg shadow-xl h-[480px]"
         />
       </motion.div>
     </section>
