@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaTimes, FaChevronDown } from "react-icons/fa";
-import { useLocation } from "react-router-dom"; // ✅ Added to get current path
 import Logo from "../../assets/logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
-
-  const location = useLocation(); // ✅ Added
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -25,35 +22,45 @@ const Navbar = () => {
       name: "INFRA",
       link: "#",
       dropdown: [
-        { name: "Telecom Tower", link: "/telecom-tower" },
-        { name: "Optical Fibre Cable", link: "/optical-fiber" },
-        { name: "Civil Construction", link: "/civil-construction" },
-        { name: "Electrical Solution", link: "/electrical-solution" },
+        { name: "Telecom Tower", link: "/infra/telecom-tower" },
+        { name: "Optical Fibre Cable", link: "/infra/optical-fibre" },
+        { name: "Civil Construction", link: "/infra/civil" },
+        { name: "Electrical Solution", link: "/infra/electrical" },
       ],
     },
     {
       name: "PROJECT",
       link: "#",
       dropdown: [
-        { name: "Completed Project", link: "/completed-projects" },
-        { name: "Current Project", link: "/current-projects" },
-        { name: "Project Management", link: "/project-management" },
+        { name: "Completed Project", link: "/project/completed" },
+        { name: "Current Project", link: "/project/current" },
+        { name: "Project Management", link: "/project/management" },
       ],
     },
     {
       name: "MANAGEMENT",
       link: "#",
       dropdown: [
-        { name: "About Detect Electronics", link: "/about-electronics" },
-        { name: "Mission & Vision", link: "/mission-vision" },
-        { name: "Certifications", link: "/certifications" },
-        { name: "Board of Directors", link: "/board-of-directors" },
+        { name: "About Detect Electronics", link: "/management/about" },
+        { name: "Mission & Vision", link: "/management/mission" },
+        { name: "Certifications", link: "/management/certifications" },
+        { name: "Board of Directors", link: "/management/board" },
       ],
     },
-    { name: "CAREER", link: "/career" },
-    { name: "GALLERY", link: "/gallery" },
-    { name: "CONTACT US", link: "/contact" },
-  ];
+   {
+      name: "STRENGTH",
+      link: "#",
+      dropdown: [
+        { name: "Machinary & Equipement ", link: "/strength/about" },
+        { name: "Man Power", link: "/strength/mission" },
+        { name: "Working Standards", link: "/strength/certifications" },
+      ],
+    },
+     { name: "GALLERY", link: "/gallery" }, // <-- Added Gallery
+];
+
+  
+  
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -70,10 +77,11 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed w-full z-50 transition-all duration-500 backdrop-filter backdrop-blur-lg ${isScrolled
-        ? "bg-white/90 shadow-md py-2"
-        : "bg-white/20 py-4"
-        }`}
+      className={`fixed w-full z-50 transition-all duration-500 ${
+        isScrolled
+          ? "bg-white/95 backdrop-blur-xl shadow-2xl shadow-blue-200/50 py-2"
+          : "bg-gradient-to-r from-blue-50 to-cyan-50/80 backdrop-blur-lg py-4"
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         {/* Logo */}
@@ -99,13 +107,7 @@ const Navbar = () => {
                 <>
                   <motion.a
                     href={item.link}
-                    // ✅ Updated: Active dropdown parent always blue, inactive white at top
-                    className={`flex items-center px-3 py-2 font-semibold transition-colors duration-300 ${item.dropdown.some((sub) => location.pathname === sub.link)
-                      ? "text-blue-600"                    // ✅ Active parent blue
-                      : isScrolled
-                        ? "text-gray-800 hover:text-blue-600"
-                        : "text-white hover:text-blue-300"
-                      }`}
+                    className="flex items-center px-3 py-2 text-gray-800 hover:text-blue-600 font-semibold transition-colors duration-300"
                   >
                     {item.name}
                     <FaChevronDown className="ml-1 w-3 h-3" />
@@ -123,13 +125,7 @@ const Navbar = () => {
                           <motion.a
                             key={sub.name}
                             href={sub.link}
-                            className={`block px-6 py-3 font-medium border-b border-blue-50 last:border-b-0 transition-all duration-300 ${
-                              location.pathname === sub.link
-                                ? "text-blue-600 bg-blue-50"                 // ✅ Active dropdown link blue
-                                : isScrolled
-                                  ? "text-gray-700 hover:text-blue-600 hover:bg-blue-50" // ✅ Scrolled: gray
-                                  : "text-black hover:text-blue-300 hover:bg-white/10"   // ✅ Top: white
-                            }`}
+                            className="block px-6 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium transition-all duration-300 border-b border-blue-50 last:border-b-0"
                           >
                             {sub.name}
                           </motion.a>
@@ -141,13 +137,7 @@ const Navbar = () => {
               ) : (
                 <motion.a
                   href={item.link}
-                  // ✅ Updated: Active link blue, inactive white at top
-                  className={`px-3 py-2 font-semibold transition-colors duration-300 ${location.pathname === item.link
-                    ? "text-blue-600"
-                    : isScrolled
-                      ? "text-gray-800 hover:text-blue-600"
-                      : "text-white hover:text-blue-300"
-                    }`}
+                  className="px-3 py-2 text-gray-800 hover:text-blue-600 font-semibold transition-colors duration-300"
                 >
                   {item.name}
                 </motion.a>
@@ -165,84 +155,65 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      {/* Mobile Menu */}
-<AnimatePresence>
-  {isOpen && (
-    <motion.div
-      initial={{ opacity: 0, height: 0 }}
-      animate={{ opacity: 1, height: "auto" }}
-      exit={{ opacity: 0, height: 0 }}
-      transition={{ duration: 0.3 }}
-      className="lg:hidden bg-white/95 backdrop-blur-xl shadow-2xl border-t border-blue-100"
-    >
-      <motion.div variants={containerVariants} initial="hidden" animate="visible" className="px-4 pt-2 pb-6 space-y-1">
-        {navItems.map((item) => (
-          <motion.div key={item.name} variants={itemVariants}>
-            {item.dropdown ? (
-              <div className="border-b border-blue-50 last:border-b-0">
-                <button
-                  onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
-                  className={`flex items-center justify-between w-full px-4 py-4 font-semibold text-left transition-colors duration-300 ${
-                    item.dropdown.some((sub) => location.pathname === sub.link)
-                      ? "text-blue-600"
-                      : isScrolled
-                        ? "text-gray-800 hover:text-blue-600"
-                        : "text-gray-800 hover:text-blue-600" // ✅ Changed from white to gray for mobile
-                  }`}
-                >
-                  {item.name}
-                  <FaChevronDown className="w-3 h-3" />
-                </button>
-                <AnimatePresence>
-                  {activeDropdown === item.name && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="pl-6 bg-blue-50/50 rounded-lg mx-4 mb-2 overflow-hidden"
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="lg:hidden bg-white/95 backdrop-blur-xl shadow-2xl border-t border-blue-100"
+          >
+            <motion.div variants={containerVariants} initial="hidden" animate="visible" className="px-4 pt-2 pb-6 space-y-1">
+              {navItems.map((item) => (
+                <motion.div key={item.name} variants={itemVariants}>
+                  {item.dropdown ? (
+                    <div className="border-b border-blue-50 last:border-b-0">
+                      <button
+                        onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
+                        className="flex items-center justify-between w-full px-4 py-4 text-gray-800 hover:text-blue-600 font-semibold text-left"
+                      >
+                        {item.name}
+                        <FaChevronDown className="w-3 h-3" />
+                      </button>
+                      <AnimatePresence>
+                        {activeDropdown === item.name && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="pl-6 bg-blue-50/50 rounded-lg mx-4 mb-2 overflow-hidden"
+                          >
+                            {item.dropdown.map((sub) => (
+                              <motion.a
+                                key={sub.name}
+                                href={sub.link}
+                                className="block px-4 py-3 text-gray-700 hover:text-blue-600 font-medium border-b border-blue-100 last:border-b-0"
+                                onClick={() => setIsOpen(false)}
+                              >
+                                {sub.name}
+                              </motion.a>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  ) : (
+                    <a
+                      href={item.link}
+                      className="block px-4 py-4 text-gray-800 hover:text-blue-600 font-semibold border-b border-blue-50 last:border-b-0"
+                      onClick={() => setIsOpen(false)}
                     >
-                      {item.dropdown.map((sub) => (
-                        <motion.a
-                          key={sub.name}
-                          href={sub.link}
-                          className={`block px-4 py-3 font-medium border-b last:border-b-0 transition-all duration-300 ${
-                            location.pathname === sub.link
-                              ? "text-blue-600 bg-blue-100"
-                              : isScrolled
-                                ? "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
-                                : "text-gray-800 hover:text-blue-600 hover:bg-white/10" // ✅ Changed from black to gray for mobile
-                          }`}
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {sub.name}
-                        </motion.a>
-                      ))}
-                    </motion.div>
+                      {item.name}
+                    </a>
                   )}
-                </AnimatePresence>
-              </div>
-            ) : (
-              <a
-                href={item.link}
-                className={`block px-4 py-4 font-semibold border-b last:border-b-0 transition-colors duration-300 ${
-                  location.pathname === item.link
-                    ? "text-blue-600"
-                    : isScrolled
-                      ? "text-gray-800 hover:text-blue-600"
-                      : "text-gray-800 hover:text-blue-600" // ✅ Changed from white to gray for mobile
-                }`}
-                onClick={() => setIsOpen(false)}
-              >
-                {item.name}
-              </a>
-            )}
+                </motion.div>
+              ))}
+            </motion.div>
           </motion.div>
-        ))}
-      </motion.div>
-    </motion.div>
-  )}
-</AnimatePresence>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 };
