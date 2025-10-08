@@ -55,8 +55,8 @@ const MissionAndVision = () => {
         </div>
 
         {/* Vision Section */}
-        <div className="bg-gray-100 p-6 sm:p-10 rounded-3xl flex flex-col md:flex-row items-center gap-8 mb-12 transform transition duration-300 hover:scale-105 hover:opacity-90">
-          <div className="md:w-1/2 flex justify-center">
+        <div className="bg-white p-6 sm:p-10 rounded-3xl flex flex-col md:flex-row items-center gap-8 mb-12 transform transition duration-300 hover:scale-105 hover:opacity-90">
+          <div className="md:w-1/2 text-gray-800 flex justify-center">
             <img
               src={"https://i.pinimg.com/1200x/13/80/ea/1380eaa785e6d085dbde02329f0d17b7.jpg"}
               alt="Vision"
