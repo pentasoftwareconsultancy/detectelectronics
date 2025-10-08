@@ -216,7 +216,7 @@ const HomeHero = ({ showLearnMore }) => {
         onClick={prevSlide}
         whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.2)" }}
         whileTap={{ scale: 0.9 }}
-        className="absolute left-4 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white border border-white/20"
+        // className="absolute left-4 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white border border-white/20"
       >
         ‹
       </motion.button>
@@ -224,7 +224,7 @@ const HomeHero = ({ showLearnMore }) => {
         onClick={nextSlide}
         whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.2)" }}
         whileTap={{ scale: 0.9 }}
-        className="absolute right-4 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white border border-white/20"
+        // className="absolute right-4 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white border border-white/20"
       >
         ›
       </motion.button>
