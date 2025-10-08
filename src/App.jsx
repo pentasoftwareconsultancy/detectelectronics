@@ -1,5 +1,5 @@
-import React, { Suspense, lazy } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import React, { Suspense, lazy, useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import Lenis from "@studio-freight/lenis";
 import './App.css'
 
@@ -25,9 +25,21 @@ const CareerPage = lazy(() => import('./pages/CareerPage'))
 const GalleryPage = lazy(() => import('./pages/GalleryPage'))
 const ContactPage = lazy(() => import('./pages/ContactPage'))
 
+const ScrollToTop = () => {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth', // optional smooth scroll
+    })
+  }, [pathname])
+  return null
+}
+
 function App() {
   return (
     <Router>
+      <ScrollToTop /> {/* ← Add this inside Router */}
       <Navbar />
       <HomeHero showLearnMore={location.pathname === '/'} />
 
