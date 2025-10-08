@@ -3,10 +3,10 @@ import { MapPin, Phone, Mail } from "lucide-react";
 import { FiUser, FiMail, FiMessageCircle } from "react-icons/fi";
 import {
   FaFacebookF,
-  FaTwitter,
   FaInstagram,
   FaWhatsapp,
 } from "react-icons/fa";
+import { RiTwitterXLine } from "react-icons/ri";
 
 export default function ContactUs() {
   const [formData, setFormData] = useState({
@@ -52,7 +52,7 @@ export default function ContactUs() {
       <main className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-12 max-w-7xl w-full">
           {/* Contact Form */}
-          <div className="bg-white p-10 rounded-3xl shadow-lg border border-blue-100">
+          <div id="contact-section" className="bg-white p-10 rounded-3xl shadow-lg border border-blue-100">
             <h2 className="text-3xl font-bold mb-6 text-[#1E3A8A] text-center">
               Send us a message
             </h2>
@@ -142,11 +142,12 @@ export default function ContactUs() {
               <div className="flex items-center space-x-3 w-full">
                 <MapPin size={20} className="flex-shrink-0" />
                 <div className="leading-snug text-left">
-                  Second Floor UdyogShreee Complex <br />
-                  Near Sutgirni Chawk  
+                  2nd Floor UdyogShreee Complex <br />
+                  Near Sutgirni Chowk
                   <br />
                   Chatrapti Sambhjinagar-431005
                 </div>
+
               </div>
 
               {/* Phone */}
@@ -182,7 +183,7 @@ export default function ContactUs() {
                   className="bg-[#3B82F6] hover:bg-[#2563EB] text-white p-3 rounded-full transition"
                   aria-label="Twitter"
                 >
-                  <FaTwitter />
+                  <RiTwitterXLine />
                 </a>
                 <a
                   href="https://www.instagram.com/yourhandle"

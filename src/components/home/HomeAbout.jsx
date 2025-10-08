@@ -21,10 +21,7 @@ const HomeAbout = () => {
     if (type === "presentation") {
       fileUrl = "/assets/detectelectronics.pdf";
       fileName = "Detect_Electronics_Presentation.pdf";
-    } else if (type === "eprofile") {
-      fileUrl = "/assets/detectelectronics.pptx";
-      fileName = "Detect_Electronics_E-Profile.pptx";
-    }
+    } 
 
     const link = document.createElement("a");
     link.href = fileUrl;
@@ -60,7 +57,7 @@ const HomeAbout = () => {
       ],
     },
     {
-      title: "End to End OFC Network Rollout",
+      title: "E2E OFC Network Rollout",
       points: [
         "Fiber Quality: High-grade optical fibers ensuring superior transmission.",
         "Network Speed: Ultra-fast data transfer across long distances.",
@@ -165,10 +162,10 @@ const HomeAbout = () => {
             className="bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold py-4 px-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2"
           >
             <FaDownload className="inline-block mr-2 text-lg" />
-            Download Presentation
+            Download PDF
           </motion.button>
 
-          <motion.button
+          {/* <motion.button
             onClick={() => handleDownload("eprofile")}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -176,7 +173,7 @@ const HomeAbout = () => {
           >
             <FaDownload className="inline-block mr-2 text-lg" />
             Download E-Profile
-          </motion.button>
+          </motion.button> */}
         </div>
       </motion.div>
     </div>

@@ -33,7 +33,8 @@ const Career = () => {
   };
 
   return (
-    <section className="relative w-full min-h-screen flex flex-col lg:flex-row items-center justify-center px-6 lg:px-16 py-16 bg-gray-50">
+    <section id="career-section"
+    className="relative w-full min-h-screen flex flex-col lg:flex-row items-center justify-center px-6 lg:px-16 py-16 bg-gray-50">
       
       {/* Left: Form */}
       <motion.div
@@ -164,7 +165,7 @@ const Career = () => {
         <img
           src="https://i.pinimg.com/1200x/8b/25/c9/8b25c9b0ffd8932a064f65056fb90eeb.jpg" // Replace with your career image URL
           alt="Career"
-          className="w-full max-w-md rounded-lg shadow-xl"
+          className="w-full max-w-md rounded-lg shadow-xl h-[450px]"
         />
       </motion.div>
     </section>

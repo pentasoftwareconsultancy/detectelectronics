@@ -12,7 +12,7 @@ import sem8Logo from "../../assets/sem18.png";
 import sem9Logo from "../../assets/sem19.jpg";
 import sem10Logo from "../../assets/sem20.png";
 import sem11Logo from "../../assets/sem21.jpg";
-import sem12Logo from "../../assets/sem22.jpg";
+// import sem12Logo from "../../assets/sem22.jpg";
 
 const clients = [
   sem1Logo,
@@ -26,7 +26,7 @@ const clients = [
   sem9Logo,
   sem10Logo,
   sem11Logo,
-  sem12Logo,
+  // sem12Logo,
 ];
 
 // Animation variants
@@ -78,28 +78,9 @@ export default function FooterClients() {
       >
         {/* Clients Section */}
         <motion.div variants={itemVariants}>
-          <div className="flex items-center gap-8 mb-16">
-            <motion.div
-              className="bg-gradient-to-br from-yellow-400 to-yellow-600 w-24 h-24 flex items-center justify-center rounded-2xl shadow-lg"
-              whileHover={{
-                scale: 1.05,
-                rotate: [0, -5, 5, 0],
-                transition: { duration: 0.5 },
-              }}
-            >
-              <svg
-                className="w-12 h-12 text-white"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                viewBox="0 0 24 24"
-              >
-                <path d="M12 2L2 7l10 15 10-15z" />
-                <path d="M2 7l10 15 10-15" />
-                <path d="M12 2v20" />
-              </svg>
-            </motion.div>
-            <div>
+          <div className="flex items-center mb-16 flex-col">
+            
+            
               <h2 className="text-5xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mb-3">
                 OUR CLIENTS
               </h2>
@@ -107,7 +88,7 @@ export default function FooterClients() {
                 Precious & Happy clients who trust us
               </p>
             </div>
-          </div>
+          
 
           {/* Sliding Logos */}
           <div className="overflow-hidden relative">

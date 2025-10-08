@@ -13,19 +13,19 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const activePath = location.pathname;
-  const frames = [Frame1, Frame2, Frame3]; // Array of frames
+  const frames = [Frame1, Frame2, Frame3];
   const [currentFrame, setCurrentFrame] = useState(0);
 
-  // Cycle frames every 500ms (adjust speed if needed)
+  // 🔹 Faster logo animation interval adjusted for smoother loop
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentFrame((prev) => (prev + 1) % frames.length);
-    }, 500); // 500ms per frame
+    }, 600);
     return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    const handleScroll = () => setIsScrolled(window.scrollY > 40); // 🔹 reduced scroll threshold
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -60,7 +60,7 @@ const Navbar = () => {
         { name: "About Detect Electronics", link: "/management/about-electronics" },
         { name: "Mission & Vision", link: "/management/mission-vision" },
         { name: "Certifications", link: "/management/certifications" },
-        { name: "Board of Directors", link: "/management/board" },
+        { name: "Board of Director", link: "/management/board" },
       ],
     },
     { name: "CAREER", link: "/career" },
@@ -74,8 +74,8 @@ const Navbar = () => {
   };
 
   const itemVariants = {
-    hidden: { y: -20, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 300, damping: 24 } },
+    hidden: { y: -15, opacity: 0 }, // 🔹 smaller motion offset
+    visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 250, damping: 20 } },
   };
 
   return (
@@ -85,17 +85,23 @@ const Navbar = () => {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed w-full z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-xl shadow-2xl shadow-blue-200/50 py-2"
-          : "bg-gradient-to-r from-blue-50 to-cyan-50/80 backdrop-blur-lg py-4"
+          ? "bg-white/95 backdrop-blur-xl shadow-md py-1.5" // 🔹 reduced shadow + padding
+          : "bg-gradient-to-r from-blue-50 to-cyan-50/80 backdrop-blur-lg py-2.5" // 🔹 less top padding
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         {/* Logo */}
-        <motion.div whileHover={{ scale: 1.05 }} className="flex-shrink-0 cursor-pointer" onClick={() => navigate("/")}>
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          className="flex-shrink-0 cursor-pointer"
+          onClick={() => navigate("/")}
+        >
           <img
-            src={frames[currentFrame]} // ← use currentFrame
+            src={frames[currentFrame]}
             alt="Detect Electronics"
-            className={`transition-all duration-500 ${isScrolled ? "h-20" : "h-24"}`}
+            className={`transition-all duration-500 ${
+              isScrolled ? "h-14" : "h-16" // 🔹 reduced logo height
+            }`}
           />
         </motion.div>
 
@@ -104,11 +110,11 @@ const Navbar = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="hidden lg:flex items-center space-x-4"
+          className="hidden lg:flex items-center space-x-3" // 🔹 reduced spacing
         >
           {navItems.map((item) => {
             const isActive =
-              item.link !== "#" && activePath === item.link ||
+              (item.link !== "#" && activePath === item.link) ||
               item.dropdown?.some((sub) => activePath === sub.link);
 
             return (
@@ -122,12 +128,14 @@ const Navbar = () => {
                 {item.dropdown ? (
                   <>
                     <motion.button
-                      onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
-                      className={`flex items-center px-3 py-2 font-semibold transition-colors duration-300 ${
+                      onClick={() =>
+                        setActiveDropdown(activeDropdown === item.name ? null : item.name)
+                      }
+                      className={`flex items-center px-2.5 py-1.5 font-semibold text-sm transition-colors duration-300 ${
                         isActive
                           ? "text-blue-600 border-b-2 border-blue-600"
                           : "text-gray-800 hover:text-blue-600"
-                      }`}
+                      }`} // 🔹 reduced padding + font size
                     >
                       {item.name}
                       <FaChevronDown className="ml-1 w-3 h-3" />
@@ -139,13 +147,13 @@ const Navbar = () => {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 10, scale: 0.95 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-0 mt-2 w-56 bg-white rounded-2xl shadow-xl border border-blue-100 overflow-hidden z-50"
+                          className="absolute top-full left-0 mt-1.5 w-52 bg-white rounded-xl shadow-lg border border-blue-100 overflow-hidden z-50"
                         >
                           {item.dropdown.map((sub) => (
                             <motion.button
                               key={sub.name}
                               onClick={() => navigate(sub.link)}
-                              className={`block w-full text-left px-6 py-3 font-medium transition-all duration-300 border-b border-blue-50 last:border-b-0 ${
+                              className={`block w-full text-left px-5 py-2.5 text-sm font-medium border-b border-blue-50 last:border-b-0 ${
                                 activePath === sub.link
                                   ? "text-blue-600 bg-blue-50"
                                   : "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
@@ -161,7 +169,7 @@ const Navbar = () => {
                 ) : (
                   <motion.button
                     onClick={() => navigate(item.link)}
-                    className={`px-3 py-2 font-semibold transition-colors duration-300 ${
+                    className={`px-2.5 py-1.5 font-semibold text-sm transition-colors duration-300 ${
                       isActive
                         ? "text-blue-600 border-b-2 border-blue-600"
                         : "text-gray-800 hover:text-blue-600"
@@ -181,7 +189,7 @@ const Navbar = () => {
             onClick={toggleMenu}
             className="text-gray-700 hover:text-blue-600 p-2 rounded-lg hover:bg-blue-50 transition-colors duration-300"
           >
-            {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            {isOpen ? <FaTimes size={22} /> : <FaBars size={22} />} {/* 🔹 slightly smaller */}
           </button>
         </div>
       </div>
@@ -194,17 +202,17 @@ const Navbar = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden bg-white/95 backdrop-blur-xl shadow-2xl border-t border-blue-100"
+            className="lg:hidden bg-white/95 backdrop-blur-xl shadow-xl border-t border-blue-100"
           >
             <motion.div
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="px-4 pt-2 pb-6 space-y-1"
+              className="px-3 pt-2 pb-5 space-y-1"
             >
               {navItems.map((item) => {
                 const isActive =
-                  item.link !== "#" && activePath === item.link ||
+                  (item.link !== "#" && activePath === item.link) ||
                   item.dropdown?.some((sub) => activePath === sub.link);
 
                 return (
@@ -215,7 +223,7 @@ const Navbar = () => {
                           onClick={() =>
                             setActiveDropdown(activeDropdown === item.name ? null : item.name)
                           }
-                          className={`flex items-center justify-between w-full px-4 py-4 font-semibold text-left transition-colors duration-300 ${
+                          className={`flex items-center justify-between w-full px-3 py-3 font-semibold text-left text-sm transition-colors duration-300 ${
                             isActive
                               ? "text-blue-600 bg-blue-50"
                               : "text-gray-800 hover:text-blue-600"
@@ -231,7 +239,7 @@ const Navbar = () => {
                               animate={{ opacity: 1, height: "auto" }}
                               exit={{ opacity: 0, height: 0 }}
                               transition={{ duration: 0.2 }}
-                              className="pl-6 bg-blue-50/50 rounded-lg mx-4 mb-2 overflow-hidden"
+                              className="pl-5 bg-blue-50/50 rounded-lg mx-3 mb-2 overflow-hidden"
                             >
                               {item.dropdown.map((sub) => (
                                 <motion.button
@@ -240,7 +248,7 @@ const Navbar = () => {
                                     navigate(sub.link);
                                     setIsOpen(false);
                                   }}
-                                  className={`block w-full text-left px-4 py-3 font-medium border-b border-blue-100 last:border-b-0 ${
+                                  className={`block w-full text-left px-3 py-2.5 text-sm font-medium border-b border-blue-100 last:border-b-0 ${
                                     activePath === sub.link
                                       ? "text-blue-600 bg-blue-100"
                                       : "text-gray-700 hover:text-blue-600"
@@ -259,7 +267,7 @@ const Navbar = () => {
                           navigate(item.link);
                           setIsOpen(false);
                         }}
-                        className={`block w-full text-left px-4 py-4 font-semibold border-b border-blue-50 last:border-b-0 transition-colors duration-300 ${
+                        className={`block w-full text-left px-3 py-3 font-semibold text-sm border-b border-blue-50 last:border-b-0 transition-colors duration-300 ${
                           isActive
                             ? "text-blue-600 bg-blue-50"
                             : "text-gray-800 hover:text-blue-600"
