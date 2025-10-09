@@ -142,10 +142,10 @@ export default function ContactUs() {
               <div className="flex items-center space-x-3 w-full">
                 <MapPin size={20} className="flex-shrink-0" />
                 <div className="leading-snug text-left">
-                  2nd Floor UdyogShreee Complex <br />
+                  2nd Floor UdyogShree Complex <br />
                   Near Sutgirni Chowk
                   <br />
-                  Chatrapti Sambhjinagar-431005
+                  Chhatrapati Sambhajinagar-431005
                 </div>
 
               </div>

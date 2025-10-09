@@ -90,7 +90,7 @@ export default function CompletedProject() {
   return (
     <section className="bg-gradient-to-b py-16 relative overflow-hidden">
       <div className="container mx-auto px-6 z-10">
-        <h2 className="text-5xl font-extrabold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300 drop-shadow-lg">
+        <h2 className="text-5xl text-center mb-16 font-extrabold text-[#1a3b7c] drop-shadow-lg">
           Our Completed Projects
         </h2>
 
@@ -104,7 +104,7 @@ export default function CompletedProject() {
             >
               <div className="flex items-center mb-3 space-x-3">
                 <span className="text-4xl">{logos[project.domain]}</span>
-                <h3 className="text-2xl font-semibold tracking-wide">
+                <h3 className="text-2xl font-extrabold tracking-wide text-white">
                   {project.title}
                 </h3>
               </div>

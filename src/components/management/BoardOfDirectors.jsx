@@ -55,7 +55,7 @@ const BoardOfDirectors = () => {
           <div className="absolute inset-0 bg-black/50"></div>
           <div className="relative z-10">
             <SplitText
-              text="BOARD OF DIRECTORS"
+              text="BOARD OF DIRECTOR"
               className="text-4xl md:text-5xl font-semibold tracking-wide inline-block"
               delay={100}
               duration={0.6}
@@ -91,9 +91,7 @@ const BoardOfDirectors = () => {
             ref={textRef}
             className="md:w-2/3 w-full text-gray-800 md:pl-10 leading-relaxed"
           >
-            <h3 className="text-2xl font-semibold text-gray-700 mb-4">
-              <strong>MR. Satish Ajabe (M.D)</strong>
-            </h3>
+            <h3 className="text-2xl font-extrabold text-[#1a3b7c] mb-4">MR. Satish Ajabe (M.D)</h3>
             <p>
               MR. Satish has started his career at a young age of 21 after completing
               Bachelor of Engineering from Pune University and founded Detect

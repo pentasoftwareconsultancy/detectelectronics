@@ -100,9 +100,7 @@ const Gallery = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-5xl font-bold text-gray-900 mb-4">
-            Our <span className="text-blue-600">Gallery</span>
-          </h2>
+          <h2 className="text-5xl font-extrabold text-[#1a3b7c] mb-4">Our Gallery</h2>
           <div className="w-32 h-1.5 bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 mx-auto mb-6 rounded-full" />
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Explore our construction projects and see the quality work we deliver across all sectors.

@@ -90,7 +90,7 @@ const HomeServices = () => {
             className="w-32 h-1.5 bg-gradient-to-r from-blue-400 via-indigo-400 to-cyan-400 mx-auto rounded-full mt-4"
           />
           <p className="text-gray-300 text-base sm:text-lg md:text-xl mt-6 max-w-2xl mx-auto">
-            Comprehensive solutions for telecommunications, electrical, optical fiber, and civil infrastructure.
+            Comprehensive Solutions for Telecommunications, Electrical, Optical Fiber, and Civil Infrastructure.
           </p>
         </div>
 
