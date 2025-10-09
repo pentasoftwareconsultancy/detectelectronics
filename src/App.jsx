@@ -7,6 +7,7 @@ import './App.css'
 import Navbar from './components/public/Navbar'
 import Footer from './components/public/Footer'
 import HomeHero from './components/public/HomeHero'
+import ClickTopBtn from './components/buttons/ClickTopBtn';
 
 // Lazy-loaded pages
 const HomePage = lazy(() => import('./pages/HomePage'))
@@ -85,6 +86,7 @@ function App() {
       </Suspense>
 
       <Footer />
+      <ClickTopBtn />
     </Router>
   )
 }
