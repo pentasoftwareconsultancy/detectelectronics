@@ -1,27 +1,39 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { FaDownload, FaAward, FaUsers, FaRocket, FaShieldAlt } from "react-icons/fa";
+import {
+  FaDownload,
+  FaAward,
+  FaUsers,
+  FaRocket,
+  FaShieldAlt,
+} from "react-icons/fa";
 import CountUp from "react-countup";
 
 const HomeAbout = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, threshold: 0.3 });
   const [visible, setVisible] = useState(false);
+  const [flippedCard, setFlippedCard] = useState(null); // ✅ Only one card flips at a time
 
   useEffect(() => {
     if (isInView) setVisible(true);
   }, [isInView]);
 
-  // ✅ FILE DOWNLOAD HANDLER (NO PUBLIC_URL)
+  const handleCardFlip = (index) => {
+    // ✅ On mobile (<768px), allow tap flipping
+    if (window.innerWidth < 768) {
+      setFlippedCard(flippedCard === index ? null : index);
+    }
+  };
+
   const handleDownload = (type) => {
     let fileUrl = "";
     let fileName = "";
 
-    // ✅ Updated file paths (directly from public/assets)
     if (type === "presentation") {
       fileUrl = "/assets/detectelectronics.pdf";
       fileName = "Detect_Electronics_Presentation.pdf";
-    } 
+    }
 
     const link = document.createElement("a");
     link.href = fileUrl;
@@ -32,10 +44,28 @@ const HomeAbout = () => {
   };
 
   const stats = [
-    { icon: FaAward, number: 25, text: "Years Experience", suffix: "+", duration: 2.5 },
-    { icon: FaUsers, number: 50, text: "Expert Team", suffix: "+", duration: 2 },
+    {
+      icon: FaAward,
+      number: 25,
+      text: "Years Experience",
+      suffix: "+",
+      duration: 2.5,
+    },
+    {
+      icon: FaUsers,
+      number: 50,
+      text: "Expert Team",
+      suffix: "+",
+      duration: 2,
+    },
     { icon: FaRocket, number: 250, text: "Sits", suffix: "+", duration: 3 },
-    { icon: FaShieldAlt, number: 99, text: "Quality Score", suffix: "%", duration: 2 },
+    {
+      icon: FaShieldAlt,
+      number: 99,
+      text: "Quality Score",
+      suffix: "%",
+      duration: 2,
+    },
   ];
 
   const hosting = [
@@ -84,7 +114,8 @@ const HomeAbout = () => {
         </h1>
         <div className="w-36 h-1.5 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full mb-6" />
         <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
-          Discover who we are, what we’ve achieved, and how our expertise drives excellence in every project we deliver.
+          Discover who we are, what we’ve achieved, and how our expertise drives
+          excellence in every project we deliver.
         </p>
       </motion.div>
 
@@ -104,52 +135,73 @@ const HomeAbout = () => {
             <stat.icon className="text-5xl text-blue-500 mb-4" />
             <h3 className="text-5xl font-extrabold text-[#1a3b7c]">
               {visible ? (
-                <CountUp end={stat.number} suffix={stat.suffix} duration={stat.duration} />
+                <CountUp
+                  end={stat.number}
+                  suffix={stat.suffix}
+                  duration={stat.duration}
+                />
               ) : (
                 `0${stat.suffix}`
               )}
             </h3>
-            <p className="mt-2 text-lg font-medium text-gray-700">{stat.text}</p>
+            <p className="mt-2 text-lg font-medium text-gray-700">
+              {stat.text}
+            </p>
           </motion.div>
         ))}
       </motion.div>
 
-      {/* ☁ Hosting Section (Flip Card Version) */}
-<div className="grid md:grid-cols-3 gap-10 mb-24">
-  {hosting.map((card, i) => (
-    <motion.div
-      key={i}
-      initial={{ opacity: 0, y: 50 }}
-      animate={visible ? { opacity: 1, y: 0 } : {}}
-      transition={{ delay: 0.2 * i }}
-      className="group [perspective:1000px] w-full h-[340px]"
-    >
-      <div className="relative w-full h-full transition-transform duration-[800ms] [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-        
-        {/* Front Side */}
-        <div className="absolute flex flex-col justify-center items-center w-full h-full border border-[#1a3b7c]/20 rounded-2xl shadow-lg backface-hidden bg-gradient-to-br from-[#eaf1ff] via-[#d4e4fb] to-[#b7d2f8]">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1a3b7c]">
-            {card.title}
-          </h2>
-          <p className="text-gray-600 mt-3 text-lg">Hover to explore</p>
-        </div>
+      {/* ☁ Hosting Section */}
+      <div className="grid md:grid-cols-3 gap-10 mb-24">
+        {hosting.map((card, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 50 }}
+            animate={visible ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.2 * i }}
+            className="group [perspective:1000px] w-full h-[340px] cursor-pointer"
+            onClick={() => handleCardFlip(i)}
+          >
+            <div
+              className={`relative w-full h-full transition-transform duration-[800ms] [transform-style:preserve-3d] [will-change:transform]
+    ${
+      flippedCard === i
+        ? "[transform:rotateY(180deg)]"
+        : "md:group-hover:[transform:rotateY(180deg)]"
+    }`}
+            >
+              {/* Front Side */}
+              <div
+                className="absolute flex flex-col justify-center items-center w-full h-full border border-[#1a3b7c]/20 rounded-2xl shadow-lg
+    [backface-visibility:hidden] [-webkit-backface-visibility:hidden] bg-gradient-to-br from-[#eaf1ff] via-[#d4e4fb] to-[#b7d2f8]"
+              >
+                <h2 className="text-3xl md:text-4xl font-bold text-[#1a3b7c] text-center">
+                  {card.title}
+                </h2>
+                <p className="text-gray-600 mt-3 text-lg md:text-base">
+                  Hover / Tap to explore
+                </p>
+              </div>
 
-        {/* Back Side */}
-        <div className="absolute flex flex-col justify-start w-full h-full p-8 border border-[#1a3b7c]/20 rounded-2xl shadow-lg backface-hidden [transform:rotateY(180deg)] bg-gradient-to-br from-[#b7d2f8] via-[#d4e4fb] to-[#eaf1ff] text-[#1a3b7c] overflow-y-auto">
-          <ul className="space-y-3 text-gray-800 text-base leading-relaxed">
-            {card.points.map((point, idx) => (
-              <li key={idx} className="flex items-start">
-                <span className="w-2 h-2 bg-[#1a3b7c] rounded-full mt-2 mr-3"></span>
-                {point}
-              </li>
-            ))}
-          </ul>
-        </div>
-
+              {/* Back Side */}
+              <div
+                className="absolute flex flex-col justify-start w-full h-full p-8 border border-[#1a3b7c]/20 rounded-2xl shadow-lg
+    [backface-visibility:hidden] [-webkit-backface-visibility:hidden] [transform:rotateY(180deg)]
+    [will-change:transform] bg-gradient-to-br from-[#b7d2f8] via-[#d4e4fb] to-[#eaf1ff] text-[#1a3b7c] overflow-y-auto"
+              >
+                <ul className="space-y-3 text-gray-800 text-base leading-relaxed">
+                  {card.points.map((point, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <span className="w-2 h-2 bg-[#1a3b7c] rounded-full mt-2 mr-3"></span>
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </motion.div>
+        ))}
       </div>
-    </motion.div>
-  ))}
-</div>
 
       {/* 📥 Download Section */}
       <motion.div
@@ -175,16 +227,6 @@ const HomeAbout = () => {
             <FaDownload className="inline-block mr-2 text-lg" />
             Download PDF
           </motion.button>
-
-          {/* <motion.button
-            onClick={() => handleDownload("eprofile")}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-white text-cyan-600 font-semibold py-4 px-10 rounded-3xl border-2 border-cyan-400 shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
-          >
-            <FaDownload className="inline-block mr-2 text-lg" />
-            Download E-Profile
-          </motion.button> */}
         </div>
       </motion.div>
     </div>
