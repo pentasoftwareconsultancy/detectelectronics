@@ -10,7 +10,7 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const activePath = location.pathname;
-  const logo = "/assets/logo.jpg";
+  const logo = "/assets/logo.png";
   const frames = [
   "/assets/Frame1.png",
   "/assets/Frame2.png",
