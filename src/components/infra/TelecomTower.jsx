@@ -157,7 +157,7 @@ const TelecomTower = () => {
             <div className="w-full lg:w-2/5 justify-center hidden lg:flex">
               <img
                 ref={imgRef}
-                src="http://www.detectelectronics.com/images/infrastructure/telecom-tower-infrastructure.jpg"
+                src="/assets/telecomtower.jpg"
                 alt="Telecom Tower"
                 className="w-full md:w-[400px] lg:w-full h-full rounded-xl shadow-xl border-4 border-gray-200 transition-transform duration-300 hover:scale-105 hover:shadow-2xl object-cover"
               />
