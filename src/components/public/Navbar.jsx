@@ -10,6 +10,7 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const activePath = location.pathname;
+  const logo = "/assets/logo.jpg";
   const frames = [
   "/assets/Frame1.png",
   "/assets/Frame2.png",
@@ -101,7 +102,7 @@ const Navbar = () => {
             src={frames[currentFrame]}
             alt="Detect Electronics"
             className={`transition-all duration-500 ${
-              isScrolled ? "h-14" : "h-16" // 🔹 reduced logo height
+              isScrolled ? "h-16" : "h-18" // 🔹 reduced logo height
             }`}
           />
         </motion.div>

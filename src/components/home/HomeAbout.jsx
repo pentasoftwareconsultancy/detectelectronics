@@ -114,31 +114,42 @@ const HomeAbout = () => {
         ))}
       </motion.div>
 
-      {/* ☁ Hosting Section */}
-      <div className="grid md:grid-cols-3 gap-10 mb-24">
-        {hosting.map((card, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 50 }}
-            animate={visible ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.2 * i }}
-            whileHover={{ scale: 1.03 }}
-            className="relative overflow-hidden rounded-2xl p-10 md:p-12 transition-all duration-500 bg-gradient-to-br from-[#eaf1ff] via-[#d4e4fb] to-[#b7d2f8] shadow-lg hover:shadow-2xl"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1a3b7c] mb-6">
-              {card.title}
-            </h2>
-            <ul className="space-y-4 text-gray-800 text-lg leading-relaxed">
-              {card.points.map((point, idx) => (
-                <li key={idx} className="flex items-start">
-                  <span className="w-2 h-2 bg-[#1a3b7c] rounded-full mt-2 mr-3"></span>
-                  {point}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        ))}
+      {/* ☁ Hosting Section (Flip Card Version) */}
+<div className="grid md:grid-cols-3 gap-10 mb-24">
+  {hosting.map((card, i) => (
+    <motion.div
+      key={i}
+      initial={{ opacity: 0, y: 50 }}
+      animate={visible ? { opacity: 1, y: 0 } : {}}
+      transition={{ delay: 0.2 * i }}
+      className="group [perspective:1000px] w-full h-[340px]"
+    >
+      <div className="relative w-full h-full transition-transform duration-[800ms] [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+        
+        {/* Front Side */}
+        <div className="absolute flex flex-col justify-center items-center w-full h-full border border-[#1a3b7c]/20 rounded-2xl shadow-lg backface-hidden bg-gradient-to-br from-[#eaf1ff] via-[#d4e4fb] to-[#b7d2f8]">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#1a3b7c]">
+            {card.title}
+          </h2>
+          <p className="text-gray-600 mt-3 text-lg">Hover to explore</p>
+        </div>
+
+        {/* Back Side */}
+        <div className="absolute flex flex-col justify-start w-full h-full p-8 border border-[#1a3b7c]/20 rounded-2xl shadow-lg backface-hidden [transform:rotateY(180deg)] bg-gradient-to-br from-[#b7d2f8] via-[#d4e4fb] to-[#eaf1ff] text-[#1a3b7c] overflow-y-auto">
+          <ul className="space-y-3 text-gray-800 text-base leading-relaxed">
+            {card.points.map((point, idx) => (
+              <li key={idx} className="flex items-start">
+                <span className="w-2 h-2 bg-[#1a3b7c] rounded-full mt-2 mr-3"></span>
+                {point}
+              </li>
+            ))}
+          </ul>
+        </div>
+
       </div>
+    </motion.div>
+  ))}
+</div>
 
       {/* 📥 Download Section */}
       <motion.div
