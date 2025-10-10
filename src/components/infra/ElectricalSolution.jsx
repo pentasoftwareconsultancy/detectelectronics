@@ -33,7 +33,7 @@ const ElectricalSolution = () => {
         {/* Header Section */}
         <div
           className="w-full bg-cover bg-center relative py-24 md:py-32 text-center text-white mb-16 rounded-3xl overflow-hidden shadow-lg"
-          style={{ backgroundImage: `url(${"https://s3-ap-south-1.amazonaws.com/ricedigitals3bucket/AUPortalContent/2022/12/19124848/Why-Electrical-Engineering-.png"})` }}
+          style={{ backgroundImage: `url(/assets/Electrical.png)` }}
         >
           <div className="absolute inset-0 bg-black/60"></div>
 
@@ -104,7 +104,7 @@ const ElectricalSolution = () => {
             {/* Image Section */}
             <div className="lg:w-2/5 w-full flex justify-center">
               <motion.img
-                src={"https://img.freepik.com/premium-photo/asian-electrical-engineer-checking-position-using-notebook-computer-power-station-planning-work-production-highvoltage-electric-poles-vertical-image_61243-1905.jpg"}
+                src={"/assets/Electrical1.jpg"}
                 alt="Electrical Construction"
                 className="w-full md:w-[400px] lg:w-full h-[450px] object-right rounded-xl shadow-xl border-4 border-gray-200 transition-transform duration-300 hover:scale-105 hover:shadow-2xl object-cover"
                 initial={{ opacity: 0, scale: 0.95 }}

@@ -1,12 +1,10 @@
 import React, { Suspense, lazy, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
-import Lenis from "@studio-freight/lenis";
 import './App.css'
 
 // Common components (kept outside lazy since they are always shown)
 import Navbar from './components/public/Navbar'
 import Footer from './components/public/Footer'
-import HomeHero from './components/public/HomeHero'
 import ClickTopBtn from './components/buttons/ClickTopBtn';
 
 // Lazy-loaded pages
@@ -37,17 +35,11 @@ const ScrollToTop = () => {
   return null
 }
 
-const HomeHeroWrapper = () => {
-  const location = useLocation();
-  return <HomeHero showLearnMore={location.pathname === "/"} />;
-};
-
 function App() {
   return (
     <Router>
       <ScrollToTop /> {/* ← Add this inside Router */}
       <Navbar />
-      <HomeHeroWrapper />
 
       {/* Suspense fallback — shows loader while pages are loading */}
       <Suspense
@@ -57,6 +49,7 @@ function App() {
           </div>
         }
       >
+        <div className='pt-16'>
         <Routes>
           {/* Home */}
           <Route path="/" element={<HomePage />} />
@@ -83,6 +76,7 @@ function App() {
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/contact" element={<ContactPage />} />
         </Routes>
+        </div>
       </Suspense>
 
       <Footer />

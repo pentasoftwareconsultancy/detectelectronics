@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
-import { useLocation } from "react-router-dom";
 
 const images = [
   "/assets/Hero1.png",
@@ -10,49 +9,9 @@ const images = [
   "/assets/Hero3.jpg",
 ];
 
-const HomeHero = ({ showLearnMore }) => {
+const HomeHero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-  const location = useLocation();
-
-  const getDynamicHeading = () => {
-    switch (location.pathname) {
-      case "/":
-        return "Infrastructure Connectivity";
-      case "/infra/telecom-tower":
-        return "Telecom Tower Solutions";
-      case "/infra/optical-fiber":
-        return "Optical Fiber Networks";
-      case "/infra/civil-construction":
-        return "Civil Construction Services";
-      case "/infra/electrical-solution":
-        return "Electrical Infrastructure";
-      case "/project/completed":
-        return "Completed Projects";
-      case "/project/current":
-        return "Current Projects";
-      case "/project/management":
-        return "Project Management";
-      case "/management/about-electronics":
-        return "About Detect Electronics";
-      case "/management/mission-vision":
-        return "Mission & Vision";
-      case "/management/certifications":
-        return "Certifications & Achievements";
-      case "/management/board":
-        return "Board of Director";
-      case "/career":
-        return "Career Opportunities";
-      case "/gallery":
-        return "Project Gallery";
-      case "/contact":
-        return "Contact Us";
-      default:
-        return "Infrastructure Connectivity";
-    }
-  };
-
-  const headingText = getDynamicHeading(); // ✅ Now this works safely
 
   const scrollToAbout = () => {
     const section = document.getElementById("home-about");
@@ -299,7 +258,7 @@ const HomeHero = ({ showLearnMore }) => {
               ease: "linear",
             }}
           >
-            {headingText}
+            Infrastructure Connectivity
           </motion.h1>
         </motion.div>
 
@@ -365,7 +324,6 @@ const HomeHero = ({ showLearnMore }) => {
         </motion.div>
 
         {/* Learn More button */}
-        {showLearnMore && (
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -385,7 +343,6 @@ const HomeHero = ({ showLearnMore }) => {
               Learn More
             </motion.button>
           </motion.div>
-        )}
       </div>
 
       {/* Enhanced Scroll Hint */}

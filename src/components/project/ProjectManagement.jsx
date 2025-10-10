@@ -66,7 +66,7 @@ const ProjectManagement = () => {
             viewport={{ once: true, amount: 0.3 }}
           >
             <img
-              src="https://i.pinimg.com/1200x/21/2d/bd/212dbd9bd43198422c0f0e01ca3d1ade.jpg"
+              src="/assets/ProjectManagement.jpg"
               alt="Project Management"
               className="rounded-3xl shadow-2xl w-full max-w-lg object-cover"
               loading="lazy"
