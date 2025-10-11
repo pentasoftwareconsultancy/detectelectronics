@@ -91,9 +91,10 @@ const BoardOfDirectors = () => {
             ref={textRef}
             className="md:w-2/3 w-full text-gray-800 md:pl-10 leading-relaxed"
           >
-            <h3 className="text-2xl font-extrabold text-[#1a3b7c] mb-4">MR. Satish Ajabe (M.D)</h3>
+            <h3 className="text-2xl font-extrabold text-[#2384c5]">MR. Satish Ajabe</h3>
+            <p className="text-[16px] mb-4 ml-7">Managing Director</p>
             <p>
-              MR. Satish has started his career at a young age of 21 after completing
+              MR. Satish (M.D) has started his career at a young age of 21 after completing
               Bachelor of Engineering from Pune University and founded Detect
               Electronics System (I) Private Limited (DESIPL) with a modest
               capital, in the year 1998. Today, he heads a successful enterprise

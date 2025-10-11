@@ -206,10 +206,10 @@ export default function ContactUs() {
           </div>
         </div>
       </main>
-      <div className="max-w-7xl w-full h-[500px]">
+      <div className="max-w-7xl w-full h-[500px] flex justify-center "> {/* radious */}
         <iframe
           title="Location Map"
-          width="100%"
+          width="60%"
           height="90%"
           style={{ border: 0 }}
           loading="lazy"

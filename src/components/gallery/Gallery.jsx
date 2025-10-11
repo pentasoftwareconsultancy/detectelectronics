@@ -8,6 +8,7 @@ const GALLERY_TABS = [
   { label: 'RTT Construction', value: 'RTT' },
   { label: 'Civil Work', value: 'Civil' },
   { label: 'Electrification', value: 'Electrification' },
+  { label: 'Training', value: 'Training' },
 ];
 
 const GALLERY_IMAGES = [
@@ -102,8 +103,8 @@ const Gallery = () => {
         >
           <h2 className="text-5xl font-extrabold text-[#1a3b7c] mb-4">Our Gallery</h2>
           <div className="w-32 h-1.5 bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 mx-auto mb-6 rounded-full" />
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Explore our construction projects and see the quality work we deliver across all sectors.
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+            "Discover our telecom and infrastructure projects, showcasing excellence and precision."
           </p>
         </motion.div>
 

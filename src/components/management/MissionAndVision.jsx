@@ -57,7 +57,7 @@ const MissionAndVision = () => {
         <div className="bg-white p-6 sm:p-10 rounded-3xl flex flex-col md:flex-row items-center gap-8 mb-12 transform transition duration-300 hover:scale-105 hover:opacity-90">
           <div className="md:w-1/2 text-gray-800 flex justify-center">
             <img
-              src={"/assets/Mission1.jpg"}
+              src={"/assets/CivilConstruction.jpg"}
               alt="Vision"
               className="rounded-3xl shadow-xl w-full md:w-5/6 object-cover"
             />

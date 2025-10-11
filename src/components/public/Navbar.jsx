@@ -59,7 +59,7 @@ const Navbar = () => {
       name: "MANAGEMENT",
       link: "#",
       dropdown: [
-        { name: "About Detect Electronics", link: "/management/about-electronics" },
+        // { name: "About Detect Electronics", link: "/management/about-electronics" },
         { name: "Mission & Vision", link: "/management/mission-vision" },
         { name: "Certifications", link: "/management/certifications" },
         { name: "Board of Director", link: "/management/board" },

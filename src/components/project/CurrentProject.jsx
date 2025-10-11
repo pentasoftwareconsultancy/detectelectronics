@@ -12,15 +12,6 @@ const logos = {
   irrigation: "💧",
 };
 
-const techNames = {
-  fiber: "OFC",
-  towers: "Towers",
-  electrical: "Electrical",
-  rf: "RF Installation",
-  om: "FTTH",
-  critical: "Critical Towers",
-};
-
 const currentProjects = [
   {
     id: 1,
@@ -105,17 +96,6 @@ export default function CurrentProject() {
                     <li key={i}>{f}</li>
                   ))}
                 </ul>
-
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech, idx) => (
-                    <span
-                      key={idx}
-                      className="px-3 py-1 rounded-full text-xs font-medium bg-white/30 text-white backdrop-blur-md border border-white/20"
-                    >
-                      {techNames[tech]}
-                    </span>
-                  ))}
-                </div>
               </div>
             </motion.div>
           ))}

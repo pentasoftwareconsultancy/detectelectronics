@@ -16,7 +16,7 @@ const ElectricalSolutionPage = lazy(() => import('./pages/ElectricalSolutionPage
 const CompletedProjectPage = lazy(() => import('./pages/CompletedProjectPage'))
 const CurrentProjectPage = lazy(() => import('./pages/CurrentProjectPage'))
 const ProjectManagementPage = lazy(() => import('./pages/ProjectManagementPage'))
-const AboutElectronicsPage = lazy(() => import('./pages/AboutElectronicsPage'))
+// const AboutElectronicsPage = lazy(() => import('./pages/AboutElectronicsPage'))
 const MissionAndVisionPage = lazy(() => import('./pages/MissionAndVisionPage'))
 const CertificationsPage = lazy(() => import('./pages/CertificationsPage'))
 const BoardOfDirectorsPage = lazy(() => import('./pages/BoardOfDirectorsPage'))
@@ -66,7 +66,7 @@ function App() {
           <Route path="/project/management" element={<ProjectManagementPage />} />
 
           {/* Management */}
-          <Route path="/management/about-electronics" element={<AboutElectronicsPage />} />
+          {/* <Route path="/management/about-electronics" element={<AboutElectronicsPage />} /> */}
           <Route path="/management/mission-vision" element={<MissionAndVisionPage />} />
           <Route path="/management/certifications" element={<CertificationsPage />} />
           <Route path="/management/board" element={<BoardOfDirectorsPage />} />
