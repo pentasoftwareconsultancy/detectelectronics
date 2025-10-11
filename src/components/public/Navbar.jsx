@@ -40,10 +40,10 @@ const Navbar = () => {
       name: "INFRA",
       link: "#",
       dropdown: [
-        { name: "Telecom Tower", link: "/infra/telecom-tower" },
-        { name: "Optical Fibre Cable", link: "/infra/optical-fiber" },
-        { name: "Civil Construction", link: "/infra/civil-construction" },
-        { name: "Electrical Solution", link: "/infra/electrical-solution" },
+        { name: "Telecom Tower Division", link: "/infra/telecom-tower" },
+        { name: "Optical Fibre Cable Division", link: "/infra/optical-fiber" },
+        { name: "Civil Construction Division", link: "/infra/civil-construction" },
+        { name: "Electrical Solution Division", link: "/infra/electrical-solution" },
       ],
     },
     {

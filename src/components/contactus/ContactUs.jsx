@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MapPin, Phone, Mail } from "lucide-react";
-import { FiUser, FiMail, FiMessageCircle } from "react-icons/fi";
+import { FiUser, FiMail, FiMessageCircle, FiPhone } from "react-icons/fi";
 import {
   FaFacebookF,
   FaInstagram,
@@ -80,6 +80,22 @@ export default function ContactUs() {
                   name="name"
                   placeholder="Your Name"
                   value={formData.name}
+                  onChange={handleChange}
+                  className="w-full pl-10 border border-[#CBD5E1] rounded-2xl p-3 focus:outline-none focus:ring-2 focus:ring-[#3B82F6] transition"
+                  required
+                />
+              </div>
+
+              <div className="relative">
+                <FiPhone
+                  className="absolute top-1/2 left-3 -translate-y-1/2 text-[#6B7280]"
+                  size={20}
+                />
+                <input
+                  type="number"
+                  name="number"
+                  placeholder="Your Phone Number"
+                  value={formData.number}
                   onChange={handleChange}
                   className="w-full pl-10 border border-[#CBD5E1] rounded-2xl p-3 focus:outline-none focus:ring-2 focus:ring-[#3B82F6] transition"
                   required
@@ -167,7 +183,7 @@ export default function ContactUs() {
             <div className="mt-6 text-center">
               <p className="text-gray-700 mb-2">Follow us on social media:</p>
               <div className="flex space-x-4 justify-center">
-                <a
+                {/* <a
                   href="https://www.facebook.com/yourpage"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -175,25 +191,7 @@ export default function ContactUs() {
                   aria-label="Facebook"
                 >
                   <FaFacebookF />
-                </a>
-                <a
-                  href="https://twitter.com/yourhandle"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-[#3B82F6] hover:bg-[#2563EB] text-white p-3 rounded-full transition"
-                  aria-label="Twitter"
-                >
-                  <RiTwitterXLine />
-                </a>
-                <a
-                  href="https://www.instagram.com/yourhandle"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-[#EC4899] hover:bg-[#DB2777] text-white p-3 rounded-full transition"
-                  aria-label="Instagram"
-                >
-                  <FaInstagram />
-                </a>
+                </a> */} linkdin
                 <a
                   href="https://wa.me/919922260007"
                   target="_blank"

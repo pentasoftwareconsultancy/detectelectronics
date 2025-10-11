@@ -29,39 +29,42 @@ export default function CompletedProject() {
       description: "Optical Fiber Cable laid across multiple sites.",
       domain: "telecom",
       details:
-        "Optical Fiber Cable \n IDEA: 300 KMs, RJIL: 400 KMs, STL: 300 KMs, NIPL: 50KMs, BSNL: 200KMs \n OFC-PMC (IDEA) – 1500 KM",
-      features: ["High-speed connectivity", "Reliable network backbone"],
+        "Optical Fiber Cable \n IDEA: 300 KMs, RJIL: 400 KMs, STL: 300 KMs, NIPL: 50KMs, BSNL: 200KMs",
+      features: ["Timely ROW Permission", "Speedy Rollout", "Seamless Connectivity"],
       tech: ["fiber"],
       status: "Completed",
     },
     {
       id: 2,
-      title: "Tower Foundations",
+      title: "Tower/Pole Structure Constructions",
       description: "Installation of GBT & RTT towers.",
       domain: "telecom",
-      details: "TOWERS - 2200 NOS",
-      features: ["Structural safety", "High coverage"],
+      details: "TOWERS - 2200 Nos.",
+      features: ["Precision Excavation", "Rapid Erection", "Modular Design", "Quality Foundation Work","Alignment Accuracy", "Safety-Compliant Construction" ],
       tech: ["towers"],
       status: "Completed",
     },
     {
       id: 3,
-      title: "Electrical Work",
+      title: "Electrical Laisioning & EV Supply Charging",
       description: "HT/LT electrical work across telecom sites.",
       domain: "telecom",
       details: "ELECTRICAL (HT/LT Work) - 1500 SITES",
-      features: ["High voltage safety", "Efficient power distribution"],
+      features: ["Seamless Liaisoning", "Quick Approvals", "Load Assessment Expertise", "EV-Ready Infrastructure", 
+        "Safety-Driven Installation", "Transformer I&C", "DG Set & BATT Bank, UPS I&C" ],
       tech: ["electrical"],
       status: "Completed",
     },
     {
       id: 4,
-      title: "RF Installation",
+      title: "RF Installation & Network Optimization",
       description: "Radio Frequency installation for multiple vendors.",
       domain: "telecom",
       details:
         "RF Installation (IDEA / ALCATEL / SAMSUNG / NOKIA) - 2000+ SITES",
-      features: ["Optimized network coverage", "Vendor-compliant installation"],
+      features: ["End-to-End RF Deployment", "Precision Antenna Alignment", "Seamless Integration", "VSWR & Power Testing", 
+        "High-Frequency Optimization", "Field Drive Testing", "Coverage & Quality Analysis", "Network Benchmarking", 
+        "Data Reporting & Insights" ],
       tech: ["rf"],
       status: "Completed",
     },
@@ -127,7 +130,7 @@ export default function CompletedProject() {
                 </p>
 
                 <h4 className="text-md font-semibold mb-2 text-cyan-200">
-                  Key Features:
+                  Key Achivement:
                 </h4>
                 <ul className="list-disc list-inside text-gray-100 text-sm mb-3 space-y-1">
                   {project.features.map((f, i) => (

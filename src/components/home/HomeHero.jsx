@@ -258,7 +258,7 @@ const HomeHero = () => {
               ease: "linear",
             }}
           >
-            Telecom Infrastructure Solutions
+            Telecom Infra | Global Standards | Enterprise Solutions | Tech. Skill Development
           </motion.h1>
         </motion.div>
 
@@ -302,7 +302,7 @@ const HomeHero = () => {
               { number: "2200+", label: "Telecom Tower" },
               { number: "3000+ KM", label: "Optical Fiber RollOut" },
               { number: "500+", label: "FTTH" },
-              { number: "2", label: "MSC/Data Center Infra" }
+              { number: "200+", label: "Skill Development" },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
