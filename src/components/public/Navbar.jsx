@@ -36,6 +36,7 @@ const Navbar = () => {
 
   const navItems = [
     { name: "HOME", link: "/" },
+    { name: "ABOUT", link: "/about" },
     {
       name: "INFRA",
       link: "#",

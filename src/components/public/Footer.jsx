@@ -55,7 +55,7 @@ export default function FooterClients() {
   }, []);
 
   return (
-    <footer className="bg-gradient-to-b bg-white py-20 px-8 overflow-hidden relative">
+    <footer className="py-20 px-8 overflow-hidden relative">
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -113,7 +113,7 @@ export default function FooterClients() {
         >
           {/* Left Side - Company Maintainer */}
           <div className="text-sm text-gray-600">
-            Maintain By:{" "}
+            Developed and Maintain By:{" "}
             <span className="font-extrabold text-[#1a3b7c]">
               Devcons Software Solutions Pvt. Ltd.
             </span>

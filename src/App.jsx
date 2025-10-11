@@ -9,6 +9,7 @@ import ClickTopBtn from './components/buttons/ClickTopBtn';
 
 // Lazy-loaded pages
 const HomePage = lazy(() => import('./pages/HomePage'))
+const AboutPage = lazy(() => import('./pages/AboutPage'))
 const TelecomTowerPage = lazy(() => import('./pages/TelecomTowerPage'))
 const OpticalFiberPage = lazy(() => import('./pages/OpticalFiberPage'))
 const CivilConstructionPage = lazy(() => import('./pages/CivilConstructionPage'))
@@ -53,6 +54,9 @@ function App() {
         <Routes>
           {/* Home */}
           <Route path="/" element={<HomePage />} />
+
+          {/* About */}
+          <Route path="/about" element={<AboutPage />} />
 
           {/* Infra */}
           <Route path="/infra/telecom-tower" element={<TelecomTowerPage />} />
