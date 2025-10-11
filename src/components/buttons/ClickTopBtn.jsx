@@ -25,7 +25,7 @@ const ClickTopBtn = () => {
     <button
       onClick={scrollToTop}
       aria-label="Scroll to top"
-      className={`fixed bottom-6 right-6 z-50 rounded-full bg-gradient-to-r from-blue-600 to-cyan-400 text-white p-4 shadow-lg transition-all duration-500 hover:scale-110 hover:shadow-2xl ${
+      className={`cursor-pointer fixed bottom-6 right-6 z-50 rounded-full bg-gradient-to-r from-blue-600 to-cyan-400 text-white p-4 shadow-lg transition-all duration-500 hover:scale-110 hover:shadow-2xl ${
         isVisible
           ? "opacity-100 translate-y-0"
           : "opacity-0 translate-y-10 pointer-events-none"

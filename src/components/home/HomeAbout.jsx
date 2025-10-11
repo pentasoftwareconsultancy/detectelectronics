@@ -89,7 +89,7 @@ const HomeAbout = () => {
       bgGradient: "from-green-50 to-emerald-50",
     },
     {
-      title: "End to End OFC Network Roll-out",
+      title: "E2E OFC Network Roll-out",
       icon: FaSatellite,
       points: [
         "Uptime Guarantee: Guaranteed uptime for reliability.",

@@ -258,7 +258,7 @@ const HomeHero = () => {
               ease: "linear",
             }}
           >
-            Infrastructure Connectivity
+            Telecom Infrastructure Solutions
           </motion.h1>
         </motion.div>
 
@@ -275,7 +275,7 @@ const HomeHero = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 1 }}
           >
-            Seamless Internet, Instant Connectivity, &{" "}
+            EMPOWERING CONNECTIVITY <br />
             <motion.span
               className="font-semibold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent"
               animate={{
@@ -287,9 +287,8 @@ const HomeHero = () => {
               }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              Smart Solutions
+              ENGINEERING EXCELLENCE
             </motion.span>{" "}
-            for your Digital World.
           </motion.p>
 
           {/* Animated Stats */}
@@ -300,9 +299,10 @@ const HomeHero = () => {
             className="flex justify-center space-x-8 md:space-x-16 mt-8"
           >
             {[
-              { number: "99.9%", label: "Uptime" },
-              { number: "5G", label: "Speed" },
-              { number: "24/7", label: "Support" },
+              { number: "2200+", label: "Telecom Tower" },
+              { number: "3000+ KM", label: "Optical Fiber RollOut" },
+              { number: "500+", label: "FTTH" },
+              { number: "2", label: "MSC/Data Center Infra" }
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -338,7 +338,7 @@ const HomeHero = () => {
                 y: -2,
               }}
               whileTap={{ scale: 0.95 }}
-              className="px-12 py-4 text-white font-semibold rounded-full backdrop-blur-sm border border-white/30 hover:border-white/50 transition-all duration-300"
+              className="cursor-pointer px-12 py-4 text-white font-semibold rounded-full backdrop-blur-sm border border-white/30 hover:border-white/50 transition-all duration-300"
             >
               Learn More
             </motion.button>

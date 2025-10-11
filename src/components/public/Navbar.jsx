@@ -101,7 +101,7 @@ const Navbar = () => {
           <img
             src={frames[currentFrame]}
             alt="Detect Electronics"
-            className={`transition-all duration-500 ${
+            className={`transition-all duration-500 cursor-pointer ${
               isScrolled ? "h-16" : "h-18" // 🔹 reduced logo height
             }`}
           />
@@ -112,7 +112,7 @@ const Navbar = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="hidden lg:flex items-center space-x-3" // 🔹 reduced spacing
+          className="hidden lg:flex items-center space-x-3 cursor-pointer" // 🔹 reduced spacing
         >
           {navItems.map((item) => {
             const isActive =
@@ -133,7 +133,7 @@ const Navbar = () => {
                       onClick={() =>
                         setActiveDropdown(activeDropdown === item.name ? null : item.name)
                       }
-                      className={`flex items-center px-2.5 py-1.5 font-semibold text-sm transition-colors duration-300 ${
+                      className={`flex items-center px-2.5 py-1.5 font-semibold text-sm transition-colors duration-300 cursor-pointer ${
                         isActive
                           ? "text-blue-600 border-b-2 border-blue-600"
                           : "text-gray-800 hover:text-blue-600"
