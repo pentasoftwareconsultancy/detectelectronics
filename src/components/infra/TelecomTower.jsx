@@ -54,40 +54,48 @@ const TelecomTower = () => {
 
     // Auto slide animation for all images - right to left
     if (sliderRef.current) {
-      const slides = sliderRef.current.querySelectorAll('.slide');
-      const totalSlides = slides.length;
-      
-      // Set initial positions
-      gsap.set(slides, {
-        x: (i) => i * 100 + "%"
-      });
-
-      // Create the auto-slide timeline
-      const tl = gsap.timeline({
-        repeat: -1,
-        ease: "power2.inOut"
-      });
-
-      // Add slides to timeline
-      slides.forEach((_, index) => {
-        tl.to(slides, {
-          x: `-=${100}%`,
-          duration: 1.5,
-          ease: "power2.inOut"
-        }, `+=3`); // 3 seconds delay between slides
-      });
-
-      // Start animation when in view
-      ScrollTrigger.create({
-        trigger: sliderRef.current,
-        start: "top 80%",
-        onEnter: () => tl.play(),
-        onLeave: () => tl.pause(),
-        onEnterBack: () => tl.play(),
-        onLeaveBack: () => tl.pause(),
-      });
-    }
-  }, []);
+          const slides = sliderRef.current.querySelectorAll('.slide');
+          const totalSlides = slides.length;
+          
+          // Set initial positions
+          gsap.set(slides, {
+            xPercent: (i) => i * 100
+          });
+    
+          // Create timeline with pauses
+          const tl = gsap.timeline({
+            repeat: -1
+          });
+    
+          // Add slide animations with pauses
+          for (let i = 0; i < totalSlides; i++) {
+            // Slide movement (1 second)
+            tl.to(slides, {
+              xPercent: `-=${100}`,
+              duration: 1,
+              ease: "power2.inOut",
+              modifiers: {
+                xPercent: gsap.utils.wrap(-100, (totalSlides - 1) * 100)
+              }
+            });
+            
+            // Pause (3 seconds)
+            tl.to({}, {
+              duration: 3
+            });
+          }
+    
+          // Start animation when in view
+          ScrollTrigger.create({
+            trigger: sliderRef.current,
+            start: "top 80%",
+            onEnter: () => tl.play(),
+            onLeave: () => tl.pause(),
+            onEnterBack: () => tl.play(),
+            onLeaveBack: () => tl.pause(),
+          });
+        }
+      }, []);
 
   return (
     <div className="w-full bg-gradient-to-b from-gray-50 to-gray-100 py-16 antialiased">
@@ -192,7 +200,7 @@ const TelecomTower = () => {
                     >
                       <img
                         src={src}
-                        alt={`Telecom Tower ${index + 1}`}
+                        alt={`Telecom Tower ${index + 2}`}
                         className="w-full h-full object-cover"
                       />
                     </div>

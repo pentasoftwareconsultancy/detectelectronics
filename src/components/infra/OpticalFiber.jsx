@@ -1,9 +1,101 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitText from "../animationComponents/SplitText";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const OpticalFiber = () => {
-  // 🔄 Updated article content
   const articleContent = `In view of technology development in telecom infrastructure, Optical Fiber Cable (OFC) has become the backbone of modern telecom networks, providing high-speed data transmission and advanced 5G features. DESIPL extend the services for optical fiber network in Maharashtra and Karnataka State for Telecom Operators.`;
+
+  const paraRef = useRef(null);
+  const listRef = useRef([]);
+  const sliderRef = useRef(null);
+
+  useEffect(() => {
+    // Paragraph animation - float in from left on scroll
+    if (paraRef.current) {
+      gsap.fromTo(
+        paraRef.current,
+        { x: -200, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: paraRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+
+    // List items animation - fade-in with stagger on scroll
+    if (listRef.current.length > 0) {
+      gsap.fromTo(
+        listRef.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: listRef.current[0],
+            start: "top 90%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+
+    // Pause and Go slider animation
+    if (sliderRef.current) {
+      const slides = sliderRef.current.querySelectorAll('.slide');
+      const totalSlides = slides.length;
+      
+      // Set initial positions
+      gsap.set(slides, {
+        xPercent: (i) => i * 100
+      });
+
+      // Create timeline with pauses
+      const tl = gsap.timeline({
+        repeat: -1
+      });
+
+      // Add slide animations with pauses
+      for (let i = 0; i < totalSlides; i++) {
+        // Slide movement (1 second)
+        tl.to(slides, {
+          xPercent: `-=${100}`,
+          duration: 1,
+          ease: "power2.inOut",
+          modifiers: {
+            xPercent: gsap.utils.wrap(-100, (totalSlides - 1) * 100)
+          }
+        });
+        
+        // Pause (3 seconds)
+        tl.to({}, {
+          duration: 3
+        });
+      }
+
+      // Start animation when in view
+      ScrollTrigger.create({
+        trigger: sliderRef.current,
+        start: "top 80%",
+        onEnter: () => tl.play(),
+        onLeave: () => tl.pause(),
+        onEnterBack: () => tl.play(),
+        onLeaveBack: () => tl.pause(),
+      });
+    }
+  }, []);
 
   return (
     <div className="w-full bg-gradient-to-b from-gray-50 to-gray-100 py-16 antialiased">
@@ -40,9 +132,10 @@ const OpticalFiber = () => {
 
             {/* Text Section */}
             <article className="lg:w-3/5 text-gray-700 text-base md:text-lg leading-relaxed">
-              <p className="text-justify">{articleContent}</p>
+              <p ref={paraRef} className="text-justify mb-6">
+                {articleContent}
+              </p>
 
-              {/* 🔄 Updated bullet points */}
               <ul className="mt-6 list-none space-y-3">
                 {[
                   "Right of Way",
@@ -55,6 +148,7 @@ const OpticalFiber = () => {
                 ].map((item, i) => (
                   <li
                     key={i}
+                    ref={(el) => (listRef.current[i] = el)}
                     className="flex items-start text-gray-700 leading-relaxed"
                   >
                     <span className="text-blue-600 mr-2 mt-1 text-lg">➤</span>
@@ -64,13 +158,35 @@ const OpticalFiber = () => {
               </ul>
             </article>
 
-            {/* Image Section */}
-            <div className="lg:w-2/5 w-full flex justify-center">
-              <img
-                src="/assets/OpticFiber.jpg"
-                alt="Optical Fiber Cable"
-                className="w-full md:w-[400px] lg:w-full h-[400px] rounded-xl shadow-xl border-4 border-gray-200 transition-transform duration-300 hover:scale-105 hover:shadow-2xl object-cover"
-              />
+            {/* Image Slider Section - Pause and Go Effect */}
+            <div className="lg:w-2/5 w-full relative h-[400px] rounded-xl border-4 border-gray-200 shadow-xl overflow-hidden">
+              <div
+                ref={sliderRef}
+                className="w-full h-full relative"
+              >
+                {/* Slides Container */}
+                <div className="absolute inset-0 flex">
+                  {[
+                    "/assets/OpticalFiber/opticfiber2.jpg",
+                    "/assets/OpticalFiber/opticfiber3.jpg",
+                    "/assets/OpticalFiber/opticfiber4.jpg",
+                    "/assets/OpticalFiber/opticfiber5.jpg",
+                    "/assets/OpticalFiber/opticfiber6.jpg"
+                  ].map((src, index) => (
+                    <div
+                      key={index}
+                      className="slide absolute top-0 left-0 w-full h-full flex-shrink-0"
+                    >
+                      <img
+                        src={src}
+                        alt={`Optical Fiber ${index + 2}`}
+                        className="w-full h-full object-cover"
+                        draggable={false}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
           </div>

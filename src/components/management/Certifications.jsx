@@ -116,9 +116,7 @@ const Certifications = () => {
           {/* Right – certificate image slider with original size shadow box */}
           <div className="md:w-1/2 w-full flex flex-col items-center mt-8 md:mt-0 relative">
             <h3 className="text-xl font-semibold text-gray-700 mb-6">Certificates</h3>
-            <div className="w-full relative flex justify-center">
-              {/* Shadow Box Container - Auto-sized to fit certificate */}
-              <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-8 relative overflow-hidden max-w-full">
+            <div className="w-4/5 relative flex justify-center">
                 {/* Inner shadow effect */}
                 <div className="absolute inset-0 rounded-2xl shadow-inner bg-gradient-to-br from-gray-50 to-white pointer-events-none"></div>
                 
@@ -138,7 +136,6 @@ const Certifications = () => {
                 </AnimatePresence>
               </div>
             </div>
-          </div>
         </div>
       </div>
     </div>

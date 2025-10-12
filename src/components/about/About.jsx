@@ -172,9 +172,11 @@ const About = () => {
                     About Us
                 </h1>
                 <div className="w-36 h-1.5 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full mb-6" />
-                <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
-                    Discover who we are, what we've achieved, and how our expertise drives
-                    excellence in every project we deliver.
+                <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto font-bold">Empowering Connectivity, Engineering Excellence</p>
+                <p className="text-lg md:text-xl mt-4 text-center text-gray-700 max-w-6xl mx-auto">
+                    With over 25+ years of industry experience, Detect Electronics Systems (I) Private Limited — a sister company of Detect Electronics System — has established itself as a trusted leader in delivering customer-centric, high-quality engineering solutions across telecom, civil, and electrical domains.
+
+Our strong legacy is built on technical excellence, timely project execution, and an unwavering commitment to quality, earning us the trust and satisfaction of clients nationwide.
                 </p>
             </motion.div>
 
@@ -194,7 +196,7 @@ const About = () => {
                             className="flex flex-col items-center justify-center"
                         >
                             <StatIcon className="text-5xl text-blue-500 mb-4" />
-                            <h3 className="text-5xl font-extrabold text-[#1a3b7c]">
+                            <h3 className="text-5xl font-extrabold text-[#2384c5]">
                                 {visible ? (
                                     <CountUp
                                         end={stat.number}

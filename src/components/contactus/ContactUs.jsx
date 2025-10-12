@@ -1,13 +1,7 @@
-import { useState } from "react";
-import { MapPin, Phone, Mail } from "lucide-react";
+import React, { useState } from "react";
 import { FiUser, FiMail, FiMessageCircle, FiPhone } from "react-icons/fi";
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaLinkedinIn,
-  FaWhatsapp,
-} from "react-icons/fa";
-import { RiTwitterXLine } from "react-icons/ri";
+import { MapPin, Phone, Mail } from "lucide-react";
+import { FaLinkedin, FaWhatsapp } from "react-icons/fa";
 
 export default function ContactUs() {
   const [formData, setFormData] = useState({
@@ -16,208 +10,134 @@ export default function ContactUs() {
     message: "",
   });
 
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState("");
-
+  // ===== Handle Input Change =====
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
-  const validateEmail = (email) => {
-    return /\S+@\S+\.\S+/.test(email);
-  };
-
+  // ===== Handle Form Submit =====
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (!formData.name || !formData.email || !formData.message) {
-      setError("Please fill in all fields.");
-      return;
-    }
-
-    if (!validateEmail(formData.email)) {
-      setError("Please enter a valid email.");
-      return;
-    }
-
-    setError("");
-    setSubmitted(true);
-
-    console.log("Form submitted:", formData);
-
-    setFormData({ name: "", email: "", message: "" });
+    alert("Message submitted successfully!");
   };
 
   return (
-    <div className="flex items-center justify-center flex-col">
-      <main className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-12 max-w-7xl w-full">
-          {/* Contact Form */}
-          <div id="contact-section" className="bg-white p-10 rounded-3xl shadow-lg border border-blue-100">
-            <h2 className="text-3xl font-bold mb-6 text-[#2384c5] text-center">
-              Send us a message
-            </h2>
+    <div className="scroll-smooth bg-gradient-to-r from-[#f0f4f8] to-[#eaf1f6] py-16 px-6 md:px-20">
+      <div className="grid md:grid-cols-2 gap-10 items-start">
+        {/* ===== Left Side: Contact Form ===== */}
+        <div className="bg-white shadow-lg rounded-2xl p-8">
+          <h2 className="text-3xl font-bold text-center text-[#2384c5] mb-6">
+            Send us a message
+          </h2>
 
-            {submitted && (
-              <p className="text-green-600 text-center mb-4 font-semibold">
-                Your message has been sent successfully!
-              </p>
-            )}
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="flex items-center gap-3 border border-gray-300 rounded-xl px-4 py-3">
+              <FiUser className="text-gray-500 text-xl" />
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Your Name"
+                className="flex-1 outline-none bg-transparent"
+                required
+              />
+            </div>
 
-            {error && (
-              <p className="text-red-600 text-center mb-4 font-semibold">
-                {error}
-              </p>
-            )}
+            <div className="flex items-center gap-3 border border-gray-300 rounded-xl px-4 py-3">
+              <FiPhone className="text-gray-500 text-xl" />
+              <input
+                type="number"
+                name="Phone Number"
+                value={formData.number}
+                onChange={handleChange}
+                placeholder="Your Phone Number"
+                className="flex-1 outline-none bg-transparent"
+                required
+              />
+            </div>
 
-            <form className="space-y-6" onSubmit={handleSubmit}>
-              <div className="relative">
-                <FiUser
-                  className="absolute top-1/2 left-3 -translate-y-1/2 text-[#6B7280]"
-                  size={20}
-                />
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full pl-10 border border-[#CBD5E1] rounded-2xl p-3 focus:outline-none focus:ring-2 focus:ring-[#3B82F6] transition"
-                  required
-                />
-              </div>
+            <div className="flex items-center gap-3 border border-gray-300 rounded-xl px-4 py-3">
+              <FiMail className="text-gray-500 text-xl" />
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Your Email"
+                className="flex-1 outline-none bg-transparent"
+                required
+              />
+            </div>
 
-              <div className="relative">
-                <FiPhone
-                  className="absolute top-1/2 left-3 -translate-y-1/2 text-[#6B7280]"
-                  size={20}
-                />
-                <input
-                  type="number"
-                  name="number"
-                  placeholder="Your Phone Number"
-                  value={formData.number}
-                  onChange={handleChange}
-                  className="w-full pl-10 border border-[#CBD5E1] rounded-2xl p-3 focus:outline-none focus:ring-2 focus:ring-[#3B82F6] transition"
-                  required
-                />
-              </div>
+            <div className="flex items-start gap-3 border border-gray-300 rounded-xl px-4 py-3">
+              <FiMessageCircle className="text-gray-500 text-xl mt-1" />
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Your Message"
+                rows="5"
+                className="flex-1 outline-none bg-transparent resize-none"
+                required
+              ></textarea>
+            </div>
 
-              <div className="relative">
-                <FiMail
-                  className="absolute top-1/2 left-3 -translate-y-1/2 text-[#6B7280]"
-                  size={20}
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Your Email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full pl-10 border border-[#CBD5E1] rounded-2xl p-3 focus:outline-none focus:ring-2 focus:ring-[#3B82F6] transition"
-                  required
-                />
-              </div>
+            {/* ===== Buttons ===== */}
+            <button
+              type="submit"
+              className="w-full bg-[#2384c5] text-white py-3 rounded-xl font-semibold text-lg hover:bg-[#123e54] transition-all"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
 
-              <div className="relative">
-                <FiMessageCircle
-                  className="absolute top-3 left-3 text-[#6B7280]"
-                  size={20}
-                />
-                <textarea
-                  name="message"
-                  placeholder="Your Message"
-                  rows={5}
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="w-full pl-10 pt-3 border border-[#CBD5E1] rounded-2xl p-3 focus:outline-none focus:ring-2 focus:ring-[#3B82F6] transition"
-                  required
-                ></textarea>
-              </div>
+        {/* ===== Right Side: Contact Info ===== */}
+        <div className="bg-white shadow-lg rounded-2xl py-12 px-32 text-center">
+          <h2 className="text-3xl font-bold text-[#2384c5] mb-4">
+            Contact Info
+          </h2>
+          <p className="text-gray-600 my-8">
+            Reach us via phone, email, or visit our office. We're here to assist you!
+          </p>
 
-              <button
-                type="submit"
-                className="w-full bg-[#2384c5] text-white px-6 py-3 rounded-2xl font-semibold hover:bg-[#2563EB] transition duration-300 shadow-md"
-              >
-                Send Message
-              </button>
-            </form>
+          <div className="space-y-8 text-gray-700">
+            <p className="flex items-start justify-center gap-3">
+              <MapPin /> 2 Floor Udayog Shree Complex, Near Sudgirni Chowk, Chhatrapati Sambhajinagar-431005.
+            </p>
+            <p className="flex items-center justify-center gap-3">
+              <Phone /> +91 9922260007
+            </p>
+            <p className="flex items-center justify-center gap-3">
+              <Mail /> info@detectelectronics.com
+            </p>
           </div>
 
-          {/* Contact Info */}
-          <div className="bg-white p-10 rounded-3xl shadow-lg border border-blue-100 flex flex-col justify-center items-center space-y-6">
-            <h2 className="text-3xl font-bold mb-4 text-[#2384c5] text-center">
-              Contact Info
-            </h2>
-            <p className="text-gray-700 text-center">
-              Reach us via phone, email, or visit our office. We're here to
-              assist you!
-            </p>
-
-            <div className="flex flex-col items-center space-y-4 text-gray-700 text-center w-full max-w-xs">
-              {/* Location */}
-              <div className="flex items-center space-x-3 w-full">
-                <MapPin size={20} className="flex-shrink-0" />
-                <div className="leading-snug text-left">
-                  2nd Floor UdyogShree Complex <br />
-                  Near Sutgirni Chowk
-                  <br />
-                  Chhatrapati Sambhajinagar-431005
-                </div>
-
-              </div>
-
-              {/* Phone */}
-              <div className="flex items-center space-x-3 w-full">
-                <Phone size={20} />
-                <span>9922260007</span>
-              </div>
-
-              {/* Email */}
-              <div className="flex items-center space-x-3 w-full">
-                <Mail size={20} />
-                <span>info@detectelectronics.com</span>
-              </div>
-            </div>
-
-            {/* Social Media Icons */}
-            <div className="mt-6 text-center">
-              <p className="text-gray-700 mb-2">Follow us on social media:</p>
-              <div className="flex space-x-4 justify-center">
-                <a
-                  href="https://linkedin.com/in/satish-ajabe-18b00653/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-[#3B82F6] hover:bg-[#2563EB] text-white p-3 rounded-full transition"
-                  aria-label="LinkedIn"
-                >
-                  <FaLinkedinIn />
-                </a>
-                <a
-                  href="https://wa.me/919922260007"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-[#25D366] hover:bg-[#128C7E] text-white p-3 rounded-full transition"
-                  aria-label="WhatsApp"
-                >
-                  <FaWhatsapp />
-                </a>
-              </div>
-            </div>
+          {/* ===== Social Icons ===== */}
+          <h3 className="text-lg mt-8 font-semibold text-gray-800">
+            Connect with us:
+          </h3>
+          <div className="flex justify-center gap-6 mt-9">
+            <a
+              href="https://www.linkedin.com/in/satish-ajabe-18b00653/"
+              target="_blank"
+              rel="noreferrer"
+              className="bg-[#0077b5] text-white p-3 rounded-full hover:scale-110 transition-transform"
+            >
+              <FaLinkedin className="text-2xl" />
+            </a>
+            <a
+              href="https://wa.me/919922260007"
+              target="_blank"
+              rel="noreferrer"
+              className="bg-[#25D366] text-white p-3 rounded-full hover:scale-110 transition-transform"
+            >
+              <FaWhatsapp className="text-2xl" />
+            </a>
           </div>
         </div>
-      </main>
-      <div className="max-w-7xl w-full h-[500px] flex justify-center "> {/* radious */}
-        <iframe
-          title="Location Map"
-          width="60%"
-          height="90%"
-          style={{ border: 0 }}
-          loading="lazy"
-          allowFullScreen
-          referrerPolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d30019.631524906694!2d75.341454!3d19.863045!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdba2802659e88d%3A0x2bd34032db6b808c!2sUlkanagari%2C%20Chhatrapati%20Sambhajinagar%2C%20Maharashtra%2C%20India!5e0!3m2!1sen!2sus!4v1759741261934!5m2!1sen!2sus"
-        ></iframe>
       </div>
     </div>
   );

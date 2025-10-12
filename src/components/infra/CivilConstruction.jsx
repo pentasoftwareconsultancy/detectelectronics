@@ -1,9 +1,25 @@
-// CivilConstruction.jsx
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import SplitText from "../animationComponents/SplitText";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 const CivilConstruction = () => {
+  const sliderRef = useRef(null);
+
+  // Images for slider
+  const images = [
+    "/assets/CivilConstruction/civil1.jpg",
+    "/assets/CivilConstruction/civil2.jpg",
+    "/assets/CivilConstruction/civil3.jpg",
+    "/assets/CivilConstruction/civil4.jpg",
+    "/assets/CivilConstruction/civil5.jpg",
+    "/assets/CivilConstruction/civil6.jpg",
+  ];
+
   // Motion variants
   const containerVariants = {
     hidden: { opacity: 0, y: 40 },
@@ -19,20 +35,66 @@ const CivilConstruction = () => {
     }),
   };
 
+  useEffect(() => {
+    // Right to left slide animation
+    if (sliderRef.current) {
+      const slides = sliderRef.current.querySelectorAll('.slide');
+      const totalSlides = slides.length;
+      
+      // Set initial positions
+      gsap.set(slides, {
+        xPercent: (i) => i * 100
+      });
+
+      // Create timeline with pauses
+      const tl = gsap.timeline({
+        repeat: -1
+      });
+
+      // Add slide animations with pauses
+      for (let i = 0; i < totalSlides; i++) {
+        // Slide movement (1 second)
+        tl.to(slides, {
+          xPercent: `-=${100}`,
+          duration: 1,
+          ease: "power2.inOut",
+          modifiers: {
+            xPercent: gsap.utils.wrap(-100, (totalSlides - 1) * 100)
+          }
+        });
+        
+        // Pause (3 seconds)
+        tl.to({}, {
+          duration: 3
+        });
+      }
+
+      // Start animation when in view
+      ScrollTrigger.create({
+        trigger: sliderRef.current,
+        start: "top 80%",
+        onEnter: () => tl.play(),
+        onLeave: () => tl.pause(),
+        onEnterBack: () => tl.play(),
+        onLeaveBack: () => tl.pause(),
+      });
+    }
+  }, []);
+
   return (
-    <div className="w-full bg-gradient-to-b from-gray-50 to-gray-100 py-16 antialiased">
+    <div className="w-full bg-gradient-to-b from-gray-50 to-gray-100 py-16 antialiased font-sans text-gray-800">
       <div className="w-full max-w-7xl mx-auto px-4">
 
         {/* Header Section */}
         <div
           className="w-full bg-cover bg-center relative py-24 md:py-32 text-center text-white mb-16 rounded-3xl overflow-hidden shadow-lg object-top"
-          style={{ backgroundImage: `url(/assets/Transformer.jpg)` }}
+          style={{ backgroundImage: `url(/assets/Hero1.png)` }}
         >
           <div className="absolute inset-0 bg-black/60"></div>
           <div className="relative z-10">
             <SplitText
               text="CIVIL CONSTRUCTION"
-              className="text-4xl md:text-5xl font-semibold tracking-wide inline-block"
+              className="text-4xl md:text-5xl font-semibold tracking-wide inline-block font-inter"
               delay={100}
               duration={0.6}
               ease="power3.out"
@@ -58,11 +120,9 @@ const CivilConstruction = () => {
           <div className="flex flex-col lg:flex-row gap-12 items-start w-full">
 
             {/* Text Section */}
-            <article className="lg:w-3/5 text-gray-700 text-base md:text-lg leading-relaxed">
-
-              {/* 🔄 Updated paragraph */}
+            <article className="lg:w-3/5 text-gray-700 text-base md:text-lg leading-relaxed font-inter">
               <motion.p
-                className="text-justify mb-6"
+                className="text-justify mb-6 font-medium"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
@@ -73,7 +133,6 @@ const CivilConstruction = () => {
                 both structural and super-structural works.
               </motion.p>
 
-              {/* 🔄 Updated Telecom Section */}
               <motion.h3
                 className="text-xl font-semibold text-gray-900 mt-8 mb-3"
                 initial={{ opacity: 0, y: 20 }}
@@ -94,6 +153,9 @@ const CivilConstruction = () => {
                     className="flex items-start text-gray-700 leading-relaxed gap-2 border-b border-gray-100 pb-2"
                     custom={i}
                     variants={listItemVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
                   >
                     <span className="text-sky-500 mr-2 mt-1 text-lg">➤</span>
                     <span>{item}</span>
@@ -101,7 +163,6 @@ const CivilConstruction = () => {
                 ))}
               </ul>
 
-              {/* 🔄 Updated Industrial Construction Section */}
               <motion.h3
                 className="text-xl font-semibold text-gray-900 mt-8 mb-3"
                 initial={{ opacity: 0, y: 20 }}
@@ -120,6 +181,9 @@ const CivilConstruction = () => {
                     className="flex items-start text-gray-700 leading-relaxed gap-2 border-b border-gray-100 pb-2"
                     custom={i}
                     variants={listItemVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
                   >
                     <span className="text-sky-500 mr-2 mt-1 text-lg">➤</span>
                     <span>{item}</span>
@@ -128,17 +192,29 @@ const CivilConstruction = () => {
               </ul>
             </article>
 
-            {/* Image Section */}
-            <div className="lg:w-2/5 w-full flex justify-center">
-              <motion.img
-                src="/assets/CivilConstruction.jpg"
-                alt="Civil Construction"
-                className="w-full md:w-[400px] lg:w-full h-[500px] rounded-xl shadow-xl border-4 border-gray-200 transition-transform duration-300 hover:scale-105 hover:shadow-2xl object-cover"
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-                viewport={{ once: true }}
-              />
+            {/* Image Slider Section - Right to Left Slide */}
+            <div className="lg:w-2/5 w-full relative h-[500px] rounded-xl border-4 border-gray-200 shadow-xl overflow-hidden">
+              <div
+                ref={sliderRef}
+                className="w-full h-full relative"
+              >
+                {/* Slides Container */}
+                <div className="absolute inset-0 flex">
+                  {images.map((src, index) => (
+                    <div
+                      key={index}
+                      className="slide absolute top-0 left-0 w-full h-full flex-shrink-0"
+                    >
+                      <img
+                        src={src}
+                        alt={`Civil Construction ${index + 1}`}
+                        className="w-full h-full object-cover"
+                        draggable={false}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
           </div>

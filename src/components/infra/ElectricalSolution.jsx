@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import SplitText from "../animationComponents/SplitText";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 const ElectricalSolution = () => {
+  const sliderRef = useRef(null);
+
+  // Images for slider
+  const images = [
+    "/assets/Electrical/electrical1.png",
+    "/assets/Electrical/electrical2.jpg",
+    "/assets/Electrical/electrical3.jpg",
+    "/assets/Electrical/electrical4.jpg",
+    "/assets/Electrical/electrical5.jpg",
+    "/assets/Electrical/electrical6.jpg",
+  ];
+
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0, y: 40 },
@@ -26,6 +43,52 @@ const ElectricalSolution = () => {
     }),
   };
 
+  useEffect(() => {
+    // Right to left slide animation
+    if (sliderRef.current) {
+      const slides = sliderRef.current.querySelectorAll('.slide');
+      const totalSlides = slides.length;
+      
+      // Set initial positions
+      gsap.set(slides, {
+        xPercent: (i) => i * 100
+      });
+
+      // Create timeline with pauses
+      const tl = gsap.timeline({
+        repeat: -1
+      });
+
+      // Add slide animations with pauses
+      for (let i = 0; i < totalSlides; i++) {
+        // Slide movement (1 second)
+        tl.to(slides, {
+          xPercent: `-=${100}`,
+          duration: 1,
+          ease: "power2.inOut",
+          modifiers: {
+            xPercent: gsap.utils.wrap(-100, (totalSlides - 1) * 100)
+          }
+        });
+        
+        // Pause (3 seconds)
+        tl.to({}, {
+          duration: 3
+        });
+      }
+
+      // Start animation when in view
+      ScrollTrigger.create({
+        trigger: sliderRef.current,
+        start: "top 80%",
+        onEnter: () => tl.play(),
+        onLeave: () => tl.pause(),
+        onEnterBack: () => tl.play(),
+        onLeaveBack: () => tl.pause(),
+      });
+    }
+  }, []);
+
   return (
     <div className="w-full bg-gradient-to-b from-gray-50 to-gray-100 py-16 antialiased">
       <div className="w-full max-w-7xl mx-auto px-4">
@@ -33,7 +96,7 @@ const ElectricalSolution = () => {
         {/* Header Section */}
         <div
           className="w-full bg-cover bg-center relative py-24 md:py-32 text-center text-white mb-16 rounded-3xl overflow-hidden shadow-lg"
-          style={{ backgroundImage: `url(/assets/Electrical.png)` }}
+          style={{ backgroundImage: `url(/assets/Electrical1.jpeg)` }}
         >
           <div className="absolute inset-0 bg-black/60"></div>
 
@@ -93,6 +156,9 @@ const ElectricalSolution = () => {
                     className="flex items-start text-gray-700 leading-relaxed"
                     custom={i}
                     variants={listItemVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
                   >
                     <span className="text-sky-500 mr-2 mt-1 text-lg">➤</span>
                     <span>{item}</span>
@@ -101,17 +167,29 @@ const ElectricalSolution = () => {
               </ul>
             </article>
 
-            {/* Image Section */}
-            <div className="lg:w-2/5 w-full flex justify-center">
-              <motion.img
-                src={"/assets/Electrical1.jpg"}
-                alt="Electrical Construction"
-                className="w-full md:w-[400px] lg:w-full h-[450px] object-right rounded-xl shadow-xl border-4 border-gray-200 transition-transform duration-300 hover:scale-105 hover:shadow-2xl object-cover"
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-                viewport={{ once: true }}
-              />
+            {/* Image Slider Section - Right to Left Slide */}
+            <div className="lg:w-2/5 w-full relative h-[500px] rounded-xl border-4 border-gray-200 shadow-xl overflow-hidden">
+              <div
+                ref={sliderRef}
+                className="w-full h-full relative"
+              >
+                {/* Slides Container */}
+                <div className="absolute inset-0 flex">
+                  {images.map((src, index) => (
+                    <div
+                      key={index}
+                      className="slide absolute top-0 left-0 w-full h-full flex-shrink-0"
+                    >
+                      <img
+                        src={src}
+                        alt={`Electrical Work ${index + 1}`}
+                        className="w-full h-full object-cover"
+                        draggable={false}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
           </div>

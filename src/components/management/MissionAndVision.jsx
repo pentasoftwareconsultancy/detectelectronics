@@ -33,7 +33,7 @@ const MissionAndVision = () => {
         {/* Mission Section */}
         <div className="bg-white p-6 sm:p-10 rounded-3xl flex flex-col md:flex-row items-center gap-8 mb-12 transform transition duration-300 hover:scale-105 hover:opacity-90">
           <div className="md:w-1/2 text-gray-800 space-y-4">
-            <h2 className="text-2xl font-semibold text-[#0d2c3c]">Our Mission</h2>
+            <h2 className="text-2xl font-semibold text-[#2384c5]">Our Mission</h2>
             <p className="leading-relaxed">
               At <strong>Detect Electronics Systems (I) Pvt. Ltd.</strong>, our mission is to deliver reliable, innovative, and quality-driven infrastructure solutions across <strong>Telecom, Civil, Electrical, and OFC sectors</strong>.
             </p>
@@ -67,7 +67,7 @@ const MissionAndVision = () => {
             </div>
           </div>
           <div className="md:w-1/2 text-gray-800 space-y-4">
-            <h2 className="text-2xl font-semibold text-[#0d2c3c]">Our Vision</h2>
+            <h2 className="text-2xl font-semibold text-[#2384c5]">Our Vision</h2>
             <p className="leading-relaxed mt-4">
               To be recognized as a <strong>leading and trusted partner in telecom and infrastructure development</strong>, known for integrity, innovation, and commitment to quality.
             </p>
@@ -83,7 +83,7 @@ const MissionAndVision = () => {
         {/* Values Section */}
         <div className="bg-white p-6 sm:p-10 rounded-3xl flex flex-col md:flex-row items-center gap-8 transform transition duration-300 hover:scale-105 hover:opacity-90">
           <div className="md:w-1/2 text-gray-800 space-y-4">
-            <h2 className="text-2xl font-semibold text-[#0d2c3c]">Our Values</h2>
+            <h2 className="text-2xl font-semibold text-[#2384c5]">Our Values</h2>
             <ul className="mt-4 list-disc list-inside space-y-2">
               <li><strong>Integrity:</strong> Upholding honesty and transparency in every project.</li>
               <li><strong>Excellence:</strong> Delivering top-quality solutions and services consistently.</li>
