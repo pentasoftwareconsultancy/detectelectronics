@@ -52,7 +52,7 @@ export default function CurrentProject() {
   return (
     <section className="bg-gradient-to-b py-16">
       <div className="container mx-auto px-6">
-        <h2 className="text-5xl text-center mb-16 font-extrabold text-[#1a3b7c] drop-shadow-lg">
+        <h2 className="text-5xl text-center mb-16 font-extrabold text-[#2384c5] drop-shadow-lg">
           Current Projects
         </h2>
 

@@ -37,7 +37,7 @@ const Career = () => {
       id="career-section"
       className="w-full min-h-screen flex flex-col items-center justify-center px-6 lg:px-16 py-16 bg-gray-50"
     >
-      <h1 className="text-3xl lg:text-4xl font-extrabold text-[#1a3b7c] mb-8">
+      <h1 className="text-3xl lg:text-4xl font-extrabold text-[#2384c5] mb-8">
         Join Our Team
       </h1>
       <div className="relative flex flex-col lg:flex-row items-center justify-center">

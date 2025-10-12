@@ -68,7 +68,7 @@ export default function FooterClients() {
           <div className="flex items-center mb-16 flex-col">
             
             
-              <h2 className="text-5xl font-extrabold text-[#1a3b7c] mb-3">
+              <h2 className="text-5xl font-extrabold text-[#2384c5] mb-3">
                 OUR CLIENTS
               </h2>
               <p className="text-xl text-gray-600">
@@ -114,7 +114,7 @@ export default function FooterClients() {
           {/* Left Side - Company Maintainer */}
           <div className="text-sm text-gray-600">
             Developed and Maintain By:{" "}
-            <span className="font-extrabold text-[#1a3b7c]">
+            <span className="font-extrabold text-[#2384c5]">
               Devcons Software Solutions Pvt. Ltd.
             </span>
           </div>

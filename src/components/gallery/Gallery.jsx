@@ -101,7 +101,7 @@ const Gallery = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-5xl font-extrabold text-[#1a3b7c] mb-4">Our Gallery</h2>
+          <h2 className="text-5xl font-extrabold text-[#2384c5] mb-4">Our Gallery</h2>
           <div className="w-32 h-1.5 bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 mx-auto mb-6 rounded-full" />
           <p className="text-xl text-gray-600 max-w-4xl mx-auto">
             "Discover our telecom and infrastructure projects, showcasing excellence and precision."

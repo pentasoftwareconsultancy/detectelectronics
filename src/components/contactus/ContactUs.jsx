@@ -4,6 +4,7 @@ import { FiUser, FiMail, FiMessageCircle, FiPhone } from "react-icons/fi";
 import {
   FaFacebookF,
   FaInstagram,
+  FaLinkedinIn,
   FaWhatsapp,
 } from "react-icons/fa";
 import { RiTwitterXLine } from "react-icons/ri";
@@ -53,7 +54,7 @@ export default function ContactUs() {
         <div className="grid md:grid-cols-2 gap-12 max-w-7xl w-full">
           {/* Contact Form */}
           <div id="contact-section" className="bg-white p-10 rounded-3xl shadow-lg border border-blue-100">
-            <h2 className="text-3xl font-bold mb-6 text-[#1E3A8A] text-center">
+            <h2 className="text-3xl font-bold mb-6 text-[#2384c5] text-center">
               Send us a message
             </h2>
 
@@ -145,7 +146,7 @@ export default function ContactUs() {
 
           {/* Contact Info */}
           <div className="bg-white p-10 rounded-3xl shadow-lg border border-blue-100 flex flex-col justify-center items-center space-y-6">
-            <h2 className="text-3xl font-bold mb-4 text-[#1E3A8A] text-center">
+            <h2 className="text-3xl font-bold mb-4 text-[#2384c5] text-center">
               Contact Info
             </h2>
             <p className="text-gray-700 text-center">
@@ -183,15 +184,15 @@ export default function ContactUs() {
             <div className="mt-6 text-center">
               <p className="text-gray-700 mb-2">Follow us on social media:</p>
               <div className="flex space-x-4 justify-center">
-                {/* <a
-                  href="https://www.facebook.com/yourpage"
+                <a
+                  href="https://linkedin.com/in/satish-ajabe-18b00653/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-[#3B82F6] hover:bg-[#2563EB] text-white p-3 rounded-full transition"
-                  aria-label="Facebook"
+                  aria-label="LinkedIn"
                 >
-                  <FaFacebookF />
-                </a> */} linkdin
+                  <FaLinkedinIn />
+                </a>
                 <a
                   href="https://wa.me/919922260007"
                   target="_blank"

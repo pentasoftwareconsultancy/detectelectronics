@@ -44,23 +44,27 @@ const MissionAndVision = () => {
               By empowering skilled professionals and adopting advanced engineering practices, we strive to build a <strong>strong, connected, and future-ready India</strong>.
             </p>
           </div>
-          <div className="md:w-1/2 flex justify-center">
-            <img
-              src={"/assets/Mission.jpg"}
-              alt="Mission"
-              // className="rounded-3xl shadow-xl w-full md:w-5/6 object-cover"
-            />
+          <div className="md:w-1/2 flex justify-center relative group">
+            <div className="relative rounded-3xl shadow-xl w-full md:w-5/6 overflow-hidden">
+              <img
+                src={"/assets/Mission.jpg"}
+                alt="Mission"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
           </div>
         </div>
 
         {/* Vision Section */}
         <div className="bg-white p-6 sm:p-10 rounded-3xl flex flex-col md:flex-row items-center gap-8 mb-12 transform transition duration-300 hover:scale-105 hover:opacity-90">
-          <div className="md:w-1/2 text-gray-800 flex justify-center">
-            <img
-              src={"/assets/CivilConstruction.jpg"}
-              alt="Vision"
-              className="rounded-3xl shadow-xl w-full md:w-5/6 object-cover"
-            />
+          <div className="md:w-1/2 flex justify-center relative group">
+            <div className="relative rounded-3xl shadow-xl w-full md:w-5/6 overflow-hidden">
+              <img
+                src={"/assets/CivilConstruction.jpg"}
+                alt="Vision"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
           </div>
           <div className="md:w-1/2 text-gray-800 space-y-4">
             <h2 className="text-2xl font-semibold text-[#0d2c3c]">Our Vision</h2>
