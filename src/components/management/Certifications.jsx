@@ -113,22 +113,30 @@ const Certifications = () => {
             </ul>
           </div>
 
-          {/* Right – certificate image slider */}
+          {/* Right – certificate image slider with original size shadow box */}
           <div className="md:w-1/2 w-full flex flex-col items-center mt-8 md:mt-0 relative">
-            <h3 className="text-xl font-semibold text-gray-700 mb-4">Certificates</h3>
-            <div className="w-full md:w-5/6 h-[450px] relative overflow-hidden">
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={currentIndex}
-                  src={certImages[currentIndex]}
-                  alt={`Certification ${currentIndex + 1}`}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.8 }}
-                  className="w-full h-full object-contain absolute top-0 left-0"
-                />
-              </AnimatePresence>
+            <h3 className="text-xl font-semibold text-gray-700 mb-6">Certificates</h3>
+            <div className="w-full relative flex justify-center">
+              {/* Shadow Box Container - Auto-sized to fit certificate */}
+              <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-8 relative overflow-hidden max-w-full">
+                {/* Inner shadow effect */}
+                <div className="absolute inset-0 rounded-2xl shadow-inner bg-gradient-to-br from-gray-50 to-white pointer-events-none"></div>
+                
+                {/* Certificate Image - Original Size */}
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={currentIndex}
+                    src={certImages[currentIndex]}
+                    alt={`Certification ${currentIndex + 1}`}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.8 }}
+                    className="max-w-full h-auto object-contain relative z-10"
+                    style={{ maxHeight: '500px' }} // Adjust max height as needed
+                  />
+                </AnimatePresence>
+              </div>
             </div>
           </div>
         </div>

@@ -159,7 +159,7 @@ const Career = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-[#0d2c3c] text-white font-semibold py-3 rounded-lg hover:bg-yellow-600 transition duration-200"
+              className="w-full bg-[#2384c5] text-white font-semibold py-3 rounded-lg hover:bg-yellow-600 transition duration-200"
             >
               {isSubmitting ? "Sending..." : "Submit Application"}
             </button>

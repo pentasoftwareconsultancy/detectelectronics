@@ -27,7 +27,7 @@ const ProjectManagement = () => {
         {/* Header Section */}
         <div
           className="w-full bg-cover bg-center relative py-24 md:py-32 text-center text-white mb-16 rounded-3xl overflow-hidden shadow-lg"
-          style={{ backgroundImage: `url(/assets/ProjectManagementBG.jpeg)` }}
+          style={{ backgroundImage: `url(/assets/ProjectManagementBG.jpg)` }}
         >
           <div className="absolute inset-0 bg-black/60"></div>
           <div className="relative z-10">

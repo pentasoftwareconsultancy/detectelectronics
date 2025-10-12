@@ -10,6 +10,7 @@ const TelecomTower = () => {
   const paraRef = useRef(null);
   const listRef = useRef([]);
   const imgRef = useRef(null);
+  const sliderRef = useRef(null);
 
   useEffect(() => {
     // Paragraph animation - float in from left
@@ -51,23 +52,40 @@ const TelecomTower = () => {
       );
     }
 
-    // Image animation - slide in from right
-    if (imgRef.current) {
-      gsap.fromTo(
-        imgRef.current,
-        { opacity: 0, x: 150 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 1.2,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: imgRef.current,
-            start: "top 85%",
-            toggleActions: "play none none none",
-          },
-        }
-      );
+    // Auto slide animation for all images - right to left
+    if (sliderRef.current) {
+      const slides = sliderRef.current.querySelectorAll('.slide');
+      const totalSlides = slides.length;
+      
+      // Set initial positions
+      gsap.set(slides, {
+        x: (i) => i * 100 + "%"
+      });
+
+      // Create the auto-slide timeline
+      const tl = gsap.timeline({
+        repeat: -1,
+        ease: "power2.inOut"
+      });
+
+      // Add slides to timeline
+      slides.forEach((_, index) => {
+        tl.to(slides, {
+          x: `-=${100}%`,
+          duration: 1.5,
+          ease: "power2.inOut"
+        }, `+=3`); // 3 seconds delay between slides
+      });
+
+      // Start animation when in view
+      ScrollTrigger.create({
+        trigger: sliderRef.current,
+        start: "top 80%",
+        onEnter: () => tl.play(),
+        onLeave: () => tl.pause(),
+        onEnterBack: () => tl.play(),
+        onLeaveBack: () => tl.pause(),
+      });
     }
   }, []);
 
@@ -78,7 +96,7 @@ const TelecomTower = () => {
         {/* Header Section */}
         <div
           className="w-full bg-cover bg-center relative py-24 md:py-32 text-center text-white mb-16 rounded-3xl overflow-hidden shadow-lg"
-          style={{ backgroundImage: `url(/assets/TelecomTower.png)` }}
+          style={{ backgroundImage: `url(/assets/TelecomTower.jpg)` }}
         >
           <div className="absolute inset-0 bg-black/60"></div>
           <div className="relative z-10">
@@ -153,14 +171,34 @@ const TelecomTower = () => {
               </ul>
             </article>
 
-            {/* Image Section */}
-            <div className="w-full lg:w-2/5 justify-center hidden lg:flex">
-              <img
-                ref={imgRef}
-                src="/assets/telecomtower.jpg"
-                alt="Telecom Tower"
-                className="w-full md:w-[400px] lg:w-full h-full rounded-xl shadow-xl border-4 border-gray-200 transition-transform duration-300 hover:scale-105 hover:shadow-2xl object-cover"
-              />
+            {/* Image Section with Auto Slide Animation */}
+            <div className="w-full lg:w-2/5 justify-center hidden lg:flex relative h-[640px]">
+              <div
+                ref={sliderRef}
+                className="w-full h-full relative overflow-hidden rounded-xl border-4 border-gray-200 shadow-xl"
+              >
+                {/* Slides Container */}
+                <div className="absolute inset-0 flex">
+                  {[
+                    "/assets/TelecomTower/telecomtower2.jpg",
+                    "/assets/TelecomTower/telecomtower3.jpg",
+                    "/assets/TelecomTower/telecomtower4.jpg",
+                    "/assets/TelecomTower/telecomtower5.jpg",
+                    "/assets/TelecomTower/telecomtower6.jpg"
+                  ].map((src, index) => (
+                    <div
+                      key={index}
+                      className="slide absolute top-0 left-0 w-full h-full flex-shrink-0"
+                    >
+                      <img
+                        src={src}
+                        alt={`Telecom Tower ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
           </div>
