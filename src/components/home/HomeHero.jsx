@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
+import { useNavigate } from "react-router-dom";
 
 const images = [
   "/assets/Hero1.png",
@@ -12,6 +13,7 @@ const images = [
 const HomeHero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate();
 
   const scrollToAbout = () => {
     const section = document.getElementById("home-about");
@@ -331,7 +333,7 @@ const HomeHero = () => {
             className="flex justify-center items-center"
           >
             <motion.button
-              onClick={scrollToAbout}
+              onClick={()=>navigate("/about")}
               whileHover={{
                 scale: 1.05,
                 backgroundColor: "rgba(255,255,255,0.1)",

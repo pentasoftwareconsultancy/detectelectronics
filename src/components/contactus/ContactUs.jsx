@@ -6,9 +6,15 @@ import { FaLinkedin, FaWhatsapp } from "react-icons/fa";
 export default function ContactUs() {
   const [formData, setFormData] = useState({
     name: "",
+    phone: "",
     email: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
+
+  // Replace with your Google Apps Script Web App URL
+  const SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
 
   // ===== Handle Input Change =====
   const handleChange = (e) => {
@@ -17,9 +23,40 @@ export default function ContactUs() {
   };
 
   // ===== Handle Form Submit =====
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Message submitted successfully!");
+    setIsSubmitting(true);
+    setSubmitMessage("");
+
+    try {
+      const response = await fetch(SCRIPT_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitMessage("Message sent successfully! We'll get back to you soon.");
+        // Reset form
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          message: "",
+        });
+      } else {
+        setSubmitMessage("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSubmitMessage("An error occurred. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -30,6 +67,16 @@ export default function ContactUs() {
           <h2 className="text-3xl font-bold text-center text-[#2384c5] mb-6">
             Send us a message
           </h2>
+
+          {submitMessage && (
+            <div className={`mb-4 p-3 rounded-lg text-center ${
+              submitMessage.includes("successfully") 
+                ? "bg-green-100 text-green-800 border border-green-200" 
+                : "bg-red-100 text-red-800 border border-red-200"
+            }`}>
+              {submitMessage}
+            </div>
+          )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="flex items-center gap-3 border border-gray-300 rounded-xl px-4 py-3">
@@ -48,9 +95,9 @@ export default function ContactUs() {
             <div className="flex items-center gap-3 border border-gray-300 rounded-xl px-4 py-3">
               <FiPhone className="text-gray-500 text-xl" />
               <input
-                type="number"
-                name="Phone Number"
-                value={formData.number}
+                type="tel"
+                name="phone"
+                value={formData.phone}
                 onChange={handleChange}
                 placeholder="Your Phone Number"
                 className="flex-1 outline-none bg-transparent"
@@ -87,15 +134,20 @@ export default function ContactUs() {
             {/* ===== Buttons ===== */}
             <button
               type="submit"
-              className="w-full bg-[#2384c5] text-white py-3 rounded-xl font-semibold text-lg hover:bg-[#123e54] transition-all"
+              disabled={isSubmitting}
+              className={`w-full py-3 rounded-xl font-semibold text-lg transition-all ${
+                isSubmitting
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-[#2384c5] hover:bg-[#123e54] text-white"
+              }`}
             >
-              Send Message
+              {isSubmitting ? "Sending..." : "Send Message"}
             </button>
           </form>
         </div>
 
         {/* ===== Right Side: Contact Info ===== */}
-        <div className="bg-white shadow-lg rounded-2xl py-12 px-32 text-center">
+        <div className="bg-white shadow-lg rounded-2xl py-12 px-8 md:px-12 text-center">
           <h2 className="text-3xl font-bold text-[#2384c5] mb-4">
             Contact Info
           </h2>
@@ -105,7 +157,8 @@ export default function ContactUs() {
 
           <div className="space-y-8 text-gray-700">
             <p className="flex items-start justify-center gap-3">
-              <MapPin /> 2 Floor Udayog Shree Complex, Near Sudgirni Chowk, Chhatrapati Sambhajinagar-431005.
+              <MapPin className="flex-shrink-0 mt-1" /> 
+              <span>2 Floor Udayog Shree Complex, Near Sudgirni Chowk, Chhatrapati Sambhajinagar-431005.</span>
             </p>
             <p className="flex items-center justify-center gap-3">
               <Phone /> +91 9922260007
@@ -119,7 +172,7 @@ export default function ContactUs() {
           <h3 className="text-lg mt-8 font-semibold text-gray-800">
             Connect with us:
           </h3>
-          <div className="flex justify-center gap-6 mt-9">
+          <div className="flex justify-center gap-6 mt-6">
             <a
               href="https://www.linkedin.com/in/satish-ajabe-18b00653/"
               target="_blank"
