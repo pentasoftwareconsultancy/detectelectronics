@@ -14,7 +14,7 @@ export default function ContactUs() {
   const [submitMessage, setSubmitMessage] = useState("");
 
   // Replace with your Google Apps Script Web App URL
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyNq-4uHb86PEF7sx3j4oDlDVvfpXPEk1Suh5HKMMs/dev";
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwJVvH2TjDf9ssum5eN9kBBOe3FY3BfAVQvsRbYOpRUk3pmGtpwUH6r6cNwTq6S6sCY/exec";
 
   // ===== Handle Input Change =====
   const handleChange = (e) => {
@@ -38,6 +38,7 @@ export default function ContactUs() {
       });
 
       const result = await response.json();
+      console.log("Response object:", result); // 🔍 DEBUG HERE
 
       if (result.success) {
         setSubmitMessage("Message sent successfully! We'll get back to you soon.");
