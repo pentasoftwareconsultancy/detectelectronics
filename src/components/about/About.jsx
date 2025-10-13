@@ -132,9 +132,9 @@ const About = () => {
     ];
 
     return (
-        <div className="relative min-h-screen py-20 px-6 md:px-12 overflow-hidden">
+        <div className="relative min-h-screen py-12 px-6 md:px-12 overflow-hidden bg-white">
             {/* Sliding Logos */}
-            <div className="overflow-hidden relative mb-16">
+            <div className="overflow-hidden relative mb-8">
                 <motion.div
                     className="flex gap-10 w-max"
                     animate={{ x: ["0%", "-50%"] }}
@@ -154,13 +154,13 @@ const About = () => {
                             <img
                                 src={logo}
                                 alt={`Client ${index + 1}`}
-                                className="h-10 md:h-12 w-auto object-contain"
+                                className="h-6 md:h-10 w-auto object-contain"
                             />
                         </motion.div>
                     ))}
                 </motion.div>
             </div>
-
+            <div className="bg-[linear-gradient(to_bottom,_#E8F2FF,_#F4F9FF,_#ffffff)] pt-8">
             {/* 🏆 Header */}
             <motion.div
                 initial={{ opacity: 0, y: -50 }}
@@ -184,24 +184,24 @@ Our strong legacy is built on technical excellence, timely project execution, an
             <motion.div
                 ref={ref}
                 className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-24 text-center"
-            >
+                >
                 {stats.map((stat, index) => {
                     const StatIcon = stat.icon;
                     return (
                         <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 50 }}
-                            animate={visible ? { opacity: 1, y: 0 } : {}}
-                            transition={{ delay: 0.2 * index, duration: 0.8, type: "spring" }}
-                            className="flex flex-col items-center justify-center"
+                        key={index}
+                        initial={{ opacity: 0, y: 50 }}
+                        animate={visible ? { opacity: 1, y: 0 } : {}}
+                        transition={{ delay: 0.2 * index, duration: 0.8, type: "spring" }}
+                        className="flex flex-col items-center justify-center"
                         >
                             <StatIcon className="text-5xl text-blue-500 mb-4" />
                             <h3 className="text-5xl font-extrabold text-[#2384c5]">
                                 {visible ? (
                                     <CountUp
-                                        end={stat.number}
-                                        suffix={stat.suffix}
-                                        duration={stat.duration}
+                                    end={stat.number}
+                                    suffix={stat.suffix}
+                                    duration={stat.duration}
                                     />
                                 ) : (
                                     `0${stat.suffix}`
@@ -221,9 +221,9 @@ Our strong legacy is built on technical excellence, timely project execution, an
                     const Icon = card.icon;
                     return (
                         <div
-                            key={i}
-                            className="relative h-96 [perspective:1000px] cursor-pointer group"
-                            onClick={() => handleFlip(i)}
+                        key={i}
+                        className="relative h-96 [perspective:1000px] cursor-pointer group"
+                        onClick={() => handleFlip(i)}
                         >
                             {/* Flip Animation Container */}
                             <div
@@ -233,7 +233,7 @@ Our strong legacy is built on technical excellence, timely project execution, an
                                 {/* Front Side */}
                                 <div
                                     className={`absolute inset-0 w-full h-full rounded-2xl p-8 bg-gradient-to-br ${card.bgGradient} shadow-xl border border-white/50 backface-hidden`}
-                                >
+                                    >
                                     <div className="flex flex-col h-full justify-between">
                                         <div>
                                             <div
@@ -275,7 +275,7 @@ Our strong legacy is built on technical excellence, timely project execution, an
                                 {/* Back Side */}
                                 <div
                                     className={`absolute inset-0 w-full h-full rounded-2xl p-8 bg-gradient-to-br ${card.gradient} text-white shadow-xl rotate-y-180 backface-hidden`}
-                                >
+                                    >
                                     <div className="flex flex-col h-full">
                                         <div className="flex items-center justify-between mb-6">
                                             <Icon className="text-2xl text-white/80" />
@@ -325,7 +325,7 @@ Our strong legacy is built on technical excellence, timely project execution, an
                 initial={{ opacity: 0, y: 40 }}
                 animate={visible ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            >
+                >
                 <h3 className="text-4xl md:text-5xl font-extrabold text-[#2384c5] mb-6 tracking-tight">
                     Download
                 </h3>
@@ -339,7 +339,7 @@ Our strong legacy is built on technical excellence, timely project execution, an
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         className="bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold py-4 px-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2"
-                    >
+                        >
                         <motion.span
                             animate={{ y: [0, -6, 0] }} // move up 6px and back
                             transition={{
@@ -348,7 +348,7 @@ Our strong legacy is built on technical excellence, timely project execution, an
                                 repeatType: "loop",
                                 ease: "easeInOut",
                             }}
-                        >
+                            >
                             <FaDownload className="inline-block mr-2 text-lg" />
                         </motion.span>
                         Download Presentation
@@ -368,7 +368,7 @@ Our strong legacy is built on technical excellence, timely project execution, an
                                 repeatType: "loop",
                                 ease: "easeInOut",
                             }}
-                        >
+                            >
                             <FaDownload className="inline-block mr-2 text-lg" />
                         </motion.span>
                         Download PDF
@@ -376,29 +376,30 @@ Our strong legacy is built on technical excellence, timely project execution, an
                 </div>
             </motion.div>
 
+            </div>
             <style jsx>{`
         .backface-hidden {
-          backface-visibility: hidden;
-          -webkit-backface-visibility: hidden;
-        }
-        .transform-style-3d {
-          transform-style: preserve-3d;
-        }
-        .rotate-y-180 {
-          transform: rotateY(180deg);
-        }
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 4px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: rgba(255, 255, 255, 0.3);
-          border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: rgba(255, 255, 255, 0.1);
-          border-radius: 10px;
-        }
-      `}</style>
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            }
+            .transform-style-3d {
+                transform-style: preserve-3d;
+                }
+                .rotate-y-180 {
+                    transform: rotateY(180deg);
+                    }
+                    .custom-scrollbar::-webkit-scrollbar {
+                        width: 4px;
+                        }
+                        .custom-scrollbar::-webkit-scrollbar-thumb {
+                            background: rgba(255, 255, 255, 0.3);
+                            border-radius: 10px;
+                            }
+                            .custom-scrollbar::-webkit-scrollbar-track {
+                                background: rgba(255, 255, 255, 0.1);
+                                border-radius: 10px;
+                                }
+                                `}</style>
         </div>
     );
 };
