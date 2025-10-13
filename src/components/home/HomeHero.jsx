@@ -18,7 +18,7 @@ const HomeHero = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       if (!isHovered) handleNext();
-    }, 6000);
+    }, 3000);
     return () => clearInterval(interval);
   }, [currentIndex, direction, isHovered]);
 
@@ -35,12 +35,12 @@ const HomeHero = () => {
     center: {
       x: 0,
       opacity: 1,
-      transition: { duration: 1 }
+      transition: { duration: 0.7, ease: "easeInOut" }
     },
     exit: (dir) => ({
       x: dir > 0 ? "-100%" : "100%",
       opacity: 0,
-      transition: { duration: 1 }
+      transition: { duration: 0.7, ease: "easeInOut" }
     })
   };
 
