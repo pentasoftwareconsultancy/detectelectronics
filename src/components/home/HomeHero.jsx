@@ -18,21 +18,17 @@ const slideContent = [
 
 const HomeHero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(-1); // 1 = right-to-left, -1 = left-to-right
-  const [isHovered, setIsHovered] = useState(false);
+  const [direction, setDirection] = useState(-1); // initial right-to-left
   const navigate = useNavigate();
 
+  // Autoplay sliding with alternating direction
   useEffect(() => {
     const interval = setInterval(() => {
-      if (!isHovered) handleNext();
+      setDirection((prev) => -prev); // toggle direction
+      setCurrentIndex((prev) => (prev + 1) % backgrounds.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, [currentIndex, direction, isHovered]);
-
-  const handleNext = () => {
-    setDirection((prev) => -prev); // toggle direction
-    setCurrentIndex((prev) => (prev + 1) % backgrounds.length);
-  };
+  }, []);
 
   const backgroundVariants = {
     enter: (dir) => ({
@@ -55,11 +51,7 @@ const HomeHero = () => {
     <div className="relative w-full h-screen overflow-hidden flex items-center justify-center bg-gray-900">
 
       {/* Image Slider */}
-      <div
-        className="absolute inset-0"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
+      <div className="absolute inset-0">
         <AnimatePresence mode="sync" custom={direction} initial={false}>
           <motion.div
             key={currentIndex}
