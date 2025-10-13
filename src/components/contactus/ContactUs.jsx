@@ -14,7 +14,7 @@ export default function ContactUs() {
   const [submitMessage, setSubmitMessage] = useState("");
 
   // Replace with your Google Apps Script Web App URL
-  const SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyNq-4uHb86PEF7sx3j4oDlDVvfpXPEk1Suh5HKMMs/dev";
 
   // ===== Handle Input Change =====
   const handleChange = (e) => {
