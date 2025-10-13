@@ -56,10 +56,19 @@ const About = () => {
         setFlippedCard(flippedCard === index ? null : index);
     };
 
-    const handleDownload = () => {
-        let fileUrl = "/assets/detectelectronics.pdf";
-        let fileName = "detectelectronics.pdf";
-
+    // Replace your handleDownload function with this
+    const handleDownload = (file) => {
+        let fileUrl = "";
+        let fileName = "";
+    
+        if (file === "profile") {
+            fileUrl = "/assets/detectelectronics.pdf";
+            fileName = "detectelectronics.pdf";
+        } else if (file === "presentation") {
+            fileUrl = "/assets/DETECT ELECTRONICS SYSTEMS (I) PVT LTD.pdf";
+            fileName = "DETECT ELECTRONICS SYSTEMS (I) PVT LTD.pdf";
+        }
+    
         const link = document.createElement("a");
         link.href = fileUrl;
         link.download = fileName;
@@ -335,7 +344,7 @@ Our strong legacy is built on technical excellence, timely project execution, an
 
                 <div className="flex flex-col sm:flex-row justify-center gap-6">
                     <motion.button
-                        onClick={() => handleDownload()}
+                        onClick={() => handleDownload("presentation")}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         className="bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold py-4 px-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2"
@@ -355,7 +364,7 @@ Our strong legacy is built on technical excellence, timely project execution, an
                     </motion.button>
 
                     <motion.button
-                        onClick={() => handleDownload()}
+                        onClick={() => handleDownload("profile")}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         className="bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold py-4 px-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2"
@@ -371,7 +380,7 @@ Our strong legacy is built on technical excellence, timely project execution, an
                             >
                             <FaDownload className="inline-block mr-2 text-lg" />
                         </motion.span>
-                        Download PDF
+                        Download Profile
                     </motion.button>
                 </div>
             </motion.div>
