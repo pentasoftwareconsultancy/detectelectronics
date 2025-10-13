@@ -2,61 +2,70 @@ import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "emailjs-com";
 
-const Career = () => {
+export default function Career() {
   const form = useRef();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState("");
 
-  const sendEmail = (e) => {
+  // ✅ Replace with your SheetDB.io API URL
+  const SHEETDB_URL = "https://sheetdb.io/api/v1/0njojp7n0cd8u";
+
+  const sendEmail = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setStatus("");
 
-    emailjs
-      .sendForm(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
-        form.current,
-        "YOUR_PUBLIC_KEY"
-      )
-      .then(
-        () => {
-          setStatus("✅ Your application has been sent successfully!");
-          setIsSubmitting(false);
-          form.current.reset();
-        },
-        (error) => {
-          console.error(error.text);
-          setStatus("❌ Failed to send application. Please try again later.");
-          setIsSubmitting(false);
-        }
+    const formData = new FormData(form.current);
+    const dataObject = Object.fromEntries(formData.entries());
+
+    try {
+      // 1️⃣ Send email via EmailJS
+      await emailjs.send(
+        "service_cr8jt81", // replace
+        "template_ku5gxv7", // replace
+        dataObject,
+        "TbOu2fj_P6o9kiPSu" // replace
       );
+
+      // 2️⃣ Send data to SheetDB.io
+      const sheetResponse = await fetch(SHEETDB_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ data: dataObject }),
+      });
+
+      const sheetResult = await sheetResponse.json();
+
+      setStatus("✅ Your application has been sent & saved successfully!");
+      form.current.reset();
+    } catch (error) {
+      console.error(error);
+      setStatus("❌ Failed to send application. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <section
-      id="career-section"
-      className="w-full min-h-screen flex flex-col items-center justify-center px-6 lg:px-16 py-16 bg-gray-50"
-    >
-      <h1 className="text-3xl lg:text-4xl font-extrabold text-[#2384c5] mb-8">
+    <section className="w-full min-h-screen flex flex-col items-center justify-center px-6 lg:px-16 py-16 bg-gray-50">
+      <h1 className="text-3xl lg:text-4xl font-extrabold text-[#2384c5] mb-8 text-center">
         Join Our Team
       </h1>
-      <div className="relative flex flex-col lg:flex-row items-center justify-center">
-        {/* Left: Form */}
+      <div className="grid md:grid-cols-2 gap-10 items-stretch w-full">
+        {/* ===== Left: Form ===== */}
         <motion.div
           initial={{ x: -100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="w-full lg:w-1/2 mb-10 lg:mb-0"
+          className="bg-white shadow-lg rounded-2xl p-8 flex flex-col"
         >
           <form
             ref={form}
             onSubmit={sendEmail}
-            className="bg-white shadow-lg rounded-lg p-8 w-full space-y-6"
+            className="space-y-4 flex-1"
           >
-            {/* Grid layout for two inputs per row */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* Name */}
               <div>
                 <label className="block text-gray-700 font-medium mb-1">
                   Name*
@@ -69,8 +78,6 @@ const Career = () => {
                   className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
                 />
               </div>
-
-              {/* Education */}
               <div>
                 <label className="block text-gray-700 font-medium mb-1">
                   Education*
@@ -83,8 +90,6 @@ const Career = () => {
                   className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
                 />
               </div>
-
-              {/* Experience */}
               <div>
                 <label className="block text-gray-700 font-medium mb-1">
                   Experience*
@@ -97,8 +102,6 @@ const Career = () => {
                   className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
                 />
               </div>
-
-              {/* Phone */}
               <div>
                 <label className="block text-gray-700 font-medium mb-1">
                   Phone Number*
@@ -112,8 +115,6 @@ const Career = () => {
                   className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
                 />
               </div>
-
-              {/* Email */}
               <div>
                 <label className="block text-gray-700 font-medium mb-1">
                   Email*
@@ -126,8 +127,6 @@ const Career = () => {
                   className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
                 />
               </div>
-
-              {/* Resume Upload */}
               <div>
                 <label className="block text-gray-700 font-medium mb-1">
                   Resume Upload*
@@ -142,7 +141,6 @@ const Career = () => {
               </div>
             </div>
 
-            {/* Note (full width) */}
             <div>
               <label className="block text-gray-700 font-medium mb-1">
                 Note (optional)
@@ -155,38 +153,43 @@ const Career = () => {
               />
             </div>
 
-            {/* Submit Button */}
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-[#2384c5] text-white font-semibold py-3 rounded-lg hover:bg-yellow-600 transition duration-200"
+              className={`w-full bg-[#2384c5] text-white font-semibold py-3 rounded-lg hover:bg-yellow-600 transition duration-200`}
             >
               {isSubmitting ? "Sending..." : "Submit Application"}
             </button>
 
             {status && (
-              <p className="text-center mt-4 text-gray-700">{status}</p>
+              <p
+                className={`text-center mt-4 p-2 rounded ${
+                  status.startsWith("✅")
+                    ? "bg-green-100 text-green-800"
+                    : "bg-red-100 text-red-800"
+                }`}
+              >
+                {status}
+              </p>
             )}
           </form>
         </motion.div>
 
-        {/* Right: Image */}
+        {/* ===== Right: Image ===== */}
         <motion.div
           initial={{ x: 100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="w-full lg:w-1/2 flex justify-center"
+          className="w-full flex justify-center"
         >
           <img
-            src="/assets/Career.png" // Replace with your career image URL
+            src="/assets/Career.png"
             alt="Career"
-            className="w-full max-w-md rounded-lg shadow-xl h-[480px]"
+            className="w-full max-w-3xl rounded-lg shadow-xl h-full object-cover"
           />
         </motion.div>
       </div>
     </section>
   );
-};
-
-export default Career;
+}

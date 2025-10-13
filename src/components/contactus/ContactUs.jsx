@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FiUser, FiMail, FiMessageCircle, FiPhone } from "react-icons/fi";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { FaLinkedin, FaWhatsapp } from "react-icons/fa";
+import emailjs from "@emailjs/browser";
 
 export default function ContactUs() {
   const [formData, setFormData] = useState({
@@ -13,8 +14,8 @@ export default function ContactUs() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
 
-  // Replace with your Google Apps Script Web App URL
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwJVvH2TjDf9ssum5eN9kBBOe3FY3BfAVQvsRbYOpRUk3pmGtpwUH6r6cNwTq6S6sCY/exec";
+  // ✅ Replace with your SheetDB.io API URL
+  const SHEETDB_URL = "https://sheetdb.io/api/v1/x5q2n92jq3yt4";
 
   // ===== Handle Input Change =====
   const handleChange = (e) => {
@@ -29,31 +30,30 @@ export default function ContactUs() {
     setSubmitMessage("");
 
     try {
-      const response = await fetch(SCRIPT_URL, {
+      // 1️⃣ Send email via EmailJS
+      await emailjs.send(
+        "service_zaoaomo",
+        "template_hjgozeg",
+        formData,
+        "TbOu2fj_P6o9kiPSu"
+      );
+
+      // 2️⃣ Send data to SheetDB.io
+      const sheetResponse = await fetch(SHEETDB_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ data: formData }), // SheetDB expects { data: { ... } }
       });
 
-      const result = await response.json();
-      console.log("Response object:", result); // 🔍 DEBUG HERE
+      const sheetResult = await sheetResponse.json();
 
-      if (result.success) {
-        setSubmitMessage("Message sent successfully! We'll get back to you soon.");
-        // Reset form
-        setFormData({
-          name: "",
-          phone: "",
-          email: "",
-          message: "",
-        });
-      } else {
-        setSubmitMessage("Failed to send message. Please try again.");
-      }
+      setSubmitMessage("Message sent & saved successfully!");
+      setFormData({ name: "", phone: "", email: "", message: "" });
+
     } catch (error) {
-      console.error("Error submitting form:", error);
+      console.error("Error:", error);
       setSubmitMessage("An error occurred. Please try again later.");
     } finally {
       setIsSubmitting(false);
@@ -63,6 +63,7 @@ export default function ContactUs() {
   return (
     <div className="scroll-smooth bg-gradient-to-r from-[#f0f4f8] to-[#eaf1f6] py-16 px-6 md:px-20">
       <div className="grid md:grid-cols-2 gap-10 items-start">
+
         {/* ===== Left Side: Contact Form ===== */}
         <div className="bg-white shadow-lg rounded-2xl p-8">
           <h2 className="text-3xl font-bold text-center text-[#2384c5] mb-6">
@@ -70,11 +71,13 @@ export default function ContactUs() {
           </h2>
 
           {submitMessage && (
-            <div className={`mb-4 p-3 rounded-lg text-center ${
-              submitMessage.includes("successfully") 
-                ? "bg-green-100 text-green-800 border border-green-200" 
-                : "bg-red-100 text-red-800 border border-red-200"
-            }`}>
+            <div
+              className={`mb-4 p-3 rounded-lg text-center ${
+                submitMessage.includes("successfully")
+                  ? "bg-green-100 text-green-800 border border-green-200"
+                  : "bg-red-100 text-red-800 border border-red-200"
+              }`}
+            >
               {submitMessage}
             </div>
           )}
@@ -132,7 +135,6 @@ export default function ContactUs() {
               ></textarea>
             </div>
 
-            {/* ===== Buttons ===== */}
             <button
               type="submit"
               disabled={isSubmitting}
@@ -148,18 +150,22 @@ export default function ContactUs() {
         </div>
 
         {/* ===== Right Side: Contact Info ===== */}
-        <div className="bg-white shadow-lg rounded-2xl py-12 px-8 md:px-12 text-center">
+        <div className="bg-white shadow-lg rounded-2xl py-12 px-8 md:px-12 flex flex-col text-center">
           <h2 className="text-3xl font-bold text-[#2384c5] mb-4">
             Contact Info
           </h2>
           <p className="text-gray-600 my-8">
-            Reach us via phone, email, or visit our office. We're here to assist you!
+            Reach us via phone, email, or visit our office. We're here to assist
+            you!
           </p>
 
           <div className="space-y-8 text-gray-700">
             <p className="flex items-start justify-center gap-3">
-              <MapPin className="flex-shrink-0 mt-1" /> 
-              <span>2 Floor Udayog Shree Complex, Near Sudgirni Chowk, Chhatrapati Sambhajinagar-431005.</span>
+              <MapPin className="flex-shrink-0 mt-1" />
+              <span>
+                2 Floor Udayog Shree Complex, Near Sudgirni Chowk, Chhatrapati
+                Sambhajinagar-431005.
+              </span>
             </p>
             <p className="flex items-center justify-center gap-3">
               <Phone /> +91 9922260007
@@ -169,7 +175,6 @@ export default function ContactUs() {
             </p>
           </div>
 
-          {/* ===== Social Icons ===== */}
           <h3 className="text-lg mt-8 font-semibold text-gray-800">
             Connect with us:
           </h3>

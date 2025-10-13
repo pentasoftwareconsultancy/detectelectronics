@@ -26,6 +26,10 @@ const GALLERY_IMAGES = [
   { src: '/assets/img12.jpg', category: 'Civil', alt: 'Civil Work Infrastructure' },
   { src: '/assets/img13.jpg', category: 'Electrification', alt: 'Electrification Setup' },
   { src: '/assets/img14.jpg', category: 'Electrification', alt: 'Electrification System' },
+  { src: '/assets/img15.jpg', category: 'Training', alt: 'Electrical Training' },
+  { src: '/assets/img16.jpg', category: 'Training', alt: 'Electrical Training' },
+  { src: '/assets/img17.jpg', category: 'Training', alt: 'Training' },
+  { src: '/assets/img18.jpg', category: 'Training', alt: 'Training' }
 ];
 
 const containerVariants = {
