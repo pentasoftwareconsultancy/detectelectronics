@@ -88,7 +88,8 @@ const CivilConstruction = () => {
         {/* Header Section */}
         <div
           className="w-full bg-cover bg-center relative py-24 md:py-32 text-center text-white mb-16 rounded-3xl overflow-hidden shadow-lg object-top"
-          style={{ backgroundImage: `url(/assets/Hero1.png)` }}
+          style={{ backgroundImage: `url(/assets/CivilConstructionBG.jpg)`, backgroundPositionX: "center",
+            backgroundPositionY: "70%", }}
         >
           <div className="absolute inset-0 bg-black/60"></div>
           <div className="relative z-10">
