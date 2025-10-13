@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const backgrounds = [
   "/assets/image1.png",
@@ -10,8 +11,9 @@ const backgrounds = [
 
 const HomeHero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(1); // 1 = right-to-left, -1 = left-to-right
+  const [direction, setDirection] = useState(-1); // 1 = right-to-left, -1 = left-to-right
   const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -40,11 +42,6 @@ const HomeHero = () => {
       opacity: 0,
       transition: { duration: 1 }
     })
-  };
-
-  const scrollToAbout = () => {
-    const section = document.getElementById("home-about");
-    if (section) section.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -76,9 +73,9 @@ const HomeHero = () => {
       </div>
 
       {/* Learn More Button at Bottom */}
-      <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-10">
+      <div className="absolute bottom-40 left-1/2 transform -translate-x-1/2 z-10">
         <motion.button
-          onClick={scrollToAbout}
+          onClick={() => navigate("/about")}
           whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.1)" }}
           whileTap={{ scale: 0.95 }}
           className="px-8 py-3 border border-white text-white rounded-full bg-transparent hover:bg-white/10 transition-all duration-300 text-lg font-semibold"

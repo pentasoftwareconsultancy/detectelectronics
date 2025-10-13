@@ -104,7 +104,7 @@ const TelecomTower = () => {
         {/* Header Section */}
         <div
           className="w-full bg-cover bg-center relative py-24 md:py-32 text-center text-white mb-16 rounded-3xl overflow-hidden shadow-lg"
-          style={{ backgroundImage: `url(/assets/telecomtower.jpg)` }}
+          style={{ backgroundImage: `url(/assets/TelecomTower.jpg)` }}
         >
           <div className="absolute inset-0 bg-black/60"></div>
           <div className="relative z-10">

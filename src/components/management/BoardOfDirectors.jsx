@@ -77,15 +77,35 @@ const BoardOfDirectors = () => {
           {/* Image */}
           <div
             ref={imageRef}
-            className="md:w-1/3 w-full flex justify-center mb-6 md:mb-0"
+            className="md:w-1/3 w-full h-[500px] flex justify-center mb-6 md:mb-0 relative rounded-3xl"
+            style={{
+              boxShadow: "0 0 25px #2384c5",
+              animation: "glowBorder 2s ease-in-out infinite",
+              borderRadius: "1.5rem",
+            }}
           >
+            <style>
+              {`
+                @keyframes glowBorder {
+                  0% {
+                    box-shadow: 0 0 5px #2384c5, 0 0 10px #2384c5, 0 0 20px #2384c5;
+                  }
+                  50% {
+                    box-shadow: 0 0 20px #2384c5, 0 0 40px #2384c5, 0 0 60px #2384c5;
+                  }
+                  100% {
+                    box-shadow: 0 0 5px #2384c5, 0 0 10px #2384c5, 0 0 20px #2384c5;
+                  }
+                }
+              `}
+            </style>
+              
             <img
               src="/assets/director.png"
               alt="DirectorImage"
-              className="rounded-3xl shadow-xl w-full md:w-[500px] object-cover"
+              className="rounded-3xl shadow-xl w-full md:w-[500px] object-top"
             />
           </div>
-
           {/* Text */}
           <div
             ref={textRef}
