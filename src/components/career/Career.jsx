@@ -1,46 +1,42 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "emailjs-com";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function Career() {
   const form = useRef();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [status, setStatus] = useState("");
 
-  // ✅ Replace with your SheetDB.io API URL
   const SHEETDB_URL = "https://sheetdb.io/api/v1/0njojp7n0cd8u";
 
   const sendEmail = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setStatus("");
 
     const formData = new FormData(form.current);
     const dataObject = Object.fromEntries(formData.entries());
 
     try {
-      // 1️⃣ Send email via EmailJS
+      // Send email via EmailJS
       await emailjs.send(
-        "service_cr8jt81", // replace
-        "template_ku5gxv7", // replace
+        "service_cr8jt81",
+        "template_ku5gxv7",
         dataObject,
-        "TbOu2fj_P6o9kiPSu" // replace
+        "TbOu2fj_P6o9kiPSu"
       );
 
-      // 2️⃣ Send data to SheetDB.io
-      const sheetResponse = await fetch(SHEETDB_URL, {
+      // Send data to SheetDB.io
+      await fetch(SHEETDB_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ data: dataObject }),
       });
 
-      const sheetResult = await sheetResponse.json();
-
-      setStatus("✅ Your application has been sent & saved successfully!");
+      toast.success("✅ Your application has been sent & saved successfully!");
       form.current.reset();
     } catch (error) {
       console.error(error);
-      setStatus("❌ Failed to send application. Please try again later.");
+      toast.error("❌ Failed to send application. Please try again later.");
     } finally {
       setIsSubmitting(false);
     }
@@ -48,9 +44,13 @@ export default function Career() {
 
   return (
     <section className="w-full min-h-screen flex flex-col items-center justify-center px-6 lg:px-16 py-16 bg-gray-50">
+      {/* Toast container */}
+      <Toaster position="top-right" reverseOrder={false} />
+
       <h1 className="text-3xl lg:text-4xl font-extrabold text-[#2384c5] mb-8 text-center">
         Join Our Team
       </h1>
+
       <div className="grid md:grid-cols-2 gap-10 items-stretch w-full">
         {/* ===== Left: Form ===== */}
         <motion.div
@@ -60,16 +60,10 @@ export default function Career() {
           transition={{ duration: 1 }}
           className="bg-white shadow-lg rounded-2xl p-8 flex flex-col"
         >
-          <form
-            ref={form}
-            onSubmit={sendEmail}
-            className="space-y-4 flex-1"
-          >
+          <form ref={form} onSubmit={sendEmail} className="space-y-4 flex-1">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-gray-700 font-medium mb-1">
-                  Name*
-                </label>
+                <label className="block text-gray-700 font-medium mb-1">Name*</label>
                 <input
                   type="text"
                   name="name"
@@ -79,9 +73,7 @@ export default function Career() {
                 />
               </div>
               <div>
-                <label className="block text-gray-700 font-medium mb-1">
-                  Education*
-                </label>
+                <label className="block text-gray-700 font-medium mb-1">Education*</label>
                 <input
                   type="text"
                   name="education"
@@ -91,9 +83,7 @@ export default function Career() {
                 />
               </div>
               <div>
-                <label className="block text-gray-700 font-medium mb-1">
-                  Experience*
-                </label>
+                <label className="block text-gray-700 font-medium mb-1">Experience*</label>
                 <input
                   type="text"
                   name="experience"
@@ -103,9 +93,7 @@ export default function Career() {
                 />
               </div>
               <div>
-                <label className="block text-gray-700 font-medium mb-1">
-                  Phone Number*
-                </label>
+                <label className="block text-gray-700 font-medium mb-1">Phone Number*</label>
                 <input
                   type="tel"
                   name="phone"
@@ -116,9 +104,7 @@ export default function Career() {
                 />
               </div>
               <div>
-                <label className="block text-gray-700 font-medium mb-1">
-                  Email*
-                </label>
+                <label className="block text-gray-700 font-medium mb-1">Email*</label>
                 <input
                   type="email"
                   name="email"
@@ -128,9 +114,7 @@ export default function Career() {
                 />
               </div>
               <div>
-                <label className="block text-gray-700 font-medium mb-1">
-                  Resume Upload*
-                </label>
+                <label className="block text-gray-700 font-medium mb-1">Resume Upload*</label>
                 <input
                   type="file"
                   name="resume"
@@ -142,9 +126,7 @@ export default function Career() {
             </div>
 
             <div>
-              <label className="block text-gray-700 font-medium mb-1">
-                Note (optional)
-              </label>
+              <label className="block text-gray-700 font-medium mb-1">Note (optional)</label>
               <textarea
                 name="note"
                 rows="4"
@@ -160,18 +142,6 @@ export default function Career() {
             >
               {isSubmitting ? "Sending..." : "Submit Application"}
             </button>
-
-            {status && (
-              <p
-                className={`text-center mt-4 p-2 rounded ${
-                  status.startsWith("✅")
-                    ? "bg-green-100 text-green-800"
-                    : "bg-red-100 text-red-800"
-                }`}
-              >
-                {status}
-              </p>
-            )}
           </form>
         </motion.div>
 

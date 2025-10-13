@@ -4,6 +4,9 @@ import { MapPin, Phone, Mail } from "lucide-react";
 import { FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
 
+// ✅ Import toast
+import toast, { Toaster } from "react-hot-toast";
+
 export default function ContactUs() {
   const [formData, setFormData] = useState({
     name: "",
@@ -12,25 +15,20 @@ export default function ContactUs() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState("");
 
-  // ✅ Replace with your SheetDB.io API URL
   const SHEETDB_URL = "https://sheetdb.io/api/v1/x5q2n92jq3yt4";
 
-  // ===== Handle Input Change =====
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // ===== Handle Form Submit =====
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitMessage("");
 
     try {
-      // 1️⃣ Send email via EmailJS
+      // Send email via EmailJS
       await emailjs.send(
         "service_zaoaomo",
         "template_hjgozeg",
@@ -38,23 +36,18 @@ export default function ContactUs() {
         "TbOu2fj_P6o9kiPSu"
       );
 
-      // 2️⃣ Send data to SheetDB.io
-      const sheetResponse = await fetch(SHEETDB_URL, {
+      // Send data to SheetDB.io
+      await fetch(SHEETDB_URL, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ data: formData }), // SheetDB expects { data: { ... } }
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ data: formData }),
       });
 
-      const sheetResult = await sheetResponse.json();
-
-      setSubmitMessage("Message sent & saved successfully!");
+      toast.success("Message sent & saved successfully!");
       setFormData({ name: "", phone: "", email: "", message: "" });
-
     } catch (error) {
       console.error("Error:", error);
-      setSubmitMessage("An error occurred. Please try again later.");
+      toast.error("An error occurred. Please try again later.");
     } finally {
       setIsSubmitting(false);
     }
@@ -62,6 +55,9 @@ export default function ContactUs() {
 
   return (
     <div className="scroll-smooth bg-gradient-to-r from-[#f0f4f8] to-[#eaf1f6] py-16 px-6 md:px-20">
+      {/* Toast container */}
+      <Toaster position="top-right" reverseOrder={false} />
+
       <div className="grid md:grid-cols-2 gap-10 items-start">
 
         {/* ===== Left Side: Contact Form ===== */}
@@ -69,18 +65,6 @@ export default function ContactUs() {
           <h2 className="text-3xl font-bold text-center text-[#2384c5] mb-6">
             Send us a message
           </h2>
-
-          {submitMessage && (
-            <div
-              className={`mb-4 p-3 rounded-lg text-center ${
-                submitMessage.includes("successfully")
-                  ? "bg-green-100 text-green-800 border border-green-200"
-                  : "bg-red-100 text-red-800 border border-red-200"
-              }`}
-            >
-              {submitMessage}
-            </div>
-          )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="flex items-center gap-3 border border-gray-300 rounded-xl px-4 py-3">
