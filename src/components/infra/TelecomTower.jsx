@@ -180,7 +180,7 @@ const TelecomTower = () => {
             </article>
 
             {/* Image Section with Auto Slide Animation */}
-            <div className="w-full lg:w-2/5 justify-center hidden lg:flex relative h-[640px]">
+            <div className="w-full lg:w-2/5 justify-center lg:flex relative h-[640px]">
               <div
                 ref={sliderRef}
                 className="w-full h-full relative overflow-hidden rounded-xl border-4 border-gray-200 shadow-xl"
