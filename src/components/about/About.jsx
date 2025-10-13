@@ -360,7 +360,7 @@ Our strong legacy is built on technical excellence, timely project execution, an
                             >
                             <FaDownload className="inline-block mr-2 text-lg" />
                         </motion.span>
-                        Download Presentation
+                        Download Portfolio
                     </motion.button>
 
                     <motion.button
