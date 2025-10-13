@@ -3,10 +3,17 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 const backgrounds = [
-  "/assets/image1.png",
-  "/assets/image2.png",
-  "/assets/image3.png",
-  "/assets/image4.png"
+  "/assets/1.png",
+  "/assets/2.png",
+  "/assets/3.png",
+  "/assets/4.png"
+];
+
+const slideContent = [
+  { heading: "Telecom Infra", subheading: "2,200+ Telecom Tower" },
+  { heading: "Enterprise Solutions", subheading: "500+ FTTH" },
+  { heading: "Tech. Skill Development", subheading: "200+ Skill Development" },
+  { heading: "Global Standards", subheading: "3,000+ KM Optical Fiber RollOut" }
 ];
 
 const HomeHero = () => {
@@ -68,11 +75,25 @@ const HomeHero = () => {
               alt={`background-${currentIndex}`}
               className="w-full h-full object-cover"
             />
+
+            {/* Overlay Text */}
+            <div
+              className={`absolute top-1/2 transform -translate-y-1/2 max-w-xl p-6 ${
+                currentIndex % 2 === 0 ? "right-12 text-right" : "left-12 text-left"
+              }`}
+            >
+              <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
+                {slideContent[currentIndex].heading}
+              </h1>
+              <p className="text-xl md:text-2xl text-white font-medium">
+                {slideContent[currentIndex].subheading}
+              </p>
+            </div>
           </motion.div>
         </AnimatePresence>
       </div>
 
-      {/* Learn More Button at Bottom */}
+      {/* Learn More Button */}
       <div className="absolute bottom-40 left-1/2 transform -translate-x-1/2 z-10">
         <motion.button
           onClick={() => navigate("/about")}

@@ -344,7 +344,7 @@ Our strong legacy is built on technical excellence, timely project execution, an
 
                 <div className="flex flex-col sm:flex-row justify-center gap-6">
                     <motion.button
-                        onClick={() => handleDownload("presentation")}
+                        onClick={() => handleDownload("profile")}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         className="bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold py-4 px-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2"
@@ -364,7 +364,7 @@ Our strong legacy is built on technical excellence, timely project execution, an
                     </motion.button>
 
                     <motion.button
-                        onClick={() => handleDownload("profile")}
+                        onClick={() => handleDownload("presentation")}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         className="bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold py-4 px-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2"
