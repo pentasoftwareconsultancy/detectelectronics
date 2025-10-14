@@ -70,7 +70,7 @@ const HomeHero = () => {
 
             {/* Overlay Text */}
             <div
-              className={`absolute top-1/2 transform -translate-y-1/2 max-w-xl p-6 ${
+              className={`absolute top-1/2 transform -translate-y-1/2 max-w-xl p-6 rounded-2xl bg-black/15 ${
                 currentIndex % 2 === 0 ? "right-12 text-right" : "left-12 text-left"
               }`}
             >
