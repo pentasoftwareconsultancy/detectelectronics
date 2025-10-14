@@ -91,7 +91,7 @@ const HomeHero = () => {
           onClick={() => navigate("/about")}
           whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.1)" }}
           whileTap={{ scale: 0.95 }}
-          className="px-8 py-3 border border-white text-white rounded-full bg-transparent hover:bg-white/10 transition-all duration-300 text-lg font-semibold"
+          className="px-8 py-3 border border-white text-white rounded-full bg-black/20 transition-all duration-300 text-lg font-semibold"
         >
           Learn More
         </motion.button>
