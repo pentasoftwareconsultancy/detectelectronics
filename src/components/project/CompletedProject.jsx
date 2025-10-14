@@ -148,31 +148,36 @@ export default function CompletedProject() {
                       {project.status}
                     </span>
 
-                    <div className="mt-4 border-t border-white/30 pt-4 flex-1">
-                      <p className="text-sm text-gray-100 mb-3 whitespace-pre-line leading-relaxed">
-                        {project.details}
-                      </p>
+                    <div className="mt-4 border-t border-white/30 pt-4 flex-1 flex flex-col">
+  <p className="text-sm text-gray-100 mb-3 whitespace-pre-line leading-relaxed">
+    {project.details}
+  </p>
 
-                      <h4 className="text-md font-semibold mb-2 text-cyan-200">
-                        Key Achivement:
-                      </h4>
-                      <ul className="list-disc list-inside text-gray-100 text-sm mb-3 space-y-1">
-                        {project.features.map((f, i) => (
-                          <li key={i}>{f}</li>
-                        ))}
-                      </ul>
+  <h4 className="text-md font-semibold mb-2 text-cyan-200">
+    Key Achievement:
+  </h4>
 
-                      <div className="flex flex-wrap gap-2">
-                        {project.tech.map((tech, idx) => (
-                          <span
-                            key={idx}
-                            className="px-3 py-1 rounded-full text-xs font-medium bg-white/30 text-white backdrop-blur-md border border-white/20"
-                          >
-                            {techNames[tech]}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
+  {/* ✅ Scrollable Area */}
+  <div className="flex-1 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-white/30 scrollbar-track-transparent hover:scrollbar-thumb-white/50">
+    <ul className="list-disc list-inside text-gray-100 text-sm space-y-1">
+      {project.features.map((f, i) => (
+        <li key={i}>{f}</li>
+      ))}
+    </ul>
+  </div>
+
+  {/* ✅ Fixed Tech Section Below */}
+  <div className="flex flex-wrap gap-2 mt-3">
+    {project.tech.map((tech, idx) => (
+      <span
+        key={idx}
+        className="px-3 py-1 rounded-full text-xs font-medium bg-white/30 text-white backdrop-blur-md border border-white/20"
+      >
+        {techNames[tech]}
+      </span>
+    ))}
+  </div>
+</div>
                   </motion.div>
                 </div>
 
