@@ -2,22 +2,10 @@ import React, { useRef, useEffect, useState } from 'react';
 import SplitText from '../animationComponents/SplitText';
 import { gsap } from 'gsap';
 import { motion, AnimatePresence } from 'framer-motion';
+import certification from "/assets/Certification2.jpg";
 
 const Certifications = () => {
   const listRef = useRef([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  // List of certification images (automatic numbering)
-  const totalCerts = 2; // 🔹 change this to total number of certifications
-  const certImages = Array.from({ length: totalCerts }, (_, i) => `/assets/Certification${i + 1}.jpg`);
-
-  // Auto-slide every 4 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % certImages.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [certImages.length]);
 
   // Animate list items on scroll
   useEffect(() => {
@@ -116,20 +104,15 @@ const Certifications = () => {
           {/* Right – certificate image slider with original size shadow box */}
           <div className="md:w-1/2 w-full flex flex-col items-center mt-8 md:mt-0 relative">
             <h3 className="text-xl font-semibold text-gray-700 mb-6">Certificates</h3>
-            <div className="w-4/5 relative flex justify-center">
+            <div className="w-auto relative flex justify-center">
                 {/* Inner shadow effect */}
                 <div className="absolute inset-0 rounded-2xl shadow-inner bg-gradient-to-br from-gray-50 to-white pointer-events-none"></div>
                 
                 {/* Certificate Image - Original Size */}
                 <AnimatePresence mode="wait">
                   <motion.img
-                    key={currentIndex}
-                    src={certImages[currentIndex]}
-                    alt={`Certification ${currentIndex + 1}`}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.8 }}
-                    transition={{ duration: 0.8 }}
+                    src={certification}
+                    alt={`Certification`}
                     className="max-w-full h-auto object-contain relative z-10"
                     style={{ maxHeight: '500px' }} // Adjust max height as needed
                   />
